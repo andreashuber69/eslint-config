@@ -1,0 +1,35 @@
+{
+  "name": "@andreashuber69/eslint-config",
+  "version": "1.0.0",
+  "description": "Common eslint config for my TypeScript projects",
+  "keywords": [
+    "eslint",
+    "eslintconfig"
+  ],
+  "homepage": "https://github.com/andreashuber69/eslint-config/blob/master/README.md#--",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andreashuber69/eslint-config.git"
+  },
+  "bugs": {
+    "url": "https://github.com/andreashuber69/eslint-config/issues"
+  },
+  "license": "Unlicense",
+  "author": {
+    "name": "Andreas Huber"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "node .",
+    "ci": "npm test"
+  },
+  "peerDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "eslint": "^8.27.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsdoc": "^39.6.2",
+    "eslint-plugin-no-null": "^1.0.2",
+    "eslint-plugin-prefer-arrow": "^1.2.3"
+  }
+}
