@@ -19,6 +19,9 @@
     "name": "Andreas Huber"
   },
   "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "node .",
     "ci": "npm test"
