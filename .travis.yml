@@ -1,5 +1,4 @@
 # https://github.com/andreashuber69/eslint-config
-# cSpell: disable
 os: linux
 dist: xenial
 language: node_js

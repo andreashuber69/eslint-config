@@ -1,6 +1,6 @@
 {
   "name": "@andreashuber69/eslint-config",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Common eslint config for my TypeScript projects",
   "keywords": [
     "eslint",
@@ -19,6 +19,9 @@
     "name": "Andreas Huber"
   },
   "main": "index.js",
+  "files": [
+    "index.js"
+  ],
   "publishConfig": {
     "access": "public"
   },
