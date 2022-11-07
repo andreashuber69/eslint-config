@@ -1,4 +1,4 @@
-// https://github.com/andreashuber69/eslint-config#--
+// https://github.com/andreashuber69/eslint-config
 module.exports = {
     env: {
         node: true,
@@ -66,7 +66,6 @@ module.exports = {
             },
         ],
         "@typescript-eslint/consistent-type-definitions": "off", // We want to use both interfaces and types.
-        // cSpell: ignore eqeqeq
         "eqeqeq": [
             "error",
             "always",
@@ -89,7 +88,6 @@ module.exports = {
         // For short arrows "beside" is best. For longer ones "below" makes more sense.
         "implicit-arrow-linebreak": "off",
         "import/default": "off", // Already covered by typescript.
-        // cSpell: ignore chunkname
         "import/dynamic-import-chunkname": "error",
         "import/export": "off", // Already covered by typescript.
         "import/exports-last": "error",
@@ -304,7 +302,6 @@ module.exports = {
         "@typescript-eslint/no-magic-numbers": "off", // Makes sense but appears to be too restrictive.
         "no-null/no-null": "error",
         "@typescript-eslint/no-parameter-properties": "off", // The value of this rule seems dubious at best.
-        // cSpell: ignore plusplus
         // Most of the problems with the ++ and -- operators are avoided because we've turned on 
         // @typescript-eslint/semi.
         "no-plusplus": "off",
@@ -334,7 +331,6 @@ module.exports = {
             "error",
             {
                 functions: false,
-                // cSpell: ignore typedefs
                 typedefs: false,
                 enums: false,
             },
@@ -344,7 +340,6 @@ module.exports = {
         "no-useless-constructor": "off",
         // We use void to avoid @typescript-eslint/no-confusing-void-expression
         "no-void": "off",
-        // cSpell: ignore todos
         "no-warning-comments": "off", // Turn this on after tackling TODOs ;-)?.
         "object-curly-spacing": "off",
         "@typescript-eslint/object-curly-spacing": [
@@ -358,7 +353,6 @@ module.exports = {
             },
         ],
         "one-var": "off", // Does not seem to work with const and let?
-        // cSpell: ignore linebreak
         "operator-linebreak": [
             "error",
             "after",
