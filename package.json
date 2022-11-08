@@ -26,7 +26,9 @@
     "access": "public"
   },
   "scripts": {
+    "lint": "markdownlint *.md",
     "test": "node .",
+    "preci": "npm run lint",
     "ci": "npm test"
   },
   "peerDependencies": {
@@ -37,5 +39,8 @@
     "eslint-plugin-jsdoc": "^39.6.2",
     "eslint-plugin-no-null": "^1.0.2",
     "eslint-plugin-prefer-arrow": "^1.2.3"
+  },
+  "devDependencies": {
+    "markdownlint-cli": "^0.32.2"
   }
 }
