@@ -370,6 +370,12 @@ module.exports = {
             },
             // TODO: Configure to match code style
         ],
+        "@typescript-eslint/parameter-properties": [
+            "error",
+            {
+                "prefer": "parameter-property",
+            },
+        ],
         "@typescript-eslint/prefer-enum-initializers": "off", // Implictly defined values should be common knowledge
         "prefer-arrow/prefer-arrow-functions": [
             "error",
