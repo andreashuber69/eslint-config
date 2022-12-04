@@ -151,8 +151,10 @@ module.exports = {
         "import/prefer-default-export": "off", // Does not make much sense.
         "import/unambiguous": "error",
         "indent": "off",
-        // Was turned off in favor of @typescript-eslint/init-declarations (which is turned on with default settings).
+        // Would make sense if var declarations were allowed (to avoid different behavior in and outside of a loop).
+        // Since var declarations are not allowed, we can safely turn this off.
         "init-declarations": "off",
+        "@typescript-eslint/init-declarations": "off",
         "@typescript-eslint/indent": [
             "error",
             4,
