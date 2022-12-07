@@ -1,4 +1,4 @@
 {
   "files.autoSave": "onFocusChange",
-  "git.confirmSync": false,
+  "git.confirmSync": false
 }
