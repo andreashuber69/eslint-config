@@ -2,7 +2,6 @@
   "recommendations": [
     "davidanson.vscode-markdownlint",
     "eamodio.gitlens",
-    "eg2.vscode-npm-script",
     "vector-of-bool.gitflow"
   ]
 }
