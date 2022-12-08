@@ -478,7 +478,6 @@ module.exports = {
             "@typescript-eslint/parser": [".ts", ".tsx"],
         },
         "import/resolver": {
-            // The rules seem to work just fine without adding eslint-import-resolver-typescript
             "node": {
                 "extensions": allExtensions,
             },
