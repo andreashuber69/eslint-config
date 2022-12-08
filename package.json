@@ -1,6 +1,6 @@
 {
   "name": "@andreashuber69/eslint-config",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Common eslint config for my TypeScript projects",
   "keywords": [
     "eslint",
@@ -35,6 +35,7 @@
     "@typescript-eslint/eslint-plugin": ">=5.42.0",
     "@typescript-eslint/parser": ">=5.42.0",
     "eslint": ">=8.27.0",
+    "eslint-import-resolver-typescript": ">=3.5.2",
     "eslint-plugin-import": ">=2.26.0",
     "eslint-plugin-jsdoc": ">=39.6.2",
     "eslint-plugin-no-null": ">=1.0.2",
