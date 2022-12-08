@@ -1,4 +1,6 @@
 // https://github.com/andreashuber69/eslint-config
+const allExtensions = [".ts", ".tsx", ".js", ".jsx"];
+
 module.exports = {
     env: {
         node: true,
@@ -434,7 +436,25 @@ module.exports = {
         "@typescript-eslint/typedef": "off",
     },
     settings: {
-        jsdoc: {
+        // import: The following settings are taken from https://github.com/import-js/eslint-plugin-import#typescript and
+        // https://github.com/import-js/eslint-plugin-import/blob/main/config/typescript.js
+        "import/extensions": allExtensions,
+        "import/external-module-folders": ["node_modules", "node_modules/@types"],
+        "import/parsers": {
+            "@typescript-eslint/parser": [".ts", ".tsx"],
+        },
+        "import/resolver": {
+            // The rules seem to work just fine without adding eslint-import-resolver-typescript
+            "node": {
+                "extensions": allExtensions,
+            },
+            "typescript": {
+                "alwaysTryTypes": true,
+                // The default "project" config should work just fine in most cases. If not, the project using this
+                // config must override accordingly.
+            },
+        },
+        "jsdoc": {
             mode: "typescript",
         },
     },
