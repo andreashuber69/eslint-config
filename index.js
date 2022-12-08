@@ -263,10 +263,6 @@ module.exports = {
             {
                 selector: "interface",
                 format: ["PascalCase"], // TODO: Try to make this strict
-                custom: {
-                    regex: "^I[A-Z]",
-                    match: true,
-                },
                 leadingUnderscore: "forbid",
                 trailingUnderscore: "forbid",
             },
@@ -378,7 +374,7 @@ module.exports = {
                 "prefer": "parameter-property",
             },
         ],
-        "@typescript-eslint/prefer-enum-initializers": "off", // Implictly defined values should be common knowledge
+        "@typescript-eslint/prefer-enum-initializers": "off", // Implicitly defined values should be common knowledge
         "prefer-arrow/prefer-arrow-functions": [
             "error",
             {
