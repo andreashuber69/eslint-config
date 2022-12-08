@@ -1,6 +1,6 @@
 {
   "name": "@andreashuber69/eslint-config",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Common eslint config for my TypeScript projects",
   "keywords": [
     "eslint",
@@ -32,13 +32,13 @@
     "ci": "npm test"
   },
   "peerDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.42.0",
-    "@typescript-eslint/parser": "^5.42.0",
-    "eslint": "^8.27.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsdoc": "^39.6.2",
-    "eslint-plugin-no-null": "^1.0.2",
-    "eslint-plugin-prefer-arrow": "^1.2.3"
+    "@typescript-eslint/eslint-plugin": ">=5.42.0",
+    "@typescript-eslint/parser": ">=5.42.0",
+    "eslint": ">=8.27.0",
+    "eslint-plugin-import": ">=2.26.0",
+    "eslint-plugin-jsdoc": ">=39.6.2",
+    "eslint-plugin-no-null": ">=1.0.2",
+    "eslint-plugin-prefer-arrow": ">=1.2.3"
   },
   "devDependencies": {
     "markdownlint-cli": "^0.32.2"
