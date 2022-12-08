@@ -353,14 +353,19 @@ module.exports = {
             "error",
             "never",
         ],
-        "padding-line-between-statements": [
+        "padding-line-between-statements": "off",
+        "@typescript-eslint/padding-line-between-statements": [
             "error",
             {
                 blankLine: "always",
                 prev: "*",
-                next: "return",
+                next: ["class", "interface", "multiline-block-like", "return", "type"],
             },
-            // TODO: Configure to match code style
+            {
+                blankLine: "always",
+                prev: ["class", "interface", "multiline-block-like", "return", "type"],
+                next: "*",
+            },
         ],
         "@typescript-eslint/parameter-properties": [
             "error",
