@@ -332,7 +332,7 @@ module.exports = {
         "no-useless-constructor": "off",
         // We use void to avoid @typescript-eslint/no-confusing-void-expression
         "no-void": "off",
-        "no-warning-comments": "off", // Turn this on after tackling TODOs ;-)?.
+        "no-warning-comments": "warn",
         "object-curly-spacing": "off",
         "@typescript-eslint/object-curly-spacing": [
             "error",
