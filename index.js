@@ -250,22 +250,16 @@ module.exports = {
             "error",
             {
                 selector: "default",
-                format: ["camelCase"], // TODO: Try to make this strict
+                format: ["strictCamelCase"],
                 leadingUnderscore: "forbid",
                 trailingUnderscore: "forbid",
             },
             {
                 selector: ["typeLike", "enumMember"],
-                format: ["PascalCase"], // TODO: Try to make this strict
+                format: ["StrictPascalCase"],
                 leadingUnderscore: "forbid",
                 trailingUnderscore: "forbid",
-            },
-            {
-                selector: "interface",
-                format: ["PascalCase"], // TODO: Try to make this strict
-                leadingUnderscore: "forbid",
-                trailingUnderscore: "forbid",
-            },
+            }
         ],
         // Typescript ensures that constructor functions are only called with new, so the convention is not necessary.
         "new-cap": "off",
