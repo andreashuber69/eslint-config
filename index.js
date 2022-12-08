@@ -377,7 +377,7 @@ module.exports = {
                 classPropertiesAllowed: false,
             },
         ],
-        // TODO: This doesn't seem to work correctly yet
+        // Unrealistic to enforce this in just about any codebase without lots of exceptions
         "@typescript-eslint/prefer-readonly-parameter-types": "off",
         "quote-props": [
             "error",
