@@ -171,7 +171,7 @@ module.exports = {
         ],
         "jsdoc/check-access": "warn",
         "jsdoc/check-alignment": "warn",
-        "jsdoc/check-examples": "off", // currently turned off due to https://github.com/eslint/eslint/issues/14745
+        "jsdoc/check-examples": "off", // Currently turned off due to https://github.com/eslint/eslint/issues/14745.
         "jsdoc/check-indentation": [
             "warn",
             {
@@ -193,22 +193,42 @@ module.exports = {
         "jsdoc/empty-tags": "warn",
         "jsdoc/implements-on-classes": "warn",
         "jsdoc/match-description": "warn",
-        "jsdoc/match-name": "off", // Requires project-specific configuration
+        // Does not appear to deliver a lot of value and would require project-specific configuration.
+        "jsdoc/match-name": "off",
         "jsdoc/multiline-blocks": "warn",
-        "jsdoc/newline-after-description": "warn",
+        // In modern editors the newline just wastes space without adding anything to readability.
+        "jsdoc/newline-after-description": [
+            "warn",
+            "never",
+        ],
         "jsdoc/no-bad-blocks": "warn",
         "jsdoc/no-defaults": "warn",
-        "jsdoc/no-missing-syntax": "off", // Requires project-specific configuration
+        // Exactly what syntax a jsdoc block needs to contain must be the decision of the developer.
+        "jsdoc/no-missing-syntax": "off",
         "jsdoc/no-multi-asterisks": "warn",
-        "jsdoc/no-restricted-syntax": "off", // Requires project-specific configuration
+        // Exactly what syntax a jsdoc block needs to contain must be the decision of the developer.
+        "jsdoc/no-restricted-syntax": "off",
         "jsdoc/no-types": "warn",
         "jsdoc/no-undefined-types": "warn",
         "jsdoc/require-asterisk-prefix": "warn",
         "jsdoc/require-description-complete-sentence": "warn",
-        "jsdoc/require-description": "off",
+        "jsdoc/require-description": "warn",
         "jsdoc/require-example": "off",
         "jsdoc/require-file-overview": "off",
-        "jsdoc/require-hyphen-before-param-description": "off",
+        // Hyphens make some sense to separate the type/name combo of a parameter from the description. In TS however,
+        // duplicating in jsdoc the type already mentioned in the code does not make sense, which is why it's best to
+        // never use hyphens.
+        "jsdoc/require-hyphen-before-param-description": [
+            "warn",
+            "never",
+            {
+                tags: {
+                    "*": "never"
+                }
+            }
+        ],
+        // For what code elements docs are necessary must be the decision of the developer. Forcing docs leads to lots
+        // of "standard" phrases without any real value.
         "jsdoc/require-jsdoc": "off",
         "jsdoc/require-param-description": "warn",
         "jsdoc/require-param-name": "warn",
@@ -486,9 +506,6 @@ module.exports = {
                 // The default "project" config should work just fine in most cases. If not, the project using this
                 // config must override accordingly.
             },
-        },
-        "jsdoc": {
-            mode: "typescript",
-        },
+        }
     },
 };
