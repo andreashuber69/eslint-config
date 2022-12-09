@@ -1,5 +1,10 @@
 // https://github.com/andreashuber69/eslint-config
-const allExtensions = [".ts", ".tsx", ".js", ".jsx"];
+const allExtensions = [
+    ".ts",
+    ".tsx",
+    ".js",
+    ".jsx",
+];
 
 module.exports = {
     env: {
@@ -172,12 +177,7 @@ module.exports = {
         "jsdoc/check-access": "warn",
         "jsdoc/check-alignment": "warn",
         "jsdoc/check-examples": "off", // Currently turned off due to https://github.com/eslint/eslint/issues/14745.
-        "jsdoc/check-indentation": [
-            "warn",
-            {
-                excludeTags: ["description"],
-            },
-        ],
+        "jsdoc/check-indentation": "warn",
         "jsdoc/check-line-alignment": "warn",
         "jsdoc/check-param-names": "warn",
         "jsdoc/check-property-names": "warn",
@@ -185,7 +185,12 @@ module.exports = {
         "jsdoc/check-tag-names": [
             "warn",
             {
-                definedTags: ["internal", "maximum", "minimum", "multipleOf"],
+                definedTags: [
+                    "internal",
+                    "maximum",
+                    "minimum",
+                    "multipleOf",
+                ],
             },
         ],
         "jsdoc/check-types": "warn",
@@ -311,13 +316,20 @@ module.exports = {
             "error",
             {
                 selector: "default",
-                format: ["strictCamelCase"],
+                format: [
+                    "strictCamelCase",
+                ],
                 leadingUnderscore: "forbid",
                 trailingUnderscore: "forbid",
             },
             {
-                selector: ["typeLike", "enumMember"],
-                format: ["StrictPascalCase"],
+                selector: [
+                    "typeLike",
+                    "enumMember",
+                ],
+                format: [
+                    "StrictPascalCase",
+                ],
                 leadingUnderscore: "forbid",
                 trailingUnderscore: "forbid",
             }
@@ -420,11 +432,23 @@ module.exports = {
             {
                 blankLine: "always",
                 prev: "*",
-                next: ["class", "interface", "multiline-block-like", "return", "type"],
+                next: [
+                    "class",
+                    "interface",
+                    "multiline-block-like",
+                    "return",
+                    "type",
+                ],
             },
             {
                 blankLine: "always",
-                prev: ["class", "interface", "multiline-block-like", "return", "type"],
+                prev: [
+                    "class",
+                    "interface",
+                    "multiline-block-like",
+                    "return",
+                    "type",
+                ],
                 next: "*",
             },
         ],
@@ -481,7 +505,9 @@ module.exports = {
             "error",
             "always",
             {
-                exceptions: ["/"],
+                exceptions: [
+                    "/",
+                ],
             },
         ],
         "@typescript-eslint/strict-boolean-expressions": "off", // Takes away too much expressive power.
@@ -493,9 +519,15 @@ module.exports = {
         // import: The following settings are taken from https://github.com/import-js/eslint-plugin-import#typescript and
         // https://github.com/import-js/eslint-plugin-import/blob/main/config/typescript.js
         "import/extensions": allExtensions,
-        "import/external-module-folders": ["node_modules", "node_modules/@types"],
+        "import/external-module-folders": [
+            "node_modules",
+            "node_modules/@types",
+        ],
         "import/parsers": {
-            "@typescript-eslint/parser": [".ts", ".tsx"],
+            "@typescript-eslint/parser": [
+                ".ts",
+                ".tsx",
+            ],
         },
         "import/resolver": {
             "node": {
