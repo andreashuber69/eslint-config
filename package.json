@@ -1,6 +1,6 @@
 {
   "name": "@andreashuber69/eslint-config",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Common eslint config for my TypeScript projects",
   "keywords": [
     "eslint",
@@ -26,7 +26,8 @@
     "access": "public"
   },
   "scripts": {
-    "lint": "markdownlint *.md",
+    "prelint": "markdownlint *.md",
+    "lint": "eslint index.js --config index.js",
     "test": "node .",
     "preci": "npm run lint",
     "ci": "npm test"
@@ -42,6 +43,7 @@
     "eslint-plugin-prefer-arrow": ">=1.2.3"
   },
   "devDependencies": {
+    "@tsconfig/node-lts-strictest": "^18.12.1",
     "markdownlint-cli": "^0.32.2"
   }
 }

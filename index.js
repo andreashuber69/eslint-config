@@ -1,4 +1,5 @@
 // https://github.com/andreashuber69/eslint-config
+/* eslint-disable @typescript-eslint/naming-convention, import/unambiguous, import/no-commonjs, max-len */
 const allExtensions = [
     ".ts",
     ".tsx",
@@ -228,9 +229,9 @@ module.exports = {
             "never",
             {
                 tags: {
-                    "*": "never"
-                }
-            }
+                    "*": "never",
+                },
+            },
         ],
         // For what code elements docs are necessary must be the decision of the developer. Forcing docs leads to lots
         // of "standard" phrases without any real value.
@@ -247,7 +248,7 @@ module.exports = {
         "jsdoc/require-returns-description": "warn",
         "jsdoc/require-returns-type": "warn",
         "jsdoc/require-returns": "off",
-        "jsdoc/require-throws": "off", 
+        "jsdoc/require-throws": "off",
         "jsdoc/require-yields": "off",
         "jsdoc/require-yields-check": "warn",
         "jsdoc/sort-tags": "warn",
@@ -256,7 +257,7 @@ module.exports = {
         "jsdoc/valid-types": "warn",
         "line-comment-position": "off", // We want to allow comments above and beside code.
         // Does not work with interfaces, see https://github.com/typescript-eslint/typescript-eslint/issues/1150
-        "lines-around-comment": "off",        
+        "lines-around-comment": "off",
         "lines-between-class-members": "off",
         "@typescript-eslint/lines-between-class-members": [
             "error",
@@ -283,19 +284,19 @@ module.exports = {
             {
                 default: [
                     "signature",
-                  
+
                     "public-static-field",
                     "public-static-method",
                     "public-field",
                     "public-constructor",
                     "public-method",
-                  
+
                     "protected-static-field",
                     "protected-static-method",
                     "protected-field",
                     "protected-constructor",
                     "protected-method",
-                  
+
                     "private-static-field",
                     "private-static-method",
                     "private-field",
@@ -316,9 +317,7 @@ module.exports = {
             "error",
             {
                 selector: "default",
-                format: [
-                    "strictCamelCase",
-                ],
+                format: ["strictCamelCase"],
                 leadingUnderscore: "forbid",
                 trailingUnderscore: "forbid",
             },
@@ -327,12 +326,10 @@ module.exports = {
                     "typeLike",
                     "enumMember",
                 ],
-                format: [
-                    "StrictPascalCase",
-                ],
+                format: ["StrictPascalCase"],
                 leadingUnderscore: "forbid",
                 trailingUnderscore: "forbid",
-            }
+            },
         ],
         // Typescript ensures that constructor functions are only called with new, so the convention is not necessary.
         "new-cap": "off",
@@ -367,7 +364,7 @@ module.exports = {
         "@typescript-eslint/no-magic-numbers": "off", // Makes sense but appears to be too restrictive.
         "no-null/no-null": "error",
         "@typescript-eslint/no-parameter-properties": "off", // The value of this rule seems dubious at best.
-        // Most of the problems with the ++ and -- operators are avoided because we've turned on 
+        // Most of the problems with the ++ and -- operators are avoided because we've turned on
         // @typescript-eslint/semi.
         "no-plusplus": "off",
         // The following would make promise construction much more verbose for avoiding a bug that is easily detected.
@@ -376,7 +373,7 @@ module.exports = {
             "error",
             "ForInStatement",
         ],
-        "no-return-await": "off", // Turned off in favor of @typescript-eslint/return-await 
+        "no-return-await": "off", // Turned off in favor of @typescript-eslint/return-await
         "no-shadow": "off",
         "@typescript-eslint/no-shadow": [
             "error",
@@ -455,7 +452,7 @@ module.exports = {
         "@typescript-eslint/parameter-properties": [
             "error",
             {
-                "prefer": "parameter-property",
+                prefer: "parameter-property",
             },
         ],
         "@typescript-eslint/prefer-enum-initializers": "off", // Implicitly defined values should be common knowledge
@@ -487,7 +484,7 @@ module.exports = {
                 ignoreDeclarationSort: true,
             },
         ],
-        "sort-keys": "off", 
+        "sort-keys": "off",
         "space-before-function-paren": "off",
         "@typescript-eslint/space-before-function-paren": [
             "error",
@@ -505,9 +502,7 @@ module.exports = {
             "error",
             "always",
             {
-                exceptions: [
-                    "/",
-                ],
+                exceptions: ["/"],
             },
         ],
         "@typescript-eslint/strict-boolean-expressions": "off", // Takes away too much expressive power.
@@ -516,7 +511,7 @@ module.exports = {
         "@typescript-eslint/typedef": "off",
     },
     settings: {
-        // import: The following settings are taken from https://github.com/import-js/eslint-plugin-import#typescript and
+        // The following settings are taken from https://github.com/import-js/eslint-plugin-import#typescript and
         // https://github.com/import-js/eslint-plugin-import/blob/main/config/typescript.js
         "import/extensions": allExtensions,
         "import/external-module-folders": [
@@ -530,14 +525,14 @@ module.exports = {
             ],
         },
         "import/resolver": {
-            "node": {
-                "extensions": allExtensions,
+            node: {
+                extensions: allExtensions,
             },
-            "typescript": {
-                "alwaysTryTypes": true,
+            typescript: {
+                alwaysTryTypes: true,
                 // The default "project" config should work just fine in most cases. If not, the project using this
                 // config must override accordingly.
             },
-        }
+        },
     },
 };
