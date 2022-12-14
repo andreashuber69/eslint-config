@@ -78,6 +78,15 @@ module.exports = {
             "error",
             "always",
         ],
+        // Turned off in favor of @typescript-eslint/default-param-last (which is turned on with default settings)
+        "default-param-last": "off",
+        "dot-notation": "off",
+        "@typescript-eslint/dot-notation": [
+            "error",
+            {
+                allowIndexSignaturePropertyAccess: true,
+            },
+        ],
         // Leads to a lot of duplication without clear advantages. If types are necessary for documentation purposes,
         // @typescript-eslint/explicit-module-boundary-types would be preferable.
         "@typescript-eslint/explicit-function-return-type": "off",
@@ -334,6 +343,8 @@ module.exports = {
         // Typescript ensures that constructor functions are only called with new, so the convention is not necessary.
         "new-cap": "off",
         "newline-per-chained-call": "off", // This rule seems too restrictive.
+        // Turned off in favor of @typescript-eslint/no-array-constructor (which is turned on with default settings)
+        "no-array-constructor": "off",
         // This isn't particularly helpful. For example, the runtime type implementing the Error interface will almost
         // always have a meaningful implementation for toString(), yet calls to toString() on that interface are all
         // flagged with this error.
@@ -349,17 +360,42 @@ module.exports = {
             },
         ],
         "no-console": "off", // Does not make sense for my projects
-        "no-extra-parens": "off", // Was turned off in favor of no-mixed-operators.
-        "@typescript-eslint/no-extra-parens": "off", // Was turned off in favor of no-mixed-operators.
+        // Turned off in favor of @typescript-eslint/no-dupe-class-members (which is turned on with default settings)
+        "no-dupe-class-members": "off",
+        // Deprecated in favor of import/no-duplicates, see https://typescript-eslint.io/rules/no-duplicate-imports
+        "no-duplicate-imports": "off",
+        "@typescript-eslint/no-duplicate-imports": "off",
+        "no-empty-function": "off",
+        "@typescript-eslint/no-empty-function": [
+            "error",
+            {
+                allow: [
+                    "private-constructors",
+                    "protected-constructors",
+                    "decoratedFunctions",
+                    "overrideMethods",
+                ],
+            },
+        ],
+        "no-extra-parens": "off", // Turned off in favor of no-mixed-operators.
+        "@typescript-eslint/no-extra-parens": "off", // Turned off in favor of no-mixed-operators.
+        // Turned off in favor of @typescript-eslint/no-extra-semi (which is turned on with default settings)
+        "no-extra-semi": "off",
         "@typescript-eslint/no-extraneous-class": [
             "error",
             {
                 allowStaticOnly: true,
             },
         ],
+        // Turned off in favor of @typescript-eslint/no-implied-eval (which is turned on with default settings)
+        "no-implied-eval": "off",
         "no-inline-comments": "off", // We want to allow inline comments.
-        // Does not work for all cases in typescript https://github.com/typescript-eslint/typescript-eslint/issues/491.
+        // Turned off in favor of @typescript-eslint/no-invalid-this (which is turned on with default settings)
         "no-invalid-this": "off",
+        // Turned off in favor of @typescript-eslint/no-loop-func (which is turned on with default settings)
+        "no-loop-func": "off",
+        // Turned off in favor of @typescript-eslint/no-loss-of-precision (which is turned on with default settings)
+        "no-loss-of-precision": "off",
         "no-magic-numbers": "off", // Makes sense but appears to be too restrictive.
         "@typescript-eslint/no-magic-numbers": "off", // Makes sense but appears to be too restrictive.
         "no-null/no-null": "error",
@@ -369,6 +405,10 @@ module.exports = {
         "no-plusplus": "off",
         // The following would make promise construction much more verbose for avoiding a bug that is easily detected.
         "no-promise-executor-return": "off",
+        // Turned off in favor of @typescript-eslint/no-redeclare (which is turned on with default settings)
+        "no-redeclare": "off",
+        "no-restricted-imports": "off",
+        "@typescript-eslint/no-restricted-imports": "off", // Requires project-specific configuration
         "no-restricted-syntax": [
             "error",
             "ForInStatement",
@@ -382,11 +422,23 @@ module.exports = {
             },
         ],
         "no-ternary": "off",
+        // Turned off in favor of @typescript-eslint/no-throw-literal (which is turned on with default settings)
+        "no-throw-literal": "off",
         "@typescript-eslint/no-type-alias": "off", // Does not make much sense.
         "no-undef": "off", // Does not make sense with typescript-only code.
         // Does not make sense for js code >= ES5 with no-global-assign and no-shadow-restricted-names turned on.
         "no-undefined": "off",
         "@typescript-eslint/no-unnecessary-condition": "off", // Flags expressions like `... || "Error"`.
+        "no-unused-expressions": "off",
+        "@typescript-eslint/no-unused-expressions": [
+            "error",
+            {
+                allowShortCircuit: true,
+                allowTernary: true,
+            },
+        ],
+        // Turned off in favor of @typescript-eslint/no-unused-vars (which is turned on with default settings)
+        "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars-experimental": "off", // Turned off in favor of no-unused-vars.
         "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": [
@@ -471,6 +523,8 @@ module.exports = {
             "consistent-as-needed",
         ],
         "quotes": "off", // Turned off in favor of @typescript-eslint/quotes (which is turned on with default settings)
+        // Turned off in favor of @typescript-eslint/require-await (which is turned on with default settings)
+        "require-await": "off",
         "@typescript-eslint/restrict-template-expressions": "off", // The advantages are unclear.
         "@typescript-eslint/return-await": [
             "error",
