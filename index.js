@@ -66,6 +66,8 @@ module.exports = {
             "error",
             "always-multiline",
         ],
+        // Turned off in favor of @typescript-eslint/comma-spacing (which is turned on with default settings)
+        "comma-spacing": "off",
         "@typescript-eslint/consistent-type-assertions": [
             "error",
             {
@@ -100,6 +102,8 @@ module.exports = {
             "error",
             "multiline-arguments",
         ],
+        // Turned off in favor of @typescript-eslint/func-call-spacing (which is turned on with default settings)
+        "func-call-spacing": "off",
         "id-blacklist": "off", // Often, e.g. "error" is a perfectly acceptable identifier.
         "id-length": "off", // Seems too restrictive, sometimes one character is enough (e.g. for inline arrows).
         // For short arrows "beside" is best. For longer ones "below" makes more sense.
@@ -172,6 +176,7 @@ module.exports = {
         ],
         "import/prefer-default-export": "off", // Does not make much sense.
         "import/unambiguous": "error",
+        // Turned off in favor of @typescript-eslint/indent (which is turned on with default settings)
         "indent": "off",
         // Would make sense if var declarations were allowed (to avoid different behavior in and outside of a loop).
         // Since var declarations are not allowed, we can safely turn this off.
@@ -264,6 +269,8 @@ module.exports = {
         "jsdoc/tag-lines": "warn",
         "jsdoc/text-escaping": "off", // Requires project-specific configuration
         "jsdoc/valid-types": "warn",
+        // Turned off in favor of @typescript-eslint/keyword-spacing (which is turned on with default settings)
+        "keyword-spacing": "off",
         "line-comment-position": "off", // We want to allow comments above and beside code.
         // Does not work with interfaces, see https://github.com/typescript-eslint/typescript-eslint/issues/1150
         "lines-around-comment": "off",
@@ -539,6 +546,8 @@ module.exports = {
             },
         ],
         "sort-keys": "off",
+        // Turned off in favor of @typescript-eslint/space-before-blocks (which is turned on with default settings)
+        "space-before-blocks": "off",
         "space-before-function-paren": "off",
         "@typescript-eslint/space-before-function-paren": [
             "error",
@@ -548,6 +557,8 @@ module.exports = {
                 asyncArrow: "always",
             },
         ],
+        // Turned off in favor of @typescript-eslint/space-infix-ops (which is turned on with default settings)
+        "space-infix-ops": "off",
         "space-in-parens": [
             "error",
             "never",
