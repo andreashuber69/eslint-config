@@ -1,0 +1,25 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "andreashuber",
+    "camelcase",
+    "chunkname",
+    "codebeat",
+    "linebreak",
+    "plusplus",
+    "tseslint",
+    "typedefs",
+    "tses"
+  ],
+  "flagWords": [],
+  "dictionaries": [
+    "typescript"
+  ],
+  "ignorePaths": [
+    "node_modules/**",
+    "package.json",
+    "package-lock.json",
+    "tsconfig.json"
+  ]
+}
