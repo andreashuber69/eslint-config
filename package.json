@@ -26,9 +26,9 @@
     "access": "public"
   },
   "scripts": {
-    "prelint": "markdownlint *.md",
-    "lint": "eslint index.js --config index.js",
-    "test": "node .",
+    "prelint": "cspell '**/*.*' && markdownlint '*.md'",
+    "lint": "eslint 'index.*' --ext .js,.ts --config index.js",
+    "test": "ts-mocha index.spec.ts",
     "preci": "npm run lint",
     "ci": "npm test"
   },
@@ -44,6 +44,21 @@
   },
   "devDependencies": {
     "@tsconfig/node-lts-strictest": "^18.12.1",
-    "markdownlint-cli": "^0.32.2"
+    "@types/chai": "^4.3.4",
+    "@types/eslint": "^8.4.10",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^18.11.15",
+    "chai": "^4.3.7",
+    "cspell": "^6.17.0",
+    "eslint": "^8.29.0",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsdoc": "^39.6.4",
+    "eslint-plugin-no-null": "^1.0.2",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
+    "markdownlint-cli": "^0.32.2",
+    "mocha": "^10.2.0",
+    "ts-mocha": "^10.0.0",
+    "typescript": "^4.9.4"
   }
 }
