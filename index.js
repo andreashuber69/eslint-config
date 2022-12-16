@@ -95,7 +95,6 @@ module.exports = {
             "error",
             "multiline-arguments",
         ],
-        "id-blacklist": "off", // Often, e.g. "error" is a perfectly acceptable identifier.
         "id-length": "off", // Seems too restrictive, sometimes one character is enough (e.g. for inline arrows).
         // For short arrows "beside" is best. For longer ones "below" makes more sense.
         "implicit-arrow-linebreak": "off",
@@ -350,8 +349,6 @@ module.exports = {
             },
         ],
         "no-console": "off", // Does not make sense for my projects
-        // Deprecated in favor of import/no-duplicates, see https://typescript-eslint.io/rules/no-duplicate-imports
-        "@typescript-eslint/no-duplicate-imports": "off",
         "@typescript-eslint/no-empty-function": [
             "error",
             {
@@ -373,7 +370,6 @@ module.exports = {
         "no-inline-comments": "off", // We want to allow inline comments.
         "@typescript-eslint/no-magic-numbers": "off", // Makes sense but appears to be too restrictive.
         "no-null/no-null": "error",
-        "@typescript-eslint/no-parameter-properties": "off", // The value of this rule seems dubious at best.
         // Most of the problems with the ++ and -- operators are avoided because we've turned on
         // @typescript-eslint/semi.
         "no-plusplus": "off",
@@ -392,7 +388,6 @@ module.exports = {
         ],
         "no-ternary": "off",
         "@typescript-eslint/no-type-alias": "off", // Does not make much sense.
-        "no-undef": "off", // Does not make sense with typescript-only code.
         // Does not make sense for js code >= ES5 with no-global-assign and no-shadow-restricted-names turned on.
         "no-undefined": "off",
         "@typescript-eslint/no-unnecessary-condition": "off", // Flags expressions like `... || "Error"`.
@@ -403,7 +398,6 @@ module.exports = {
                 allowTernary: true,
             },
         ],
-        "@typescript-eslint/no-unused-vars-experimental": "off", // Turned off in favor of no-unused-vars.
         "@typescript-eslint/no-use-before-define": [
             "error",
             {
