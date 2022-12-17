@@ -1,33 +1,30 @@
 import { configs as tsConfigs } from "@typescript-eslint/eslint-plugin";
 import type { TSESLint } from "@typescript-eslint/utils";
 import { expect } from "chai";
-import { rules as jsdocRules } from "eslint-plugin-jsdoc";
-import { builtinRules as eslintRules } from "eslint/use-at-your-own-risk";
 import { rules as importRules } from "eslint-plugin-import";
+import { rules as jsdocRules } from "eslint-plugin-jsdoc";
+// eslint-disable-next-line import/no-deprecated
+import { builtinRules as eslintRules } from "eslint/use-at-your-own-risk";
 
 import { rules as ourRules } from "./index";
-
-const getAllEslintRuleIds = function *getAllEslintRuleIds() {
-    for (const [ruleId, rule] of eslintRules.entries()) {
-        if (!rule.meta?.deprecated) {
-            yield ruleId;
-        }
-    }
-};
 
 const getAllEslintRules = () => {
     const result: Record<string, TSESLint.Linter.SeverityString> = {};
 
-    for (const ruleId of getAllEslintRuleIds()) {
-        // See https://github.com/eslint/eslint/blob/main/conf/eslint-all.js
-        result[ruleId] = "error";
+    // See https://github.com/eslint/eslint/blob/main/conf/eslint-all.js
+    // eslint-disable-next-line import/no-deprecated
+    for (const [ruleId, rule] of eslintRules.entries()) {
+        if (!rule.meta?.deprecated) {
+            result[ruleId] = "error";
+        }
     }
 
     return result;
 };
 
 type RuleModule = Pick<TSESLint.RuleModule<string, unknown[]>, "meta">;
-type RuleEntry = TSESLint.Linter.RuleEntry | RuleModule | undefined;
+
+type RuleEntry = RuleModule | TSESLint.Linter.RuleEntry | undefined;
 
 const getRuleLevel = (entry: RuleEntry) => {
     switch (typeof entry) {
@@ -55,7 +52,7 @@ const getSeverityString = (entry: RuleEntry) => {
     }
 };
 
-const getSeverities = (rules: Partial<Record<string, RuleEntry>> | undefined, prefix = "") => {
+const getSeverities = (rules: Record<string, RuleEntry> | undefined, prefix = "") => {
     const result: Record<string, TSESLint.Linter.SeverityString> = {};
 
     if (rules) {
@@ -87,13 +84,13 @@ const allTseslintRules = {
     ...getAllTseslintRules("all"),
 };
 
+// No ts definitions are available for jsdoc and import
+// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 const allJsdocRules = getSeverities(jsdocRules, "jsdoc");
+// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 const allImportRules = getSeverities(importRules, "import");
 
 const allRules = { ...allEslintRules, ...allTseslintRules, ...allJsdocRules, ...allImportRules };
-// console.log(Object.keys(allEslintRules).length);
-console.log(Object.keys(allTseslintRules).length);
-// console.log(Object.keys(allRules).length);
 
 describe("all Eslint rules", () => {
     describe("should only contain rules with the level 'error'", () => {
