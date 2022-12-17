@@ -2,7 +2,7 @@
   "extends": "@tsconfig/node-lts-strictest/tsconfig.json",
   "include": [
     "index.js",
-    "test/index.spec.ts"
+    "test/*.ts"
   ],
   "compilerOptions": {
     "noEmit": true

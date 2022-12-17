@@ -6,9 +6,17 @@ import { allEslintRules } from "./allEslintRules";
 import { allImportRules } from "./allImportRules";
 import { allJsdocRules } from "./allJsdocRules";
 import { allNonullRules } from "./allNonullRules";
+import { allPreferArrowRules } from "./allPreferArrowRules";
 import { allTseslintRules } from "./allTseslintRules";
 
-const allRules = { ...allEslintRules, ...allTseslintRules, ...allJsdocRules, ...allImportRules, ...allNonullRules };
+const allRules = {
+    ...allEslintRules,
+    ...allTseslintRules,
+    ...allImportRules,
+    ...allJsdocRules,
+    ...allNonullRules,
+    ...allPreferArrowRules,
+};
 
 describe("all Eslint rules", () => {
     describe("should only contain rules with the level 'error'", () => {
