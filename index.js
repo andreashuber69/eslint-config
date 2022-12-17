@@ -13,6 +13,11 @@ module.exports = {
         es2022: true,
     },
     extends: [
+        // While the eslint:all list really does turn on *all* eslint rules (except for the deprecated ones), the
+        // @typescript-eslint/all list turns off those eslint rules that are replaced with typescript-aware variants
+        // and also turns off the eslint rules that are already flagged by the typescript compiler. In other words,
+        // by extending from the lists below, we have all rules turned on, that *might* make sense in a typescript
+        // project. We thus "only" need to turn off the rules that we don't like and reconfigure some others.
         "eslint:all",
         "plugin:@typescript-eslint/all",
     ],
@@ -23,6 +28,7 @@ module.exports = {
     },
     plugins: [
         "@typescript-eslint",
+        // The plugins below don't seem to offer "all" lists, so we need to turn on the associated rules explicitly.
         "import",
         "jsdoc",
         "no-null",
