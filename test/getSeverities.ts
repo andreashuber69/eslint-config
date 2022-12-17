@@ -1,6 +1,6 @@
 import type { TSESLint } from "@typescript-eslint/utils";
 
-type RuleModule = Pick<TSESLint.RuleModule<string, unknown[]>, "meta">;
+type RuleModule = TSESLint.RuleModule<string, unknown[]>;
 
 type RuleEntry = RuleModule | TSESLint.Linter.RuleEntry | undefined;
 

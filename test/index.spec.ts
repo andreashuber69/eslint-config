@@ -5,9 +5,10 @@ import { rules } from "../index";
 import { allEslintRules } from "./allEslintRules";
 import { allImportRules } from "./allImportRules";
 import { allJsdocRules } from "./allJsdocRules";
+import { allNonullRules } from "./allNonullRules";
 import { allTseslintRules } from "./allTseslintRules";
 
-const allRules = { ...allEslintRules, ...allTseslintRules, ...allJsdocRules, ...allImportRules };
+const allRules = { ...allEslintRules, ...allTseslintRules, ...allJsdocRules, ...allImportRules, ...allNonullRules };
 
 describe("all Eslint rules", () => {
     describe("should only contain rules with the level 'error'", () => {
