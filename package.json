@@ -27,7 +27,7 @@
   },
   "scripts": {
     "prelint": "cspell '**/*.*' && markdownlint '*.md'",
-    "lint": "eslint 'index.*' --ext .js,.ts --config index.js",
+    "lint": "eslint --ext .js,.ts --config index.js 'index.js' './test' ",
     "test": "ts-mocha './test/index.spec.ts'",
     "preci": "npm run lint",
     "ci": "npm test"
