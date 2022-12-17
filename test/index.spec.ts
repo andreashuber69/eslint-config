@@ -6,7 +6,7 @@ import { rules as jsdocRules } from "eslint-plugin-jsdoc";
 // eslint-disable-next-line import/no-deprecated
 import { builtinRules as eslintRules } from "eslint/use-at-your-own-risk";
 
-import { rules as ourRules } from "./index";
+import { rules as ourRules } from "../index";
 
 const getAllEslintRules = () => {
     const result: Record<string, TSESLint.Linter.SeverityString> = {};
@@ -105,8 +105,8 @@ describe("all Eslint rules", () => {
 describe("index.js", () => {
     describe("should only turn off rules that are turned on", () => {
         for (const [id, level] of Object.entries(ourRules)) {
-            it(id, () => {
-                if (level === "off") {
+            if (level === "off") {
+                it(id, () => {
                     const rule = allRules[id];
 
                     if (!rule) {
@@ -116,8 +116,8 @@ describe("index.js", () => {
                     if (rule === "off") {
                         expect(rule).to.not.equal("off", `${id} in not turned on.`);
                     }
-                }
-            });
+                });
+            }
         }
     });
 });
