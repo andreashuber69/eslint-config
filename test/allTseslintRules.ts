@@ -15,5 +15,4 @@ const getAllRules = (configName: string) => {
 };
 
 // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/src/configs/all.ts
-export const getAllTseslintRules =
-    () => ({ ...getAllRules("base"), ...getAllRules("eslint-recommended"), ...getAllRules("all") });
+export const allTseslintRules = { ...getAllRules("base"), ...getAllRules("eslint-recommended"), ...getAllRules("all") };

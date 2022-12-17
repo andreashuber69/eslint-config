@@ -2,15 +2,10 @@ import { expect } from "chai";
 
 import { rules } from "../index";
 
-import { getAllEslintRules } from "./getAllEslintRules";
-import { getAllImportRules } from "./getAllImportRules";
-import { getAllJsdocRules } from "./getAllJsdocRules";
-import { getAllTseslintRules } from "./getAllTseslintRules";
-
-const allEslintRules = getAllEslintRules();
-const allTseslintRules = getAllTseslintRules();
-const allJsdocRules = getAllJsdocRules();
-const allImportRules = getAllImportRules();
+import { allEslintRules } from "./allEslintRules";
+import { allImportRules } from "./allImportRules";
+import { allJsdocRules } from "./allJsdocRules";
+import { allTseslintRules } from "./allTseslintRules";
 
 const allRules = { ...allEslintRules, ...allTseslintRules, ...allJsdocRules, ...allImportRules };
 

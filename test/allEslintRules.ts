@@ -2,7 +2,7 @@ import type { TSESLint } from "@typescript-eslint/utils";
 // eslint-disable-next-line import/no-deprecated
 import { builtinRules } from "eslint/use-at-your-own-risk";
 
-export const getAllEslintRules = () => {
+const getAllEslintRules = () => {
     const result: Record<string, TSESLint.Linter.SeverityString> = {};
 
     // See https://github.com/eslint/eslint/blob/main/conf/eslint-all.js
@@ -15,3 +15,5 @@ export const getAllEslintRules = () => {
 
     return result;
 };
+
+export const allEslintRules = getAllEslintRules();
