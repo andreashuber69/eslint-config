@@ -9,24 +9,19 @@ import { allNonullRules } from "./allNonullRules";
 import { allPreferArrowRules } from "./allPreferArrowRules";
 import { allTseslintRules } from "./allTseslintRules";
 
-const allRules = {
-    ...allEslintRules,
-    ...allTseslintRules,
-    ...allImportRules,
-    ...allJsdocRules,
-    ...allNonullRules,
-    ...allPreferArrowRules,
-};
+// Since our rules extend from both the "eslint:all" and "plugin:@typescript-eslint/all" configs, the rules in the list
+// below are all turned on. We therefore need to test that our rules either turn off one of these *or* apply a config
+// that is different from the default.
+const allBaseRules = { ...allEslintRules, ...allTseslintRules };
 
-describe("all Eslint rules", () => {
-    describe("should only contain rules with the level 'error'", () => {
-        for (const [id, level] of Object.entries(allEslintRules)) {
-            it(id, () => {
-                expect(level).to.equal("error");
-            });
-        }
-    });
-});
+// Our rules don't extend from any config related to the list below. For these we simply test that we have all these
+// rules in our list. Doing that ensures that we will not miss a newly added rule.
+const allExtensionRules = { ...allImportRules, ...allJsdocRules, ...allNonullRules, ...allPreferArrowRules };
+
+const allRules = {
+    ...allBaseRules,
+    ...allExtensionRules,
+};
 
 describe("index.js", () => {
     describe("should only turn off rules that are turned on", () => {
