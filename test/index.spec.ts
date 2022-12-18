@@ -1,6 +1,7 @@
+import { isDeepStrictEqual } from "util";
 import { expect } from "chai";
 
-import { rules } from "../index";
+import { rules as ourRules } from "../index";
 
 import { allEslintRules } from "./allEslintRules";
 import { allImportRules } from "./allImportRules";
@@ -9,36 +10,41 @@ import { allNonullRules } from "./allNonullRules";
 import { allPreferArrowRules } from "./allPreferArrowRules";
 import { allTseslintRules } from "./allTseslintRules";
 
-// Since our rules extend from both the "eslint:all" and "plugin:@typescript-eslint/all" configs, the rules in the list
-// below are all turned on. We therefore need to test that our rules either turn off one of these *or* apply a config
-// that is different from the default.
-const allBaseRules = { ...allEslintRules, ...allTseslintRules };
+describe("index.js", () => {
+    describe("should change the default of ES and TS rules", () => {
+        // Since our rules extend from both the "eslint:all" and "plugin:@typescript-eslint/all" configs, the rules in
+        // the list below are all turned on. We therefore need to test that our rules either turn off one of these *or*
+        // apply a config that is different from the default.
+        const allEsTsRules = { ...allEslintRules, ...allTseslintRules };
 
-// Our rules don't extend from any config related to the list below. For these we simply test that we have all these
-// rules in our list. Doing that ensures that we will not miss a newly added rule.
-const allExtensionRules = { ...allImportRules, ...allJsdocRules, ...allNonullRules, ...allPreferArrowRules };
+        const ourEsTsRules =
+            Object.entries(ourRules).filter(([id]) => id.includes("@typescript-eslint/") || !id.includes("/"));
 
-const allRules = {
-    ...allBaseRules,
-    ...allExtensionRules,
-};
+        for (const [id, ourEntry] of ourEsTsRules) {
+            it(id, () => {
+                const entry = allEsTsRules[id];
+                expect(Boolean(entry)).to.equal(true, `${id} is not in the list of extended from rules.`);
+                expect(isDeepStrictEqual(ourEntry, entry)).to.equal(false, `${id} does not change the default.`);
+            });
+        }
+    });
+});
 
 describe("index.js", () => {
-    describe("should only turn off rules that are turned on", () => {
-        for (const [id, level] of Object.entries(rules)) {
-            if (level === "off") {
-                it(id, () => {
-                    const rule = allRules[id];
+    describe("should list all other rules", () => {
+        // Our rules don't extend from any config related to the list below. For these we simply test that we have all
+        // these rules in our list. Doing that ensures that we will not miss a newly added rule.
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const allOtherRules = { ...allImportRules, ...allJsdocRules, ...allNonullRules, ...allPreferArrowRules };
 
-                    if (!rule) {
-                        expect(Boolean(rule)).to.equal(true, `${id} is not in the list of all rules.`);
-                    }
+        const ourOtherRules = Object.fromEntries(
+            Object.entries(ourRules).filter(([id]) => !id.includes("@typescript-eslint/") && id.includes("/")),
+        );
 
-                    if (rule === "off") {
-                        expect(rule).to.not.equal("off", `${id} in not turned on.`);
-                    }
-                });
-            }
+        for (const id of Object.keys(allOtherRules)) {
+            it(id, () => {
+                expect(Boolean(ourOtherRules[id])).to.equal(true, `${id} is not in the list of other rules.`);
+            });
         }
     });
 });

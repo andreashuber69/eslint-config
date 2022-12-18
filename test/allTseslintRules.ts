@@ -1,6 +1,5 @@
 import { configs } from "@typescript-eslint/eslint-plugin";
 import type { TSESLint } from "@typescript-eslint/utils";
-import { getSeverities } from "./getSeverities";
 
 const getRules = ({ rules, overrides }: TSESLint.Linter.Config) => (overrides ? overrides?.[0]?.rules : rules);
 
@@ -11,7 +10,7 @@ const getAllRules = (configName: string) => {
         throw Error(`Unknown config: ${configName}`);
     }
 
-    return getSeverities(getRules(config));
+    return getRules(config);
 };
 
 // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/src/configs/all.ts
