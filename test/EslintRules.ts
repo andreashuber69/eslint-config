@@ -1,6 +1,7 @@
 import type { TSESLint } from "@typescript-eslint/utils";
 // eslint-disable-next-line import/no-deprecated
 import { builtinRules } from "eslint/use-at-your-own-risk";
+import fetch from "node-fetch";
 
 const getAllEslintRules = () => {
     const result: Record<string, TSESLint.Linter.SeverityString> = {};
@@ -14,6 +15,16 @@ const getAllEslintRules = () => {
     }
 
     return result;
+};
+
+export const getRecommendedEslintRules = async () => {
+    const sourceCode =
+        await (await fetch("https://raw.githubusercontent.com/eslint/eslint/main/conf/eslint-recommended.js")).text();
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, import/dynamic-import-chunkname
+    const { rules } = await import(`data:text/javascript;charset=utf-8, ${encodeURIComponent(sourceCode)}`);
+
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return rules;
 };
 
 export const allEslintRules = getAllEslintRules();
