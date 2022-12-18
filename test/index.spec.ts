@@ -3,11 +3,11 @@ import { expect } from "chai";
 
 import { rules as ourChanges } from "../index";
 
-import { allEslintRules } from "./allEslintRules";
 import { allImportRules } from "./allImportRules";
 import { allJsdocRules } from "./allJsdocRules";
 import { allNonullRules } from "./allNonullRules";
 import { allPreferArrowRules } from "./allPreferArrowRules";
+import { allEslintRules } from "./EslintRules";
 import { allTseslintRules } from "./TseslintRules";
 
 const allEsTsRules = { ...allEslintRules, ...allTseslintRules };
