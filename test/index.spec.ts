@@ -10,13 +10,13 @@ import { allNonullRules } from "./allNonullRules";
 import { allPreferArrowRules } from "./allPreferArrowRules";
 import { allTseslintRules } from "./allTseslintRules";
 
+const allEsTsRules = { ...allEslintRules, ...allTseslintRules };
+
 describe("index.js", () => {
     describe("should change the default of ES and TS rules", () => {
-        // Since our rules extend from both the "eslint:all" and "plugin:@typescript-eslint/all" configs, the rules in
-        // the list below are all turned on. We therefore need to test that our rules either turn off one of these *or*
-        // apply a config that is different from the default.
-        const allEsTsRules = { ...allEslintRules, ...allTseslintRules };
-
+        // Since our rules extend from both the "eslint:all" and "plugin:@typescript-eslint/all" configs, we
+        // need to test that our rules are listed in allEsTsRules and apply a config that is different from the
+        // default.
         const ourEsTsRules =
             Object.entries(ourRules).filter(([id]) => id.includes("@typescript-eslint/") || !id.includes("/"));
 
@@ -30,13 +30,12 @@ describe("index.js", () => {
     });
 });
 
+const allOtherRules = { ...allImportRules, ...allJsdocRules, ...allNonullRules, ...allPreferArrowRules };
+
 describe("index.js", () => {
     describe("should list all other rules", () => {
-        // Our rules don't extend from any config related to the list below. For these we simply test that we have all
+        // Our rules don't extend from any config related to allOtherRules. For these we simply test that we have all
         // these rules in our list. Doing that ensures that we will not miss a newly added rule.
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const allOtherRules = { ...allImportRules, ...allJsdocRules, ...allNonullRules, ...allPreferArrowRules };
-
         const ourOtherRules = Object.fromEntries(
             Object.entries(ourRules).filter(([id]) => !id.includes("@typescript-eslint/") && id.includes("/")),
         );
