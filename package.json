@@ -1,6 +1,6 @@
 {
   "name": "@andreashuber69/eslint-config",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Common eslint config for my TypeScript projects",
   "keywords": [
     "eslint",
@@ -27,7 +27,7 @@
   },
   "scripts": {
     "prelint": "cspell '**/*.*' && markdownlint '*.md'",
-    "lint": "eslint --ext .js,.ts --config index.js 'index.js' './test' ",
+    "lint": "eslint --ext .js,.ts 'index.js' './test' ",
     "test": "ts-mocha './test/index.spec.ts'",
     "preci": "npm run lint",
     "ci": "npm test"
@@ -49,9 +49,11 @@
     "@types/mocha": "^10.0.1",
     "@types/node": "^18.11.15",
     "@types/node-fetch": "^2.6.2",
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "@typescript-eslint/parser": "^5.46.1",
     "chai": "^4.3.7",
     "cspell": "^6.17.0",
-    "eslint": "^8.29.0",
+    "eslint": "^8.30.0",
     "eslint-import-resolver-typescript": "^3.5.2",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsdoc": "^39.6.4",
