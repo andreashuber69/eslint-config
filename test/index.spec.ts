@@ -8,7 +8,7 @@ import { allImportRules } from "./allImportRules";
 import { allJsdocRules } from "./allJsdocRules";
 import { allNonullRules } from "./allNonullRules";
 import { allPreferArrowRules } from "./allPreferArrowRules";
-import { allTseslintRules } from "./allTseslintRules";
+import { allTseslintRules } from "./TseslintRules";
 
 const allEsTsRules = { ...allEslintRules, ...allTseslintRules };
 
