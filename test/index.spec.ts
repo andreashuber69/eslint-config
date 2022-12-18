@@ -7,8 +7,8 @@ import { allImportRules } from "./allImportRules";
 import { allJsdocRules } from "./allJsdocRules";
 import { allNonullRules } from "./allNonullRules";
 import { allPreferArrowRules } from "./allPreferArrowRules";
-import { allEslintRules } from "./EslintRules";
-import { allTseslintRules } from "./TseslintRules";
+import { allEslintRules, getRecommendedEslintRules } from "./EslintRules";
+import { allTseslintRules, recommendedTseslintRules } from "./TseslintRules";
 
 const allEsTsRules = { ...allEslintRules, ...allTseslintRules };
 
@@ -58,5 +58,14 @@ describe(`${Object.keys(allRules).length} rules`, () => {
     });
 });
 
-const activeRules = Object.entries({ ...allRules, ...ourChanges }).filter(([, entry]) => entry !== "off");
-console.log(`@andreashuber/eslint-config active rules: ${activeRules.length}`);
+const getActiveCount =
+    (rules: Record<string, unknown>) => Object.entries(rules).filter(([, entry]) => entry !== "off").length;
+
+const showStats = async () => {
+    const recommendedCount = getActiveCount({ ...await getRecommendedEslintRules(), ...recommendedTseslintRules });
+    console.log(`eslint & @typescript-eslint recommended active rules: ${recommendedCount}`);
+    const ourCount = getActiveCount({ ...allRules, ...ourChanges });
+    console.log(`@andreashuber/eslint-config active rules: ${ourCount}`);
+};
+
+showStats().catch((reason) => console.error(reason));
