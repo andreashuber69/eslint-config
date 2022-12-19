@@ -50,6 +50,8 @@ The configuration and the instructions below are designed to work out of the box
 more specifically, the project root folder must contain the following files:
 
 - [tsconfig.json](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
+- It's best to have your *tsconfig.json* extend from a strict configuration, e.g.
+  [@tsconfig/node-lts-strictest](https://www.npmjs.com/package/@tsconfig/node-lts-strictest)
 - *.eslintrc.cjs*, see [Configuration](#configuration)
 
 ## Getting Started
