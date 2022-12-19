@@ -1,10 +1,11 @@
 {
   "name": "@andreashuber69/eslint-config",
   "version": "1.0.12",
-  "description": "Common eslint config for my TypeScript projects",
+  "description": "Comprehensive, carefullly curated and tested shareable eslint config for TypeScript projects",
   "keywords": [
     "eslint",
-    "eslintconfig"
+    "eslintconfig",
+    "typescript"
   ],
   "homepage": "https://github.com/andreashuber69/eslint-config/blob/master/README.md#--",
   "repository": {
