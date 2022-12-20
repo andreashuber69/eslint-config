@@ -9,6 +9,7 @@
     "coldcard",
     "linebreak",
     "nonull",
+    "peerdeps",
     "plusplus",
     "tseslint",
     "typedefs",
