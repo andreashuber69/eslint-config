@@ -22,12 +22,10 @@ This is a comprehensive, carefully curated and tested
 [shareable eslint config](https://eslint.org/docs/latest/developer-guide/shareable-configs) for
 [TypeScript](https://www.typescriptlang.org/) projects.
 
-## Assumptions
-
 To get an idea of what this config tries to achieve, it's probably best to compare the number of active rules
 recommended for **TypeScript** projects
-([see TS eslint quick start](https://typescript-eslint.io/getting-started#quickstart)) to the number of active
-rules in this configuration. At the time of writing there are exactly 67 recommended rules compared 370 rules here. In
+([see TS eslint quick start](https://typescript-eslint.io/getting-started#quickstart)) to the number of active rules in
+this configuration. At the time of writing the count is 67 for the recommended set compared to 370 in this package. In
 other words, your code gets a much more thorough treatment. More specifically, we try to ...
 
 - flag as many problems and as much inconsistent formatting as possible while keeping false positives low. Developers
@@ -41,18 +39,16 @@ other words, your code gets a much more thorough treatment. More specifically, w
 To get an idea how the linted code will look like, you might want to have a look at
 [async-css-plugin](https://github.com/andreashuber69/async-css-plugin/tree/develop/src) and
 [verify-coldcard-dice-seed](https://github.com/andreashuber69/verify-coldcard-dice-seed/tree/develop/src). If the code
-looks sensible to you, you might want to give it a try in your project. Of course, you can tweak everything to your
-liking, see below.
+looks sensible to you, you might want to give this package a try in your project. Of course, you can tweak everything to
+your liking, see below.
 
 ## Prerequisites
 
-The configuration and the instructions below are designed to work out of the box for simple **TypeScript** projects,
-more specifically, the project root folder must contain the following files:
-
-- [tsconfig.json](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
-- It's best to have your *tsconfig.json* extend from a strict configuration, e.g.
-  [@tsconfig/node-lts-strictest](https://www.npmjs.com/package/@tsconfig/node-lts-strictest)
-- *.eslintrc.cjs*, see [Configuration](#configuration)
+The configuration and the instructions below are designed to work out of the box for simple **TypeScript** projects.
+More specifically, the project root folder must contain a
+[tsconfig.json](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) file. While not required, it is highly
+recommended to have your *tsconfig.json* extend from a strict configuration, e.g.
+[@tsconfig/node-lts-strictest](https://www.npmjs.com/package/@tsconfig/node-lts-strictest).
 
 ## Getting Started
 
