@@ -54,15 +54,22 @@ recommended to have your *tsconfig.json* extend from a strict configuration, e.g
 
 ### Installation
 
-On the command line, install this package:
+On the command line, first enter `npm -v` to see what version of `npm` you have installed. If you have a version >=7.0.0,
+please use this command:
 
 ```bash
 npm install --save-dev @andreashuber69/eslint-config
 ```
 
-On npm 7 and newer, eslint and all other peer dependencies
-[should be installed automatically](https://github.com/npm/rfcs/blob/main/implemented/0025-install-peer-deps.md). On
-older versions of npm, you will see warning messages to install them manually.
+Otherwise, please use this command:
+
+```bash
+npx install-peerdeps @andreashuber69/eslint-config --dev
+```
+
+On npm 7 and newer, peer dependencies
+[are installed automatically](https://github.com/npm/rfcs/blob/main/implemented/0025-install-peer-deps.md). On
+older versions of npm, you can use the tool `install-peerdeps` as shown above or install the peer dependencies manually.
 
 ### Configuration
 
