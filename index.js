@@ -53,7 +53,7 @@ module.exports = {
                 allowSingleLine: true,
             },
         ],
-        // Turned off in favor of @typescript-eslint/naming-convention
+        // Turned off in favor of @typescript-eslint/naming-convention.
         "camelcase": "off",
         "capitalized-comments": [
             "error",
@@ -112,7 +112,7 @@ module.exports = {
         "import/first": "error",
         // There are advantages and disadvantages to turning this on or off. "off" seems the better choice.
         "import/group-exports": "off",
-        "import/imports-first": "off", // Deprecated in favor of import/first
+        "import/imports-first": "off", // Deprecated in favor of import/first.
         "import/max-dependencies": [
             "error",
             {
@@ -260,10 +260,10 @@ module.exports = {
         "jsdoc/require-yields-check": "warn",
         "jsdoc/sort-tags": "warn",
         "jsdoc/tag-lines": "warn",
-        "jsdoc/text-escaping": "off", // Requires project-specific configuration
+        "jsdoc/text-escaping": "off", // Requires project-specific configuration.
         "jsdoc/valid-types": "warn",
         "line-comment-position": "off", // We want to allow comments above and beside code.
-        // Does not work with interfaces, see https://github.com/typescript-eslint/typescript-eslint/issues/1150
+        // Does not work with interfaces, see https://github.com/typescript-eslint/typescript-eslint/issues/1150.
         "lines-around-comment": "off",
         "@typescript-eslint/lines-between-class-members": [
             "error",
@@ -354,7 +354,7 @@ module.exports = {
                 ignoreVoidOperator: true,
             },
         ],
-        "no-console": "off", // Does not make sense for my projects
+        "no-console": "off", // Does not make sense for most projects.
         "@typescript-eslint/no-empty-function": [
             "error",
             {
@@ -381,7 +381,7 @@ module.exports = {
         "no-plusplus": "off",
         // The following would make promise construction much more verbose for avoiding a bug that is easily detected.
         "no-promise-executor-return": "off",
-        "@typescript-eslint/no-restricted-imports": "off", // Requires project-specific configuration
+        "@typescript-eslint/no-restricted-imports": "off", // Requires project-specific configuration.
         "no-restricted-syntax": [
             "error",
             "ForInStatement",
@@ -412,7 +412,7 @@ module.exports = {
                 enums: false,
             },
         ],
-        // We use void to avoid @typescript-eslint/no-confusing-void-expression
+        // We use void to avoid @typescript-eslint/no-confusing-void-expression.
         "no-void": "off",
         "no-warning-comments": "warn",
         "@typescript-eslint/object-curly-spacing": [
@@ -465,7 +465,7 @@ module.exports = {
                 prefer: "parameter-property",
             },
         ],
-        "@typescript-eslint/prefer-enum-initializers": "off", // Implicitly defined values should be common knowledge
+        "@typescript-eslint/prefer-enum-initializers": "off", // Implicitly defined values should be common knowledge.
         "prefer-arrow/prefer-arrow-functions": [
             "error",
             {
@@ -474,15 +474,15 @@ module.exports = {
                 classPropertiesAllowed: false,
             },
         ],
-        // Unrealistic to enforce this in just about any codebase without lots of exceptions
+        // Unrealistic to enforce this in just about any codebase without lots of exceptions.
         "@typescript-eslint/prefer-readonly-parameter-types": "off",
         "promise/always-return": "error",
-        // Promises aren't that hard to create manually, so it seems dubious to require promisify or pify
+        // Promises aren't that hard to create manually, so it seems dubious to require promisify or pify.
         "promise/avoid-new": "off",
         "promise/catch-or-return": "error",
         "promise/no-callback-in-promise": "error",
         "promise/no-multiple-resolved": "error",
-        "promise/no-native": "off", // Does not make sense in modern ES environments
+        "promise/no-native": "off", // Does not make sense in modern ES environments.
         "promise/no-new-statics": "error",
         "promise/no-nesting": "error",
         "promise/no-promise-in-callback": "error",
@@ -490,7 +490,7 @@ module.exports = {
         "promise/no-return-wrap": "error",
         "promise/param-names": "error",
         // Seems too restrictive, a callback is perfectly acceptable if there's no need to wait for completion (e.g. in
-        // describe-style tests)
+        // describe-style tests).
         "promise/prefer-await-to-callbacks": "off",
         "promise/prefer-await-to-then": "error",
         "promise/valid-params": "error",
@@ -532,12 +532,12 @@ module.exports = {
         ],
         "@typescript-eslint/strict-boolean-expressions": "off", // Takes away too much expressive power.
         // Value is questionable, see
-        // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/typedef.md
+        // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/typedef.md.
         "@typescript-eslint/typedef": "off",
     },
     settings: {
         // The following settings are taken from https://github.com/import-js/eslint-plugin-import#typescript and
-        // https://github.com/import-js/eslint-plugin-import/blob/main/config/typescript.js
+        // https://github.com/import-js/eslint-plugin-import/blob/main/config/typescript.js.
         "import/extensions": allExtensions,
         "import/external-module-folders": [
             "node_modules",
