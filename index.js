@@ -477,18 +477,21 @@ module.exports = {
         // Unrealistic to enforce this in just about any codebase without lots of exceptions
         "@typescript-eslint/prefer-readonly-parameter-types": "off",
         "promise/always-return": "error",
-        "promise/avoid-new": "error",
+        // Promises aren't that hard to create manually, so it seems dubious to require promisify or pify
+        "promise/avoid-new": "off",
         "promise/catch-or-return": "error",
         "promise/no-callback-in-promise": "error",
         "promise/no-multiple-resolved": "error",
-        "promise/no-native": "error",
+        "promise/no-native": "off", // Does not make sense in modern ES environments
         "promise/no-new-statics": "error",
         "promise/no-nesting": "error",
         "promise/no-promise-in-callback": "error",
         "promise/no-return-in-finally": "error",
         "promise/no-return-wrap": "error",
         "promise/param-names": "error",
-        "promise/prefer-await-to-callbacks": "error",
+        // Seems too restrictive, a callback is perfectly acceptable if there's no need to wait for completion (e.g. in
+        // describe-style tests)
+        "promise/prefer-await-to-callbacks": "off",
         "promise/prefer-await-to-then": "error",
         "promise/valid-params": "error",
         "quote-props": [
