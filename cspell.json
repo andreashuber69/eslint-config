@@ -10,6 +10,7 @@
     "linebreak",
     "nonull",
     "peerdeps",
+    "pify",
     "plusplus",
     "tseslint",
     "typedefs",
