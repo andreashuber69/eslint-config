@@ -41,7 +41,8 @@
     "eslint-plugin-import": ">=2.26.0",
     "eslint-plugin-jsdoc": ">=39.6.2",
     "eslint-plugin-no-null": ">=1.0.2",
-    "eslint-plugin-prefer-arrow": ">=1.2.3"
+    "eslint-plugin-prefer-arrow": ">=1.2.3",
+    "eslint-plugin-promise": ">=6.1.1"
   },
   "devDependencies": {
     "@tsconfig/node-lts-strictest": "^18.12.1",
@@ -60,6 +61,7 @@
     "eslint-plugin-jsdoc": "^39.6.4",
     "eslint-plugin-no-null": "^1.0.2",
     "eslint-plugin-prefer-arrow": "^1.2.3",
+    "eslint-plugin-promise": "^6.1.1",
     "markdownlint-cli": "^0.32.2",
     "mocha": "^10.2.0",
     "node-fetch": "^2.6.7",

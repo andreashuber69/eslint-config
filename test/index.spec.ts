@@ -7,6 +7,7 @@ import { allImportRules } from "./allImportRules";
 import { allJsdocRules } from "./allJsdocRules";
 import { allNonullRules } from "./allNonullRules";
 import { allPreferArrowRules } from "./allPreferArrowRules";
+import { allPromiseRules } from "./allPromiseRules";
 import { allEslintRules, getRecommendedEslintRules } from "./EslintRules";
 import { allTseslintRules, recommendedTseslintRules } from "./TseslintRules";
 
@@ -30,7 +31,8 @@ describe("index.js", () => {
     });
 });
 
-const allOtherRules = { ...allImportRules, ...allJsdocRules, ...allNonullRules, ...allPreferArrowRules };
+const allOtherRules =
+    { ...allImportRules, ...allJsdocRules, ...allNonullRules, ...allPreferArrowRules, ...allPromiseRules };
 
 describe("index.js", () => {
     describe("should list all other rules", () => {
