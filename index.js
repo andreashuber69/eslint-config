@@ -14,12 +14,14 @@ module.exports = {
     },
     extends: [
         // While the eslint:all list really does turn on *all* eslint rules (except for the deprecated ones), the
-        // @typescript-eslint/all list turns off those eslint rules that are replaced with typescript-aware variants
-        // and also turns off the eslint rules that are already flagged by the typescript compiler. In other words,
-        // by extending from the lists below, we have all rules turned on, that *might* make sense in a typescript
-        // project. We thus "only" need to turn off the rules that we don't like and reconfigure some others.
+        // @typescript-eslint/all and unicorn/all lists turn off those eslint rules that are replaced with
+        // typescript-aware or more functional variants and also turn off the eslint rules that are already flagged
+        // by the typescript compiler. In other words, by extending from the lists below, we have all rules turned on,
+        // that *might* make sense in a typescript project. We thus "only" need to turn off the rules that we don't like
+        // and reconfigure some others.
         "eslint:all",
         "plugin:@typescript-eslint/all",
+        "plugin:unicorn/all",
     ],
     parser: "@typescript-eslint/parser",
     parserOptions: {
@@ -27,10 +29,12 @@ module.exports = {
     },
     plugins: [
         "@typescript-eslint",
+        "unicorn",
         // The plugins below don't seem to offer "all" lists, so we need to turn on the associated rules explicitly.
+        // Note that we also list the turned off rules below, so that we can test that we did not miss a newly added
+        // rule.
         "import",
         "jsdoc",
-        "no-null",
         "prefer-arrow",
         "promise",
     ],
@@ -364,7 +368,6 @@ module.exports = {
         ],
         "no-inline-comments": "off", // We want to allow inline comments.
         "@typescript-eslint/no-magic-numbers": "off", // Makes sense but appears to be too restrictive.
-        "no-null/no-null": "error",
         // Most of the problems with the ++ and -- operators are avoided because we've turned on
         // @typescript-eslint/semi.
         "no-plusplus": "off",
@@ -523,6 +526,20 @@ module.exports = {
         // Value is questionable, see
         // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/typedef.md.
         "@typescript-eslint/typedef": "off",
+        "unicorn/filename-case": "off", // The case should be the same for the code element and the file name.
+        "unicorn/prevent-abbreviations": "off", // See id-length, sometimes one character is enough for an identifier.
+        "unicorn/prefer-module": "off", // Not all projects can afford to use ESM.
+        "unicorn/no-await-expression-member": "off", // Seems arbitrary.
+        // The built-in and turned on no-case-declarations renders braces for cases useless.
+        "unicorn/switch-case-braces": [
+            "error",
+            "avoid",
+        ],
+        "unicorn/no-array-reduce": "off", // Does not make much sense, reduce is unbeatable in some cases.
+        // This is not an issue with modern editors, where keywords have a different color.
+        "unicorn/no-keyword-prefix": "off",
+        // The suggested alternative Array.from does not seem to be available for typed arrays.
+        "unicorn/no-new-array": "off",
     },
     settings: {
         // The following settings are taken from https://github.com/import-js/eslint-plugin-import#typescript and

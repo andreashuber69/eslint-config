@@ -1,29 +1,30 @@
-import { isDeepStrictEqual } from "util";
+import { isDeepStrictEqual } from "node:util";
 import { expect } from "chai";
 
 import { rules as ourChanges } from "../index";
 
 import { allImportRules } from "./allImportRules";
 import { allJsdocRules } from "./allJsdocRules";
-import { allNonullRules } from "./allNonullRules";
 import { allPreferArrowRules } from "./allPreferArrowRules";
 import { allPromiseRules } from "./allPromiseRules";
+import { allUnicornRules } from "./allUnicornRules";
 import { allEslintRules, getRecommendedEslintRules } from "./EslintRules";
 import { allTseslintRules, recommendedTseslintRules } from "./TseslintRules";
 
-const allEsTsRules = { ...allEslintRules, ...allTseslintRules };
+const allRulesInConfig = { ...allEslintRules, ...allTseslintRules, ...allUnicornRules };
 
 describe("index.js", () => {
-    describe("should change the default of ES and TS rules", () => {
-        // Since ../index.js extends from both the "eslint:all" and "plugin:@typescript-eslint/all" configs, we need
-        // to test that the rule ids in ourChanges are listed in allEsTsRules and that we apply severity/options that
-        // are different.
-        const ourEsTsChanges =
-            Object.entries(ourChanges).filter(([id]) => id.includes("@typescript-eslint/") || !id.includes("/"));
+    describe("should change the defaults from 'all' configs", () => {
+        // Since ../index.js extends from the "eslint:all", "plugin:@typescript-eslint/all" and "plugin:unicorn/all"
+        // configs, we need to test that the rule ids in ourChanges are listed in allRulesInConfig and that we apply
+        // severity/options that are different.
+        const ourConfigChanges = Object.entries(ourChanges).filter(
+            ([id]) => id.includes("@typescript-eslint/") || id.includes("unicorn/") || !id.includes("/"),
+        );
 
-        for (const [id, ourEntry] of ourEsTsChanges) {
+        for (const [id, ourEntry] of ourConfigChanges) {
             it(id, () => {
-                const entry = allEsTsRules[id];
+                const entry = allRulesInConfig[id];
                 expect(Boolean(entry)).to.equal(true, `${id} is not in the list of extended from rules.`);
                 expect(isDeepStrictEqual(ourEntry, entry)).to.equal(false, `${id} does not change the default.`);
             });
@@ -31,8 +32,7 @@ describe("index.js", () => {
     });
 });
 
-const allOtherRules =
-    { ...allImportRules, ...allJsdocRules, ...allNonullRules, ...allPreferArrowRules, ...allPromiseRules };
+const allOtherRules = { ...allImportRules, ...allJsdocRules, ...allPreferArrowRules, ...allPromiseRules };
 
 describe("index.js", () => {
     describe("should list all other rules", () => {
@@ -52,7 +52,7 @@ describe("index.js", () => {
     });
 });
 
-const allRules = { ...allEsTsRules, ...allOtherRules };
+const allRules = { ...allRulesInConfig, ...allOtherRules };
 
 describe(`${Object.keys(allRules).length} rules`, () => {
     it("Default severity should be 'off' or 'error', without options", () => {
@@ -70,4 +70,7 @@ const showStats = async () => {
     console.log(`@andreashuber/eslint-config active rules: ${ourCount}`);
 };
 
-showStats().catch((reason) => console.error(reason));
+// This is a CommonJS module, where top-level await is not available. Compiling tests differently is possible but not
+// worth the effort.
+// eslint-disable-next-line unicorn/prefer-top-level-await
+showStats().catch((error) => console.error(error));
