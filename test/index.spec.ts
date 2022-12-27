@@ -14,7 +14,7 @@ import { allTseslintRules, recommendedTseslintRules } from "./TseslintRules";
 const allRulesInConfig = { ...allEslintRules, ...allTseslintRules, ...allUnicornRules };
 
 describe("index.js", () => {
-    describe("should change the defaults from 'all' configs", () => {
+    describe("should change the defaults of rules listed in 'all' configs", () => {
         // Since ../index.js extends from the "eslint:all", "plugin:@typescript-eslint/all" and "plugin:unicorn/all"
         // configs, we need to test that the rule ids in ourChanges are listed in allRulesInConfig and that we apply
         // severity/options that are different.
