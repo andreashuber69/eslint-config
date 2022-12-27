@@ -7,7 +7,7 @@ const getAllRules = (configName: string) => {
     const config = configs[configName];
 
     if (!config) {
-        throw Error(`Unknown config: ${configName}`);
+        throw new Error(`Unknown config: ${configName}`);
     }
 
     return getRules(config);
