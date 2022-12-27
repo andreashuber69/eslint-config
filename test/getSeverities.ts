@@ -10,7 +10,7 @@ const getRuleLevel = (entry: Partial<RuleEntry>) => {
         case "string":
             return entry;
         default:
-            return entry instanceof Array ? entry[0] ?? "error" : "error";
+            return Array.isArray(entry) ? entry[0] ?? "error" : "error";
     }
 };
 
