@@ -35,6 +35,14 @@ describe("index.js", () => {
 
 const allOtherRules = { ...allImportRules, ...allJsdocRules, ...allPreferArrowRules, ...allPromiseRules };
 
+const hasAllKeys = (original: Record<string, unknown>, tester: Record<string, unknown>, message: string) => {
+    for (const id of Object.keys(original)) {
+        it(id, () => {
+            expect(Boolean(tester[id])).to.equal(true, `${id} ${message}`);
+        });
+    }
+};
+
 describe("index.js", () => {
     const ourOtherChanges = Object.fromEntries(Object.entries(ourChanges).filter((e) => !shouldRuleBeInConfig(e)));
 
@@ -42,21 +50,8 @@ describe("index.js", () => {
     // are listed in ourChanges and vice versa. While we would not need to list rules that we turn off, doing so ensures
     // that we will be alerted when rules are added in subsequent versions. We can then consciously either turn these
     // off or set the severity/options we need.
-    describe("should list all other rules", () => {
-        for (const id of Object.keys(allOtherRules)) {
-            it(id, () => {
-                expect(Boolean(ourOtherChanges[id])).to.equal(true, `${id} is not in index.js.`);
-            });
-        }
-    });
-
-    describe("should only contain rules present in all other rules", () => {
-        for (const id of Object.keys(ourOtherChanges)) {
-            it(id, () => {
-                expect(Boolean(allOtherRules[id])).to.equal(true, `${id} is an unknown rule.`);
-            });
-        }
-    });
+    describe("should list all other rules", () => hasAllKeys(allOtherRules, ourOtherChanges, "is not in index.js."));
+    describe("should not list unknown rules", () => hasAllKeys(ourOtherChanges, allOtherRules, "is an unknown rule."));
 });
 
 const allRules = { ...allRulesInConfig, ...allOtherRules };
