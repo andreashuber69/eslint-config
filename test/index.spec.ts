@@ -13,16 +13,17 @@ import { allTseslintRules, recommendedTseslintRules } from "./TseslintRules";
 
 const allRulesInConfig = { ...allEslintRules, ...allTseslintRules, ...allUnicornRules };
 
+const shouldRuleBeInConfig = ([id]: [string, ...unknown[]]) =>
+    id.includes("@typescript-eslint/") || id.includes("unicorn/") || !id.includes("/");
+
 describe("index.js", () => {
     describe("should change the defaults of rules listed in 'all' configs", () => {
-        const ourConfigChanges = Object.entries(ourChanges).filter(
-            ([id]) => id.includes("@typescript-eslint/") || id.includes("unicorn/") || !id.includes("/"),
-        );
+        const ourRuleInConfigChanges = Object.entries(ourChanges).filter((e) => shouldRuleBeInConfig(e));
 
         // Since ../index.js extends from the "eslint:all", "plugin:@typescript-eslint/all" and "plugin:unicorn/all"
         // configs, we need to test that the rule ids in ourChanges are listed in allRulesInConfig and that we apply
         // severity/options that are different.
-        for (const [id, ourEntry] of ourConfigChanges) {
+        for (const [id, ourEntry] of ourRuleInConfigChanges) {
             it(id, () => {
                 const entry = allRulesInConfig[id];
                 expect(Boolean(entry)).to.equal(true, `${id} is not in the list of extended from rules.`);
