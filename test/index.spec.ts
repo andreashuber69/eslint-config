@@ -12,9 +12,18 @@ import { allEslintRules, getRecommendedEslintRules } from "./EslintRules";
 import { allTseslintRules, recommendedTseslintRules } from "./TseslintRules";
 
 const allRulesInConfig = { ...allEslintRules, ...allTseslintRules, ...allUnicornRules };
+const allOtherRules = { ...allImportRules, ...allJsdocRules, ...allPreferArrowRules, ...allPromiseRules };
 
 const shouldRuleBeInConfig = ([id]: [string, ...unknown[]]) =>
     id.includes("@typescript-eslint/") || id.includes("unicorn/") || !id.includes("/");
+
+const hasAllKeys = (original: Record<string, unknown>, tester: Record<string, unknown>, message: string) => {
+    for (const id of Object.keys(original)) {
+        it(id, () => {
+            expect(Boolean(tester[id])).to.equal(true, `${id} ${message}`);
+        });
+    }
+};
 
 describe("index.js", () => {
     describe("should change the defaults of rules listed in 'all' configs", () => {
@@ -31,19 +40,7 @@ describe("index.js", () => {
             });
         }
     });
-});
 
-const allOtherRules = { ...allImportRules, ...allJsdocRules, ...allPreferArrowRules, ...allPromiseRules };
-
-const hasAllKeys = (original: Record<string, unknown>, tester: Record<string, unknown>, message: string) => {
-    for (const id of Object.keys(original)) {
-        it(id, () => {
-            expect(Boolean(tester[id])).to.equal(true, `${id} ${message}`);
-        });
-    }
-};
-
-describe("index.js", () => {
     const ourOtherChanges = Object.fromEntries(Object.entries(ourChanges).filter((e) => !shouldRuleBeInConfig(e)));
 
     // ../index.js doesn't extend from any config related to allOtherRules. For these we test that *all* rule ids
