@@ -36,9 +36,7 @@ describe("index.js", () => {
 const allOtherRules = { ...allImportRules, ...allJsdocRules, ...allPreferArrowRules, ...allPromiseRules };
 
 describe("index.js", () => {
-    const ourOtherChanges = Object.fromEntries(Object.entries(ourChanges).filter(
-        ([id]) => !id.includes("@typescript-eslint/") && id.includes("/"),
-    ));
+    const ourOtherChanges = Object.fromEntries(Object.entries(ourChanges).filter((e) => !shouldRuleBeInConfig(e)));
 
     // ../index.js doesn't extend from any config related to allOtherRules. For these we test that *all* rule ids
     // are listed in ourChanges and vice versa. While we would not need to list rules that we turn off, doing so ensures
@@ -47,7 +45,15 @@ describe("index.js", () => {
     describe("should list all other rules", () => {
         for (const id of Object.keys(allOtherRules)) {
             it(id, () => {
-                expect(Boolean(ourOtherChanges[id])).to.equal(true, `${id} is not in the list of other rules.`);
+                expect(Boolean(ourOtherChanges[id])).to.equal(true, `${id} is not in index.js.`);
+            });
+        }
+    });
+
+    describe("should only contain rules present in all other rules", () => {
+        for (const id of Object.keys(ourOtherChanges)) {
+            it(id, () => {
+                expect(Boolean(allOtherRules[id])).to.equal(true, `${id} is an unknown rule.`);
             });
         }
     });
