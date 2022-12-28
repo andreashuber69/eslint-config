@@ -15,13 +15,13 @@ const allRulesInConfig = { ...allEslintRules, ...allTseslintRules, ...allUnicorn
 
 describe("index.js", () => {
     describe("should change the defaults of rules listed in 'all' configs", () => {
-        // Since ../index.js extends from the "eslint:all", "plugin:@typescript-eslint/all" and "plugin:unicorn/all"
-        // configs, we need to test that the rule ids in ourChanges are listed in allRulesInConfig and that we apply
-        // severity/options that are different.
         const ourConfigChanges = Object.entries(ourChanges).filter(
             ([id]) => id.includes("@typescript-eslint/") || id.includes("unicorn/") || !id.includes("/"),
         );
 
+        // Since ../index.js extends from the "eslint:all", "plugin:@typescript-eslint/all" and "plugin:unicorn/all"
+        // configs, we need to test that the rule ids in ourChanges are listed in allRulesInConfig and that we apply
+        // severity/options that are different.
         for (const [id, ourEntry] of ourConfigChanges) {
             it(id, () => {
                 const entry = allRulesInConfig[id];
@@ -35,15 +35,15 @@ describe("index.js", () => {
 const allOtherRules = { ...allImportRules, ...allJsdocRules, ...allPreferArrowRules, ...allPromiseRules };
 
 describe("index.js", () => {
-    describe("should list all other rules", () => {
-        // ../index.js doesn't extend from any config related to allOtherRules. For these we test that *all* rule ids
-        // are listed in ourChanges. While we would not need to list rules that we turn off, doing so ensures that we
-        // will be alerted when rules are added in subsequent versions. We can then consciously either turn these off or
-        // set the severity/options we need.
-        const ourOtherChanges = Object.fromEntries(
-            Object.entries(ourChanges).filter(([id]) => !id.includes("@typescript-eslint/") && id.includes("/")),
-        );
+    const ourOtherChanges = Object.fromEntries(Object.entries(ourChanges).filter(
+        ([id]) => !id.includes("@typescript-eslint/") && id.includes("/"),
+    ));
 
+    // ../index.js doesn't extend from any config related to allOtherRules. For these we test that *all* rule ids
+    // are listed in ourChanges and vice versa. While we would not need to list rules that we turn off, doing so ensures
+    // that we will be alerted when rules are added in subsequent versions. We can then consciously either turn these
+    // off or set the severity/options we need.
+    describe("should list all other rules", () => {
         for (const id of Object.keys(allOtherRules)) {
             it(id, () => {
                 expect(Boolean(ourOtherChanges[id])).to.equal(true, `${id} is not in the list of other rules.`);
