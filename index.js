@@ -526,20 +526,30 @@ module.exports = {
         // Value is questionable, see
         // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/typedef.md.
         "@typescript-eslint/typedef": "off",
-        "unicorn/filename-case": "off", // The case should be the same for the code element and the file name.
-        "unicorn/prevent-abbreviations": "off", // See id-length, sometimes one character is enough for an identifier.
-        "unicorn/prefer-module": "off", // Not all projects can afford to use ESM.
+        // The filename case should be the same for the code element and the file name. So, if the main export of a file
+        // is a class or a type, the filename should be in PascalCase, otherwise it should be camelCase.
+        "unicorn/filename-case": [
+            "error",
+            {
+                cases: {
+                    camelCase: true,
+                    pascalCase: true,
+                },
+            },
+        ],
+        "unicorn/no-array-reduce": "off", // Does not make much sense, reduce is unbeatable in some cases.
         "unicorn/no-await-expression-member": "off", // Seems arbitrary.
+        // This is not an issue with modern editors, where keywords have a different color.
+        "unicorn/no-keyword-prefix": "off",
+        // The suggested alternative Array.from does not seem to be available for typed arrays.
+        "unicorn/no-new-array": "off",
+        "unicorn/prefer-module": "off", // Not all projects can afford to use ESM.
+        "unicorn/prevent-abbreviations": "off", // See id-length, sometimes one character is enough for an identifier.
         // The built-in and turned on no-case-declarations renders braces for cases useless.
         "unicorn/switch-case-braces": [
             "error",
             "avoid",
         ],
-        "unicorn/no-array-reduce": "off", // Does not make much sense, reduce is unbeatable in some cases.
-        // This is not an issue with modern editors, where keywords have a different color.
-        "unicorn/no-keyword-prefix": "off",
-        // The suggested alternative Array.from does not seem to be available for typed arrays.
-        "unicorn/no-new-array": "off",
     },
     settings: {
         // The following settings are taken from https://github.com/import-js/eslint-plugin-import#typescript and
