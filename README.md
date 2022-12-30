@@ -90,7 +90,7 @@ Add the following line to the `scripts` section of your *package.json* (assuming
 folder):
 
 ```json
-    "lint": "eslint --ext .js,.ts './src'",
+    "lint": "eslint --ext .js,.ts --report-unused-disable-directives './src'",
 ```
 
 ### Lint
