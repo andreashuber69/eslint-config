@@ -77,9 +77,17 @@ Create the new file *.eslintrc.cjs* in the root folder of your project, with the
 
 ```js
 module.exports = {
-    extends: [
-        "@andreashuber69",
-    ],
+    env: {
+        // You need to set at least your execution environment, for more information please see
+        // https://eslint.org/docs/latest/user-guide/configuring/language-options#specifying-environments
+        node: true,
+        // The eslint parser is already configured for the latest ES language standard. This is typically what you want
+        // for a typescript project, as TS will automatically downlevel to the ES version you specify in tsconfig.json.
+        // If you also need to access ECMAScript globals, you might want to set an additional property accordingly, as
+        // follows (see link above for more details):
+        // es2022: true,
+    },
+    extends: ["@andreashuber69"],
     rules: {
         // Customize rules as you see fit
     }

@@ -8,10 +8,6 @@ const allExtensions = [
 ];
 
 module.exports = {
-    env: {
-        node: true,
-        es2022: true,
-    },
     extends: [
         // While the eslint:all list really does turn on *all* eslint rules (except for the deprecated ones), the
         // @typescript-eslint/all and unicorn/all lists turn off those eslint rules that are replaced with
@@ -26,6 +22,7 @@ module.exports = {
     parser: "@typescript-eslint/parser",
     parserOptions: {
         project: ["./tsconfig.json"],
+        ecmaVersion: "latest",
     },
     plugins: [
         "@typescript-eslint",
