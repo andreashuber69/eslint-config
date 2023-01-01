@@ -59,8 +59,7 @@ describe(`${Object.keys(allRules).length} rules`, () => {
     });
 });
 
-const getActiveCount =
-    (rules: Record<string, unknown>) => Object.entries(rules).filter(([, entry]) => entry !== "off").length;
+const getActiveCount = (rules: Record<string, unknown>) => Object.values(rules).filter((v) => v !== "off").length;
 
 const showStats = async () => {
     const recommendedCount = getActiveCount({ ...await getRecommendedEslintRules(), ...recommendedTseslintRules });
