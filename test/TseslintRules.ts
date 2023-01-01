@@ -1,9 +1,9 @@
 import { configs } from "@typescript-eslint/eslint-plugin";
 import type { TSESLint } from "@typescript-eslint/utils";
 
-const getRules = ({ rules, overrides }: TSESLint.Linter.Config) => (overrides ? overrides?.[0]?.rules : rules);
+const getRules = ({ rules, overrides }: TSESLint.Linter.Config) => (overrides ? overrides[0]?.rules : rules);
 
-const getAllRules = (configName: string) => {
+const getAllRules = (configName: string): Record<string, unknown> | undefined => {
     const config = configs[configName];
 
     if (!config) {

@@ -4,17 +4,17 @@ type RuleModule = TSESLint.RuleModule<string, unknown[]>;
 
 type RuleEntry = RuleModule | TSESLint.Linter.RuleEntry | undefined;
 
-const getRuleLevel = (entry: Partial<RuleEntry>) => {
+const getRuleLevel = (entry: RuleEntry) => {
     switch (typeof entry) {
         case "number":
         case "string":
             return entry;
         default:
-            return Array.isArray(entry) ? entry[0] ?? "error" : "error";
+            return (Array.isArray(entry) && entry[0]) || "error";
     }
 };
 
-const getSeverityString = (entry: Partial<RuleEntry>) => {
+const getSeverityString = (entry: RuleEntry): TSESLint.Linter.SeverityString => {
     const ruleLevel = getRuleLevel(entry);
 
     switch (ruleLevel) {
@@ -29,8 +29,8 @@ const getSeverityString = (entry: Partial<RuleEntry>) => {
     }
 };
 
-export const getSeverities = (rules: Record<string, Partial<RuleEntry>> | undefined, prefix = "") => {
-    const result: Record<string, TSESLint.Linter.SeverityString> = {};
+export const getSeverities = (rules: Record<string, RuleEntry> | undefined, prefix = "") => {
+    const result: Record<string, unknown> = {};
 
     if (rules) {
         for (const id of Object.keys(rules)) {

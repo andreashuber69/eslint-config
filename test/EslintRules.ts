@@ -1,10 +1,9 @@
-import type { TSESLint } from "@typescript-eslint/utils";
 // eslint-disable-next-line import/no-deprecated
 import { builtinRules } from "eslint/use-at-your-own-risk";
 import fetch from "node-fetch";
 
 const getAllEslintRules = () => {
-    const result: Record<string, TSESLint.Linter.SeverityString> = {};
+    const result: Record<string, unknown> = {};
 
     // See https://github.com/eslint/eslint/blob/main/conf/eslint-all.js
     // eslint-disable-next-line import/no-deprecated
@@ -24,5 +23,5 @@ export const getRecommendedEslintRules = async () => {
         await (await fetch("https://raw.githubusercontent.com/eslint/eslint/main/conf/eslint-recommended.js")).text();
 
     // eslint-disable-next-line no-eval
-    return ((await eval(sourceCode)) as { rules: Record<string, string> }).rules;
+    return ((await eval(sourceCode)) as { rules: Record<string, unknown> }).rules;
 };
