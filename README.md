@@ -25,7 +25,7 @@ This is a comprehensive, carefully curated and tested
 To get an idea of what this config tries to achieve, it's probably best to compare the number of active rules
 recommended for **TypeScript** projects
 ([see TS eslint quick start](https://typescript-eslint.io/getting-started#quickstart)) to the number of active rules in
-this configuration. At the time of writing the count is 67 for the recommended set compared to 481 in this package. In
+this configuration. At the time of writing the count is 67 for the recommended set compared to 482 in this package. In
 other words, your code gets a much more thorough treatment. More specifically, we try to ...
 
 - flag as many problems and as much inconsistent formatting as possible while keeping false positives low. Developers
@@ -73,33 +73,39 @@ older versions of npm, you can use the tool `install-peerdeps` as shown above or
 
 ### Configuration
 
-Create the new file *.eslintrc.cjs* in the root folder of your project, with the following contents:
+1. Create the new file *.eslintrc.cjs* in the root folder of your project, with the following contents:
 
-```js
-module.exports = {
-    env: {
-        // You need to set at least your execution environment, for more information please see
-        // https://eslint.org/docs/latest/user-guide/configuring/language-options#specifying-environments
-        node: true,
-        // The eslint parser is already configured for the latest ES language standard. This is typically what you want
-        // for a typescript project, as TS will automatically downlevel to the ES version you specify in tsconfig.json.
-        // If you also need to access ECMAScript globals, you might want to set an additional property accordingly, as
-        // follows (see link above for more details):
-        // es2022: true,
-    },
-    extends: ["@andreashuber69"],
-    rules: {
-        // Customize rules as you see fit
-    }
-};
-```
+   ```js
+   module.exports = {
+       env: {
+           // You need to set your execution environment (node, browser, etc.), for more information please see
+           // https://eslint.org/docs/latest/user-guide/configuring/language-options#specifying-environments
+           node: true,
+       },
+       extends: ["@andreashuber69"],
+       rules: {
+           // Customize rules as you see fit
+       }
+   };
+   ```
 
-Add the following line to the `scripts` section of your *package.json* (assuming your code resides in the *src*
-folder):
+   This is typically enough, as **eslint** will merge the above with `parserOptions: { ecmaVersion: "latest" }`,
+   `env: { es2022: true }` and other defaults. To see the complete configuration you might want to run ...
 
-```json
-    "lint": "eslint --ext .js,.ts --report-unused-disable-directives './src'",
-```
+   ```bash
+   npx eslint --print-config .eslintrc.cjs >eslint-config.json
+   ```
+
+   ... and inspect *eslint-config.json*. Note that for a typical TS project you want to parse according to the latest
+   standard because the **TypeScript** compiler will downlevel language features depending on the `target` setting in
+   *tsconfig.json*.
+
+2. Add the following line to the `scripts` section of your *package.json* (assuming your code resides in the *src*
+   folder):
+
+   ```json
+       "lint": "eslint --ext .js,.ts --report-unused-disable-directives './src'",
+   ```
 
 ### Lint
 
