@@ -328,6 +328,13 @@ module.exports = {
                 trailingUnderscore: "forbid",
             },
             {
+                selector: "parameter",
+                format: ["strictCamelCase"],
+                modifiers: ["unused"],
+                leadingUnderscore: "require",
+                trailingUnderscore: "forbid",
+            },
+            {
                 selector: [
                     "typeLike",
                     "enumMember",
