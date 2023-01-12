@@ -104,6 +104,7 @@ module.exports = {
         "id-length": "off", // Seems too restrictive, sometimes one character is enough (e.g. for inline arrows).
         // For short arrows "beside" is best. For longer ones "below" makes more sense.
         "implicit-arrow-linebreak": "off",
+        "import/consistent-type-specifier-style": "error",
         "import/default": "off", // Already covered by typescript.
         "import/dynamic-import-chunkname": "error",
         "import/export": "off", // Already covered by typescript.
@@ -142,6 +143,7 @@ module.exports = {
         "import/no-deprecated": "error",
         "import/no-duplicates": "error",
         "import/no-dynamic-require": "error",
+        "import/no-empty-named-blocks": "error",
         "import/no-extraneous-dependencies": "error",
         "import/no-import-module-exports": "error",
         "import/no-internal-modules": "off", // Seems too restrictive.
