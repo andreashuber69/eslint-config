@@ -364,6 +364,16 @@ module.exports = {
             },
         ],
         "no-console": "off", // Does not make sense for most projects.
+        "@typescript-eslint/no-empty-function": [
+            "error",
+            {
+                allow: [
+                    "private-constructors",
+                    "protected-constructors",
+                    "overrideMethods",
+                ],
+            },
+        ],
         "@typescript-eslint/no-extra-parens": "off", // Turned off in favor of no-mixed-operators.
         "@typescript-eslint/no-extraneous-class": [
             "error",
