@@ -1,4 +1,4 @@
-# https://github.com/andreashuber69/eslint-config
+# https://github.com/andreashuber69/eslint-config/blob/master/README.md#----andreashuber69eslint-config
 os: linux
 dist: xenial
 language: node_js

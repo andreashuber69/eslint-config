@@ -1,3 +1,4 @@
+// https://github.com/andreashuber69/eslint-config/blob/master/README.md#----andreashuber69eslint-config
 import type { TSESLint } from "@typescript-eslint/utils";
 
 type RuleModule = TSESLint.RuleModule<string, unknown[]>;

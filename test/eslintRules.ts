@@ -1,3 +1,4 @@
+// https://github.com/andreashuber69/eslint-config/blob/master/README.md#----andreashuber69eslint-config
 // eslint-disable-next-line import/no-deprecated
 import { builtinRules } from "eslint/use-at-your-own-risk";
 import fetch from "node-fetch";

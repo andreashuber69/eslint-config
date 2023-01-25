@@ -1,3 +1,4 @@
+// https://github.com/andreashuber69/eslint-config/blob/master/README.md#----andreashuber69eslint-config
 import { configs } from "@typescript-eslint/eslint-plugin";
 import type { TSESLint } from "@typescript-eslint/utils";
 

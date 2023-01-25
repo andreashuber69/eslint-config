@@ -1,3 +1,4 @@
+// https://github.com/andreashuber69/eslint-config/blob/master/README.md#----andreashuber69eslint-config
 import { configs } from "eslint-plugin-unicorn";
 import { getSeverities } from "./getSeverities";
 
