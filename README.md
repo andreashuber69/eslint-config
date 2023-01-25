@@ -1,5 +1,7 @@
-<h1 align="center">@andreashuber69/eslint-config</h1>
-
+<h1 align="center">
+  <img width="128" src="https://raw.githubusercontent.com/andreashuber69/eslint-config/develop/doc/icon.svg?sanitize=true"><br>
+  @andreashuber69/eslint-config
+</h1>
 <p align="center">
   <a href="https://www.npmjs.com/package/@andreashuber69/eslint-config">
     <img src="https://img.shields.io/npm/v/@andreashuber69/eslint-config" alt="NPM Version">
