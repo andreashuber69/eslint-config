@@ -12,9 +12,8 @@
     "peerdeps",
     "pify",
     "plusplus",
-    "tseslint",
-    "typedefs",
-    "tses"
+    "tses",
+    "typedefs"
   ],
   "flagWords": [],
   "dictionaries": [

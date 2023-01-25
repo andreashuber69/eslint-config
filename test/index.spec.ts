@@ -8,10 +8,10 @@ import { allJsdocRules } from "./allJsdocRules";
 import { allPreferArrowRules } from "./allPreferArrowRules";
 import { allPromiseRules } from "./allPromiseRules";
 import { allUnicornRules } from "./allUnicornRules";
-import { allEslintRules, getRecommendedEslintRules } from "./EslintRules";
-import { allTseslintRules, recommendedTseslintRules } from "./TseslintRules";
+import { allEslintRules, getRecommendedEslintRules } from "./eslintRules";
+import { allTypescriptEslintRules, recommendedTypescriptEslintRules } from "./typescriptEslintRules";
 
-const allRulesInConfig = { ...allEslintRules, ...allTseslintRules, ...allUnicornRules };
+const allRulesInConfig = { ...allEslintRules, ...allTypescriptEslintRules, ...allUnicornRules };
 const allOtherRules = { ...allImportRules, ...allJsdocRules, ...allPreferArrowRules, ...allPromiseRules };
 
 const shouldRuleBeInConfig = ([id]: [string, ...unknown[]]) =>
@@ -62,7 +62,8 @@ describe(`${Object.keys(allRules).length} rules`, () => {
 const getActiveCount = (rules: Record<string, unknown>) => Object.values(rules).filter((v) => v !== "off").length;
 
 const showStats = async () => {
-    const recommendedCount = getActiveCount({ ...await getRecommendedEslintRules(), ...recommendedTseslintRules });
+    const recommendedCount =
+        getActiveCount({ ...await getRecommendedEslintRules(), ...recommendedTypescriptEslintRules });
     console.log(`eslint & @typescript-eslint recommended active rules: ${recommendedCount}`);
     const ourCount = getActiveCount({ ...allRules, ...ourChanges });
     console.log(`@andreashuber/eslint-config active rules: ${ourCount}`);
