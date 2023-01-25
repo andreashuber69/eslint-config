@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img width="128" src="https://raw.githubusercontent.com/andreashuber69/eslint-config/develop/doc/icon.svg?sanitize=true"><br>
+  <img width="128" src="https://raw.githubusercontent.com/andreashuber69/eslint-config/master/doc/icon.svg?sanitize=true"><br>
   @andreashuber69/eslint-config
 </h1>
 <p align="center">
