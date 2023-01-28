@@ -15,6 +15,9 @@
   <a href="https://github.com/andreashuber69/eslint-config/issues">
     <img src="https://img.shields.io/github/issues-raw/andreashuber69/eslint-config.svg" alt="Issues">
   </a>
+  <a href="https://coveralls.io/github/andreashuber69/eslint-config?branch=master">
+    <img src="https://coveralls.io/repos/github/andreashuber69/eslint-config/badge.svg?branch=master" alt="Coveralls">
+  </a>
   <a href="https://github.com/andreashuber69/eslint-config/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/andreashuber69/eslint-config.svg" alt="License">
   </a>
