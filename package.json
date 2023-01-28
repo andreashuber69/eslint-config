@@ -22,7 +22,8 @@
   },
   "main": "index.js",
   "files": [
-    "index.js"
+    "index.js",
+    "/*.md"
   ],
   "publishConfig": {
     "access": "public"
