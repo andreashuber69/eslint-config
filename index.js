@@ -61,7 +61,7 @@ module.exports = {
             {
                 ignoreConsecutiveComments: true,
                 ignoreInlineComments: true,
-                ignorePattern: "cSpell|codebeat",
+                ignorePattern: "cSpell",
             },
         ],
         // We want to use the most appropriate style for each property.

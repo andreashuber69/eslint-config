@@ -22,17 +22,17 @@
   },
   "main": "index.js",
   "files": [
-    "index.js",
+    "/index.js",
     "/*.md"
   ],
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "prelint": "cspell '**/*.*' && markdownlint '*.md'",
-    "lint": "eslint --ext .js,.ts --report-unused-disable-directives 'index.js' './test' ",
-    "test-no-coverage": "ts-mocha './test/index.spec.ts'",
-    "test": "c8 --include 'index.js' --reporter=text --reporter=lcov --all npm run test-no-coverage",
+    "prelint": "cspell '**' && markdownlint '**/*.md'",
+    "lint": "eslint --report-unused-disable-directives 'index.js' 'test/**' ",
+    "test-no-coverage": "ts-mocha 'test/**/*.spec.ts'",
+    "test": "c8 --exclude 'test/**' --reporter=text --reporter=lcov npm run test-no-coverage",
     "show-coverage": "alive-server 'coverage/lcov-report'",
     "preci": "npm run lint",
     "ci": "npm test"
