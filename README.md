@@ -6,7 +6,7 @@
   <a href="https://www.npmjs.com/package/@andreashuber69/eslint-config">
     <img src="https://img.shields.io/npm/v/@andreashuber69/eslint-config" alt="NPM Version">
   </a>
-  <a href="https://github.com/andreashuber69/eslint-config/releases/latest">
+  <a href="https://github.com/andreashuber69/eslint-config/releases">
     <img src="https://img.shields.io/github/release-date/andreashuber69/eslint-config.svg" alt="Release Date">
   </a>
   <a href="https://travis-ci.com/github/andreashuber69/eslint-config">
@@ -16,7 +16,7 @@
     <img src="https://img.shields.io/github/issues-raw/andreashuber69/eslint-config.svg" alt="Issues">
   </a>
   <a href="https://coveralls.io/github/andreashuber69/eslint-config?branch=master">
-    <img src="https://coveralls.io/repos/github/andreashuber69/eslint-config/badge.svg?branch=master" alt="Coveralls">
+    <img src="https://coveralls.io/repos/github/andreashuber69/eslint-config/badge.svg?branch=master" alt="Coverage">
   </a>
   <a href="https://github.com/andreashuber69/eslint-config/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/andreashuber69/eslint-config.svg" alt="License">
