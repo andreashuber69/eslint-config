@@ -65,6 +65,7 @@ const getActiveCount = (rules: Record<string, unknown>) => Object.values(rules).
 const showStats = async () => {
     const recommendedCount =
         getActiveCount({ ...await getRecommendedEslintRules(), ...recommendedTypescriptEslintRules });
+
     console.log(`eslint & @typescript-eslint recommended active rules: ${recommendedCount}`);
     const ourCount = getActiveCount({ ...allRules, ...ourChanges });
     console.log(`@andreashuber/eslint-config active rules: ${ourCount}`);
