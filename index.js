@@ -104,7 +104,12 @@ module.exports = {
         "id-length": "off", // Seems too restrictive, sometimes one character is enough (e.g. for inline arrows).
         // For short arrows "beside" is best. For longer ones "below" makes more sense.
         "implicit-arrow-linebreak": "off",
-        "import/consistent-type-specifier-style": "error",
+        // Since the introduction of @typescript-eslint/no-import-type-side-effects, it makes much more sense to import
+        // types with a top level type specifier and everything else in a second import.
+        "import/consistent-type-specifier-style": [
+            "error",
+            "prefer-top-level",
+        ],
         "import/default": "off", // Already covered by typescript.
         "import/dynamic-import-chunkname": "error",
         "import/export": "off", // Already covered by typescript.
@@ -364,6 +369,11 @@ module.exports = {
             },
         ],
         "no-console": "off", // Does not make sense for most projects.
+        // Does not make sense for typescript. Importing types *and* other stuff from the same module is best achieved
+        // with two import statements (one imports types only and the other everything else), which is enforced with
+        // import/no-duplicates and the import/consistent-type-specifier-style rules. The rule
+        // @typescript-eslint/no-import-type-side-effects is turned on by default, see there for more information.
+        "no-duplicate-imports": "off",
         "@typescript-eslint/no-empty-function": [
             "error",
             {
