@@ -20,9 +20,10 @@ const getAllEslintRules = () => {
 export const allEslintRules = getAllEslintRules();
 
 export const getRecommendedEslintRules = async () => {
-    const sourceCode =
-        await (await fetch("https://raw.githubusercontent.com/eslint/eslint/main/conf/eslint-recommended.js")).text();
+    // HACK: It appears that eslint does not currently export the list of recommended rules...
+    const recommendedUrl =
+        "https://raw.githubusercontent.com/eslint/eslint/main/packages/js/src/configs/eslint-recommended.js";
 
     // eslint-disable-next-line no-eval
-    return ((await eval(sourceCode)) as { rules: Record<string, unknown> }).rules;
+    return ((await eval(await (await fetch(recommendedUrl)).text())) as { rules: Record<string, unknown> }).rules;
 };
