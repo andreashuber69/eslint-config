@@ -270,8 +270,6 @@ module.exports = {
         "jsdoc/text-escaping": "off", // Requires project-specific configuration.
         "jsdoc/valid-types": "warn",
         "line-comment-position": "off", // We want to allow comments above and beside code.
-        // Does not work with interfaces, see https://github.com/typescript-eslint/typescript-eslint/issues/1150.
-        "lines-around-comment": "off",
         "@typescript-eslint/lines-between-class-members": [
             "error",
             "always",
