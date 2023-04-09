@@ -1,6 +1,8 @@
 {
   "extends": "@tsconfig/node-lts-strictest/tsconfig.json",
   "compilerOptions": {
+    // Until node-lts-strictest is updated we need to suppress this here (verbatimModuleSyntax does not seem to work yet?)
+    "ignoreDeprecations": "5.0",
     "noEmit": true
   },
   "include": [
