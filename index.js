@@ -273,9 +273,12 @@ module.exports = {
         "@typescript-eslint/lines-around-comment": [
             "error",
             {
+                allowArrayStart: true,
+                allowBlockStart: true,
                 allowEnumStart: true,
                 allowInterfaceStart: true,
                 allowModuleStart: true,
+                allowObjectStart: true,
                 allowTypeStart: true,
             },
         ],
