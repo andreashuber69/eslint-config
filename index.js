@@ -212,6 +212,7 @@ module.exports = {
         "jsdoc/check-values": "warn",
         "jsdoc/empty-tags": "warn",
         "jsdoc/implements-on-classes": "warn",
+        "jsdoc/informative-docs": "warn",
         "jsdoc/match-description": "warn",
         // Does not appear to deliver a lot of value and would require project-specific configuration.
         "jsdoc/match-name": "off",
@@ -222,6 +223,7 @@ module.exports = {
             "never",
         ],
         "jsdoc/no-bad-blocks": "warn",
+        "jsdoc/no-blank-block-descriptions": "warn",
         "jsdoc/no-defaults": "warn",
         // Exactly what syntax a jsdoc block needs to contain must be the decision of the developer.
         "jsdoc/no-missing-syntax": "off",

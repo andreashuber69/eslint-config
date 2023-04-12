@@ -30,7 +30,7 @@ This is a comprehensive, carefully curated and tested
 To get an idea of what this config tries to achieve, it's probably best to compare the number of active rules
 recommended for **TypeScript** projects
 ([see TS eslint quick start](https://typescript-eslint.io/getting-started#quickstart)) to the number of active rules in
-this configuration. At the time of writing the count is 67 for the recommended set compared to 488 in this package. In
+this configuration. At the time of writing the count is 67 for the recommended set compared to 491 in this package. In
 other words, your code gets a much more thorough treatment. More specifically, we try to ...
 
 - flag as many problems and as much inconsistent formatting as possible while keeping false positives low. Developers
