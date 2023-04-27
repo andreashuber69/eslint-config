@@ -217,12 +217,8 @@ module.exports = {
         // Does not appear to deliver a lot of value and would require project-specific configuration.
         "jsdoc/match-name": "off",
         "jsdoc/multiline-blocks": "warn",
-        // In modern editors the newline just wastes space without adding anything to readability.
-        "jsdoc/newline-after-description": [
-            "warn",
-            "never",
-        ],
         "jsdoc/no-bad-blocks": "warn",
+        "jsdoc/no-blank-blocks": "warn",
         "jsdoc/no-blank-block-descriptions": "warn",
         "jsdoc/no-defaults": "warn",
         // Exactly what syntax a jsdoc block needs to contain must be the decision of the developer.
