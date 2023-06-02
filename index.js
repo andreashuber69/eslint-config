@@ -212,6 +212,7 @@ module.exports = {
         "jsdoc/check-values": "warn",
         "jsdoc/empty-tags": "warn",
         "jsdoc/implements-on-classes": "warn",
+        "jsdoc/imports-as-dependencies": "warn",
         "jsdoc/informative-docs": "warn",
         "jsdoc/match-description": "warn",
         // Does not appear to deliver a lot of value and would require project-specific configuration.
