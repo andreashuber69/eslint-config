@@ -33,7 +33,7 @@
     "lint": "eslint --report-unused-disable-directives 'index.js' 'test/**' ",
     "test-no-coverage": "ts-mocha 'test/**/*.spec.ts'",
     "test": "c8 --exclude 'test/**' --reporter=text --reporter=lcov npm run test-no-coverage",
-    "show-coverage": "alive-server 'coverage/lcov-report'",
+    "show-coverage": "vite 'coverage/lcov-report' --logLevel error --open",
     "preci": "npm run lint",
     "ci": "npm test"
   },
@@ -57,7 +57,6 @@
     "@types/node-fetch": "^2.6.4",
     "@typescript-eslint/eslint-plugin": "^5.59.9",
     "@typescript-eslint/parser": "^5.59.9",
-    "alive-server": "^1.2.9",
     "c8": "^7.14.0",
     "chai": "^4.3.7",
     "coveralls": "^3.1.1",
@@ -73,6 +72,7 @@
     "mocha": "^10.2.0",
     "node-fetch": "^2.6.11",
     "ts-mocha": "^10.0.0",
-    "typescript": "^5.1.3"
+    "typescript": "^5.1.3",
+    "vite": "^4.3.9"
   }
 }
