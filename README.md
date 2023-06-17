@@ -23,23 +23,33 @@
   </a>
 </p>
 
-This is a comprehensive, carefully curated and tested
+This is a comprehensive and carefully curated
 [shareable eslint config](https://eslint.org/docs/latest/developer-guide/shareable-configs) for
 [TypeScript](https://www.typescriptlang.org/) projects.
 
-To get an idea of what this config tries to achieve, it's probably best to compare the number of active rules
-recommended for **TypeScript** projects
-([see TS eslint quick start](https://typescript-eslint.io/getting-started#quickstart)) to the number of active rules in
-this configuration. At the time of writing the count is 67 for the recommended set compared to 493 in this package. In
-other words, your code gets a much more thorough treatment. More specifically, we try to ...
+## Rationale
 
-- flag as many problems and as much inconsistent formatting as possible while keeping false positives low. Developers
-  should be able to correct most errors and warnings by rewriting the code as opposed to sprinkling it with
-  `eslint-disable`.
-- treat developers as responsible human beings and trust that they have a good sense of how much and what documentation
-  is necessary. Forcing developers to write docs usually leads to text that is not actually helpful and therefore a
-  waste of time.
-- enforce established ES and TS naming conventions.
+A search for **eslint-config** and **typescript** on https://npmjs.com lists well over 2500 packages. Despite this
+abundance, I've failed to find a package that satisfies what I was looking for, namely:
+
+- Leverage the best eslint-plugins to thoroughly inspect code. To get an idea of what this config tries to achieve, it's
+  probably best to compare the number of active rules recommended for **TypeScript** projects
+  ([see TS eslint quick start](https://typescript-eslint.io/getting-started#quickstart)) to the number of active rules
+  in this configuration. At the time of writing the count is 67 for the recommended set compared to 493 in this package.
+  More specifically, we try to ...
+  - flag as many problems and as much inconsistent formatting as possible while keeping false positives low. Developers
+    should be able to correct most errors and warnings by rewriting the code as opposed to sprinkling it with
+    `eslint-disable`.
+  - treat developers as responsible human beings and trust that they have a good sense of how much and what
+    documentation is necessary. Forcing developers to write docs usually leads to text that is not actually helpful and
+    therefore a waste of time.
+  - enforce established ES and TS naming conventions.
+- Make installation, configuration and maintenance as easy as possible. With npm >= 7.0 you only need to install and
+  update this package. All dependencies are kept up to date automatically, see [Getting Started](#getting-started) for
+  more information.
+- Closely track the versions of all dependencies and release new config versions as necessary.
+- Last but not least: Automatically test the configuration, such that changes (e.g. added or removed rules) are detected
+  and the rules listed in the configuration are always in sync with the rules provided by **eslint** and the plugins.
 
 To see how the linted code will look like, you can look at
 [async-css-plugin](https://github.com/andreashuber69/async-css-plugin/tree/develop/src) and
