@@ -29,8 +29,8 @@ This is a comprehensive and carefully curated
 
 ## Rationale
 
-A search for **eslint-config** and **typescript** on https://npmjs.com lists well over 2500 packages. Despite this
-abundance, I've failed to find a package that satisfies what I was looking for, namely:
+A search for **eslint-config** and **typescript** on [npm](https://npmjs.com) lists well over 2500 packages. Despite
+this abundance, I've failed to find a package that satisfies what I was looking for, namely:
 
 - Leverage the best eslint-plugins to thoroughly inspect code. To get an idea of what this config tries to achieve, it's
   probably best to compare the number of active rules recommended for **TypeScript** projects
