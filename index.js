@@ -344,7 +344,10 @@ module.exports = {
                 trailingUnderscore: "forbid",
             },
             {
-                selector: "parameter",
+                selector: [
+                    "parameter",
+                    "variable",
+                ],
                 format: ["strictCamelCase"],
                 modifiers: ["unused"],
                 leadingUnderscore: "require",
@@ -428,6 +431,14 @@ module.exports = {
             {
                 allowShortCircuit: true,
                 allowTernary: true,
+            },
+        ],
+        "@typescript-eslint/no-unused-vars": [
+            "error",
+            {
+                argsIgnorePattern: "^_",
+                varsIgnorePattern: "^_",
+                caughtErrorsIgnorePattern: "^_",
             },
         ],
         "@typescript-eslint/no-use-before-define": [
