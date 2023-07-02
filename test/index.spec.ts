@@ -1,6 +1,7 @@
 // https://github.com/andreashuber69/eslint-config/blob/master/README.md#----andreashuber69eslint-config
+import assert from "node:assert";
+import { describe, it } from "node:test";
 import { isDeepStrictEqual } from "node:util";
-import { expect } from "chai";
 
 import { rules as ourChanges } from "../index";
 
@@ -20,9 +21,7 @@ const shouldRuleBeInConfig = ([id]: [string, ...unknown[]]) =>
 
 const hasAllKeys = (original: Record<string, unknown>, tester: Record<string, unknown>, message: string) => {
     for (const id of Object.keys(original)) {
-        it(id, () => {
-            expect(Boolean(tester[id])).to.equal(true, `${id} ${message}`);
-        });
+        it(id, () => assert(Boolean(tester[id]), `${id} ${message}`));
     }
 };
 
@@ -36,8 +35,8 @@ describe("index.js", () => {
         for (const [id, ourEntry] of ourRuleInConfigChanges) {
             it(id, () => {
                 const entry = allRulesInConfig[id];
-                expect(Boolean(entry)).to.equal(true, `${id} is not in the list of extended from rules.`);
-                expect(isDeepStrictEqual(ourEntry, entry)).to.equal(false, `${id} does not change the default.`);
+                assert(Boolean(entry), `${id} is not in the list of extended from rules.`);
+                assert(!isDeepStrictEqual(ourEntry, entry), `${id} does not change the default.`);
             });
         }
     });
@@ -56,7 +55,7 @@ const allRules = { ...allRulesInConfig, ...allOtherRules };
 
 describe(`${Object.keys(allRules).length} rules`, () => {
     it("Default severity should be 'off' or 'error', without options", () => {
-        expect(Object.values(allRules).filter((v) => v !== "off" && v !== "error").length).to.equal(0);
+        assert(Object.values(allRules).filter((v) => v !== "off" && v !== "error").length === 0);
     });
 });
 
