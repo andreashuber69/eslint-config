@@ -93,6 +93,13 @@ module.exports = {
         "@typescript-eslint/explicit-function-return-type": "off",
         // Could make sense for larger projects with multiple developers, seems overkill for small projects.
         "@typescript-eslint/explicit-module-boundary-types": "off",
+        // The rule prefer-arrow/prefer-arrow-functions generally disallows function expressions. However, since arrow
+        // functions cannot contain yield keywords, function expressions are still needed. This rule ensures that such
+        // expressions are only named as needed (to avoid duplication).
+        "func-names": [
+            "error",
+            "as-needed",
+        ],
         "function-call-argument-newline": [
             "error",
             "consistent",
