@@ -251,6 +251,7 @@ module.exports = {
         "jsdoc/require-jsdoc": "off",
         "jsdoc/require-param-description": "warn",
         "jsdoc/require-param-name": "warn",
+        // Parameter types in jsdoc would just duplicate the types already visible in the TypeScript code.
         "jsdoc/require-param-type": "off",
         "jsdoc/require-param": "warn",
         "jsdoc/require-property": "off",
@@ -259,7 +260,8 @@ module.exports = {
         "jsdoc/require-property-type": "off",
         "jsdoc/require-returns-check": "warn",
         "jsdoc/require-returns-description": "warn",
-        "jsdoc/require-returns-type": "warn",
+        // Return types in jsdoc would just duplicate the types already visible in the TypeScript code.
+        "jsdoc/require-returns-type": "off",
         "jsdoc/require-returns": "off",
         "jsdoc/require-throws": "off",
         "jsdoc/require-yields": "off",
@@ -363,14 +365,14 @@ module.exports = {
                 trailingUnderscore: "forbid",
             },
         ],
-        // Typescript ensures that constructor functions are only called with new, so the convention is not necessary.
+        // TypeScript ensures that constructor functions are only called with new, so the convention is not necessary.
         "new-cap": "off",
         "newline-per-chained-call": "off", // This rule seems too restrictive.
         // This isn't particularly helpful. For example, the runtime type implementing the Error interface will almost
         // always have a meaningful implementation for toString(), yet calls to toString() on that interface are all
         // flagged with this error.
         "@typescript-eslint/no-base-to-string": "off",
-        // Typescript already catches many of the bugs that this rule would because bitwise operators are not allowed
+        // TypeScript already catches many of the bugs that this rule would because bitwise operators are not allowed
         // for booleans.
         "no-bitwise": "off",
         "@typescript-eslint/no-confusing-void-expression": [
