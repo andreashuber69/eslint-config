@@ -7,6 +7,8 @@
     // The base sets importsNotUsedAsValues to "error" leading to a depreciation warning with TS >= 5.0. Since the new
     // verbatimModuleSyntax option does not seem to work with CommonJS modules, we can only ignore the warning for now.
     "ignoreDeprecations": "5.0",
+    // The base erroneously sets "node", see https://github.com/tsconfig/bases/issues/204
+    "moduleResolution": "node16",
     "noEmit": true
   },
   "include": [

@@ -431,7 +431,6 @@ module.exports = {
             },
         ],
         "no-ternary": "off",
-        "@typescript-eslint/no-type-alias": "off", // Does not make much sense.
         // Does not make sense for js code >= ES5 with no-global-assign and no-shadow-restricted-names turned on.
         "no-undefined": "off",
         "@typescript-eslint/no-unnecessary-condition": "off", // Flags expressions like `... || "Error"`.
