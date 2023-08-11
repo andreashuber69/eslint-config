@@ -313,26 +313,47 @@ module.exports = {
         "@typescript-eslint/member-ordering": [
             "error",
             {
+                // The aim of the ordering below is to allow humans reading the source code to get the required
+                // information as quickly as possible for the task at hand. Towards that end, the most important
+                // information should be near the top of the file. The further down one gets in the file the fewer
+                // people will be interested in the information that can be found there.
+                // Clearly, for just about any task, the public interface of a type will be most important. After that,
+                // some developers would want to understand the protected interface. Finally, only developers
+                // maintaining the code will be interested in the implementation details hidden in the private members.
+                // This is why all members are strictly stratified from highest to lowest accessibility.
+                // In a similar fashion, within a given accessibility block, members required for simple use cases
+                // should be listed before members for more complex ones. Members that do not require reasoning about
+                // object state (static members and constructors) are listed first followed by instance members.
+                // Moreover, a property (not matter whether implemented as a field or get/set methods) tends to be used
+                // more often than (possibly state-altering) methods.
+                // Finally, the order of members should be relatively stable and typically not change when the
+                // implementation changes. For example, whether a property is implemented with a field or get/set
+                // methods is an implementation detail, which is why fields and get/set methods can be mixed.
                 default: [
                     "signature",
 
-                    "public-static-field",
+                    ["public-static-field", "public-static-get", "public-static-set"],
                     "public-static-method",
-                    "public-instance-field",
                     "public-constructor",
+                    ["public-instance-field", "public-instance-get", "public-instance-set"],
                     "public-instance-method",
 
-                    "protected-static-field",
+                    ["protected-static-field", "protected-static-get", "protected-static-set"],
                     "protected-static-method",
-                    "protected-instance-field",
                     "protected-constructor",
+                    ["protected-instance-field", "protected-instance-get", "protected-instance-set"],
                     "protected-instance-method",
 
-                    "private-static-field",
+                    "static-initialization",
+                    ["private-static-field", "private-static-get", "private-static-set"],
+                    ["#private-static-field", "#private-static-get", "#private-static-set"],
                     "private-static-method",
-                    "private-instance-field",
+                    "#private-static-method",
                     "private-constructor",
+                    ["private-instance-field", "private-instance-get", "private-instance-set"],
+                    ["#private-instance-field", "#private-instance-get", "#private-instance-set"],
                     "private-instance-method",
+                    "#private-instance-method",
                 ],
             },
         ],
