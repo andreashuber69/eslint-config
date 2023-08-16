@@ -392,6 +392,19 @@ module.exports = {
                 leadingUnderscore: "forbid",
                 trailingUnderscore: "forbid",
             },
+            {
+                selector: [
+                    "interface",
+                    "typeAlias",
+                ],
+                // Types that function as interfaces are now allowed to have the popular I prefix. Unfortunately, this
+                // also allows for consecutive capitals in other places, e.g. interface ITargetID. Currently,
+                // naming-convention options do not seem to allow for optional prefixes and a prefix must be at least
+                // one character in length.
+                format: ["PascalCase"],
+                leadingUnderscore: "forbid",
+                trailingUnderscore: "forbid",
+            },
         ],
         // TypeScript ensures that constructor functions are only called with new, so the convention is not necessary.
         "new-cap": "off",
