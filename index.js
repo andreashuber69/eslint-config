@@ -66,6 +66,11 @@ module.exports = {
         ],
         // We want to use the most appropriate style for each property.
         "@typescript-eslint/class-literal-property-style": "off",
+        // Overrides of abstract methods occasionally don't reference this, for legitimate reasons. The rule would have
+        // to be selectively disabled for every instance. Of course, turning this off means that instance methods that
+        // could be made static are no longer flagged, but these are relatively minor (and easily detectable &
+        // correctable) warts compared to having to litter code with more eslint-disable comments.
+        "@typescript-eslint/class-methods-use-this": "off",
         "@typescript-eslint/comma-dangle": [
             "error",
             "always-multiline",
