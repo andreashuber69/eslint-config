@@ -40,7 +40,7 @@
   "peerDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "@typescript-eslint/parser": "^6.4.1",
-    "eslint": "^8.47.0",
+    "eslint": "^8.48.0",
     "eslint-import-resolver-typescript": "^3.6.0",
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-jsdoc": "^46.5.0",
@@ -51,7 +51,7 @@
   "devDependencies": {
     "@tsconfig/node-lts-strictest": "^18.12.1",
     "@types/eslint": "^8.44.2",
-    "@types/node": "^18.17.7",
+    "@types/node": "^18.17.11",
     "@types/node-fetch": "^2.6.4",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "@typescript-eslint/parser": "^6.4.1",
@@ -59,7 +59,7 @@
     "c8": "^8.0.1",
     "coveralls": "^3.1.1",
     "cspell": "^7.0.1",
-    "eslint": "^8.47.0",
+    "eslint": "^8.48.0",
     "eslint-import-resolver-typescript": "^3.6.0",
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-jsdoc": "^46.5.0",
@@ -67,9 +67,9 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-unicorn": "^48.0.1",
     "markdownlint-cli": "^0.35.0",
-    "node-fetch": "^2.6.13",
+    "node-fetch": "^2.7.0",
     "tsx": "^3.12.7",
-    "typescript": "^5.1.6",
+    "typescript": "^5.2.2",
     "vite": "^4.4.9"
   }
 }
