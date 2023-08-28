@@ -5,6 +5,7 @@
     "camelcase",
     "chunkname",
     "coldcard",
+    "dprint",
     "linebreak",
     "peerdeps",
     "pify",
