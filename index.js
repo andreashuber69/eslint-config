@@ -199,6 +199,25 @@ module.exports = {
             4,
             {
                 SwitchCase: 1,
+                ignoredNodes: [
+                    // The indent rule is broken and a fix is unlikely to appear anytime soon because eslint no longer
+                    // maintains formatting rules and recommends formatters like prettier instead, see
+                    // https://typescript-eslint.io/linting/troubleshooting/formatting. For an in-depth discussion
+                    // of the indent issues see https://github.com/typescript-eslint/typescript-eslint/issues/1824.
+                    // While prettier is an option for some projects, it clearly isn't for the majority, due to an
+                    // intentional lack of configurability. Using prettier leads to >95% of your code looking pretty
+                    // good while the rest looks questionable and in some rare cases downright ugly. dprint looks like
+                    // an option due to its better configurability but currently seems to lack the community support
+                    // that prettier has. Hopefully this will change soon, so that formatting can be automated with
+                    // a dedicated (and fast) tool, rather than eslint.
+                    // The following ignored nodes aim to disable the indent rule where it is broken most obviously,
+                    // thus allowing the developer to format these code parts as (s)he sees fit.
+                    "FunctionExpression[params]:has(Identifier[decorators])",
+                    "PropertyDefinition[decorators]",
+                    "TSIntersectionType",
+                    "TSTypeParameterInstantiation",
+                    "TSUnionType",
+                ],
             },
         ],
         "jsdoc/check-access": "warn",
