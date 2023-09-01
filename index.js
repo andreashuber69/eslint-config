@@ -261,7 +261,9 @@ module.exports = {
         "jsdoc/no-types": "warn",
         "jsdoc/no-undefined-types": "warn",
         "jsdoc/require-asterisk-prefix": "warn",
-        "jsdoc/require-description-complete-sentence": "warn",
+        // This interferes with documentation that uses HTML tags e.g. <ul>, <li>, etc., because the rule does not seem
+        // to recognize those tags and thus warns that the last tag of a paragraph should be followed by a period.
+        "jsdoc/require-description-complete-sentence": "off",
         "jsdoc/require-description": "warn",
         "jsdoc/require-example": "off",
         "jsdoc/require-file-overview": "off",
