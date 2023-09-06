@@ -323,6 +323,10 @@ module.exports = {
                 exceptAfterSingleLine: true,
             },
         ],
+        // Sometimes it makes more sense to use a couple of tiny classes instead of interfaces to describe some data
+        // structure. Since this rule only affects classes and cannot be extended to other types, it's best to turn this
+        // off and trust the developer to not overdo it.
+        "max-classes-per-file": "off",
         "max-len": [
             "error",
             {
