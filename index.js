@@ -283,10 +283,13 @@ module.exports = {
         // of "standard" phrases without any real value.
         "jsdoc/require-jsdoc": "off",
         "jsdoc/require-param-description": "warn",
+        // This is turned on so that documentation names are checked against code names. Unfortunately, it seems that
+        // we cannot just document some parameters. Either we document none or all.
         "jsdoc/require-param-name": "warn",
         // Parameter types in jsdoc would just duplicate the types already visible in the TypeScript code.
         "jsdoc/require-param-type": "off",
-        "jsdoc/require-param": "warn",
+        // In keeping with the general philosophy, it should not be necessary to document obvious parameters.
+        "jsdoc/require-param": "off",
         "jsdoc/require-property": "off",
         "jsdoc/require-property-description": "warn",
         "jsdoc/require-property-name": "warn",
