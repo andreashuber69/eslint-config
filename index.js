@@ -676,6 +676,9 @@ module.exports = {
             "error",
             "avoid",
         ],
+        // While generally a good idea, this rule creates a conflict with consistent-return for functions with an
+        // implicit return type that is a union of undefined and another type.
+        "unicorn/no-useless-undefined": "off",
     },
     settings: {
         // The following settings are taken from https://github.com/import-js/eslint-plugin-import#typescript and
