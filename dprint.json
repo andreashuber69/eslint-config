@@ -1,6 +1,7 @@
 {
   "typescript": {
-    "indentWidth": 4
+    "indentWidth": 4,
+    "quoteProps": "asNeeded"
   },
   "json": {
   },

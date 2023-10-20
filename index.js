@@ -54,7 +54,7 @@ module.exports = {
             },
         ],
         // Turned off in favor of @typescript-eslint/naming-convention.
-        "camelcase": "off",
+        camelcase: "off",
         "capitalized-comments": [
             "error",
             "always",
@@ -83,7 +83,7 @@ module.exports = {
             },
         ],
         "@typescript-eslint/consistent-type-definitions": "off", // We want to use both interfaces and types.
-        "eqeqeq": [
+        eqeqeq: [
             "error",
             "always",
         ],
@@ -614,7 +614,7 @@ module.exports = {
         "promise/valid-params": "error",
         "quote-props": [
             "error",
-            "consistent-as-needed",
+            "as-needed",
         ],
         "@typescript-eslint/restrict-template-expressions": "off", // The advantages are unclear.
         "@typescript-eslint/return-await": [
