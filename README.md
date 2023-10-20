@@ -62,7 +62,7 @@ your liking, see below.
 The configuration and the instructions below are designed to work out of the box for already setup simple **TypeScript**
 projects. More specifically, the project root folder must contain a
 [tsconfig.json](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) file. While not required, it is highly
-recommended to have your *tsconfig.json* extend from a strict configuration, e.g.
+recommended to have your _tsconfig.json_ extend from a strict configuration, e.g.
 [@tsconfig/node-lts-strictest](https://www.npmjs.com/package/@tsconfig/node-lts-strictest).
 
 ## Getting Started
@@ -88,7 +88,7 @@ older versions of npm, you can use the tool `install-peerdeps` as shown above or
 
 ### Configuration
 
-1. Create the new file *.eslintrc.cjs* in the root folder of your project, with the following contents:
+1. Create the new file _.eslintrc.cjs_ in the root folder of your project, with the following contents:
 
    ```js
    module.exports = {
@@ -100,7 +100,7 @@ older versions of npm, you can use the tool `install-peerdeps` as shown above or
        extends: ["@andreashuber69"],
        rules: {
            // Customize rules as you see fit
-       }
+       },
    };
    ```
 
@@ -111,15 +111,15 @@ older versions of npm, you can use the tool `install-peerdeps` as shown above or
    npx eslint --print-config .eslintrc.cjs >eslint-config.json
    ```
 
-   ... and inspect *eslint-config.json*. Note that for a typical TS project you want to parse according to the latest
+   ... and inspect _eslint-config.json_. Note that for a typical TS project you want to parse according to the latest
    standard because the **TypeScript** compiler will downlevel language features depending on the `target` setting in
-   *tsconfig.json*.
+   _tsconfig.json_.
 
-2. Add the following line to the `scripts` section of your *package.json* (assuming your code resides in the *src*
+2. Add the following line to the `scripts` section of your _package.json_ (assuming your code resides in the _src_
    folder):
 
    ```json
-       "lint": "eslint --ext .js,.ts --report-unused-disable-directives './src'",
+   "lint": "eslint --ext .js,.ts --report-unused-disable-directives './src'",
    ```
 
 ### Lint

@@ -62,8 +62,10 @@ describe(`${Object.keys(allRules).length} rules`, () => {
 const getActiveCount = (rules: Record<string, unknown>) => Object.values(rules).filter((v) => v !== "off").length;
 
 const showStats = async () => {
-    const recommendedCount =
-        getActiveCount({ ...await getRecommendedEslintRules(), ...recommendedTypescriptEslintRules });
+    const recommendedCount = getActiveCount({
+        ...await getRecommendedEslintRules(),
+        ...recommendedTypescriptEslintRules,
+    });
 
     console.log(`eslint & @typescript-eslint recommended active rules: ${recommendedCount}`);
     const ourCount = getActiveCount({ ...allRules, ...ourChanges });
