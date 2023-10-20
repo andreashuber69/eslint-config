@@ -1,4 +1,5 @@
 {
+  "incremental": false,
   "typescript": {
     "arrowFunction.useParentheses": "force",
     "enumDeclaration.memberSpacing": "newLine",
