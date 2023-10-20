@@ -1,7 +1,13 @@
 {
   "typescript": {
+    "arrowFunction.useParentheses": "force",
+    "enumDeclaration.memberSpacing": "newLine",
+    "functionExpression.spaceAfterFunctionKeyword": "true",
     "indentWidth": 4,
-    "quoteProps": "asNeeded"
+    "operatorPosition": "sameLine",
+    "quoteProps": "asNeeded",
+    "singleBodyPosition": "nextLine",
+    "useBraces": "always"
   },
   "json": {
   },
