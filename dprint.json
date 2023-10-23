@@ -4,6 +4,7 @@
     "arrowFunction.useParentheses": "force",
     "enumDeclaration.memberSpacing": "newLine",
     "functionExpression.spaceAfterFunctionKeyword": "true",
+    "module.sortImportDeclarations": "maintain",
     "indentWidth": 4,
     "operatorPosition": "sameLine",
     "quoteProps": "asNeeded",
