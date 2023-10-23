@@ -341,7 +341,13 @@ module.exports = {
             1000,
         ],
         "max-lines-per-function": "off", // Does not make much sense for describe-style tests.
-        "max-params": "off",
+        "@typescript-eslint/max-params": [
+            "error",
+            {
+                // This is probably too high for production code, but for tests it is sometimes quite handy...
+                max: 5,
+            },
+        ],
         "max-statements": "off", // Does not make much sense for describe-style tests.
         "@typescript-eslint/member-ordering": [
             "error",
