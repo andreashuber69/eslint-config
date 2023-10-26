@@ -432,6 +432,15 @@ module.exports = {
                 trailingUnderscore: "forbid",
             },
             {
+                selector: ["import"],
+                format: [
+                    "StrictPascalCase",
+                    "strictCamelCase",
+                ],
+                leadingUnderscore: "forbid",
+                trailingUnderscore: "forbid",
+            },
+            {
                 selector: [
                     "interface",
                     "typeAlias",
