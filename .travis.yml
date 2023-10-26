@@ -3,7 +3,7 @@ os: linux
 dist: focal
 language: node_js
 node_js:
-- 18
+- lts/*
 
 script:
 - npm run ci
@@ -13,6 +13,7 @@ after_script:
 
 deploy:
   provider: npm
+  edge: true
   email:
     secure: IEn1OCyjNVNyCriX5mVZVCkLYpGAzcenMSGbxMZyhUsNTRr4btDHEJQIU588IcYJBO460QBUPO8QzVBCCma1//szpvtbXXdXCizB3/gFHKJSxOyvgSUN2FkoaKbu8IWmpiytu2YafHKxbBpwTTxujew7jupClZhiT1PsXRFpQnUGnzwKp06N81G6TFhNkdOkPCk1DzzytLSXhakeUEuJBgMDpD1qIHe9DYqP4TibTxdJa69BbdzUBt8Qw8+cjD2AvUfb5GGkbSV4ekuBHWzBqld96uNeKoMeJ5AZCfUEA4h20GvLjLwmh7cichggoJX4cdu8EYYKwnt5jogyIdFspa8xrtYRYtXG74oBs9N/QX2mzSvT8Qj7/ShMgHd6mCjfIFGxfmpGoPRFVJWgP61MqyAjRtA5qkwvf/0HazNPQShp7eFoqTjcbO8tmK07AXQHAn/JjEz3Dl/D1NayFHZGk63VxPn8I7ttf1lC0jV+viLrYCNclvxVCXXML8iHb6s5sHvOKeKlr0kUEKyaLMwqKAVpKWF0rE0GeizqYLsmbV+OdUUirbXgP3VujqpqlE6NIIGsIoOAgGpa78L1/RDYAThyCpNnx56CLGF2MCylSOUSIDiNe+qb46KrtlwpDJ4krp17Ot8+Y088GNdZklYEaHDv0sPthcULXOqyT5+PeCs=
   api_token:
