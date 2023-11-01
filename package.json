@@ -11,7 +11,7 @@
   "homepage": "https://github.com/andreashuber69/eslint-config/blob/master/README.md#----andreashuber69eslint-config",
   "repository": {
     "type": "git",
-    "url": "https://github.com/andreashuber69/eslint-config.git"
+    "url": "git+https://github.com/andreashuber69/eslint-config.git"
   },
   "bugs": {
     "url": "https://github.com/andreashuber69/eslint-config/issues"
