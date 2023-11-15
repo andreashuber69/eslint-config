@@ -8,10 +8,8 @@ const getAllEslintRules = () => {
 
     // See https://github.com/eslint/eslint/blob/main/conf/eslint-all.js
     // eslint-disable-next-line import/no-deprecated
-    for (const [ruleId, rule] of builtinRules.entries()) {
-        if (!rule.meta?.deprecated) {
-            result[ruleId] = "error";
-        }
+    for (const ruleId of builtinRules.keys()) {
+        result[ruleId] = "error";
     }
 
     return result;
