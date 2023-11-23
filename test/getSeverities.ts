@@ -1,17 +1,15 @@
 // https://github.com/andreashuber69/eslint-config/blob/master/README.md#----andreashuber69eslint-config
-import type { TSESLint } from "@typescript-eslint/utils";
-
-const getRuleLevel = (entry: unknown) => {
+const getRuleLevel = (entry: unknown): unknown => {
     switch (typeof entry) {
         case "number":
         case "string":
             return entry;
         default:
-            return Array.isArray(entry) && entry.length ? entry[0] : "error";
+            return Array.isArray(entry) && entry.length > 0 ? entry[0] : "error";
     }
 };
 
-const getSeverityString = (entry: unknown): TSESLint.Linter.SeverityString => {
+const getSeverityString = (entry: unknown): unknown => {
     const ruleLevel = getRuleLevel(entry);
 
     switch (ruleLevel) {

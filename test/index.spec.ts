@@ -9,15 +9,22 @@ import { allImportRules } from "./allImportRules";
 import { allJsdocRules } from "./allJsdocRules";
 import { allPreferArrowRules } from "./allPreferArrowRules";
 import { allPromiseRules } from "./allPromiseRules";
-import { allUnicornRules } from "./allUnicornRules";
-import { allEslintRules, getRecommendedEslintRules } from "./eslintRules";
-import { allTypescriptEslintRules, recommendedTypescriptEslintRules } from "./typescriptEslintRules";
+import { getActiveRules } from "./getActiveRules";
 
-const allRulesInConfig = { ...allEslintRules, ...allTypescriptEslintRules, ...allUnicornRules };
+const getAllRulesInConfig = async () => await getActiveRules({
+    extends: [
+        "eslint:all",
+        "plugin:@typescript-eslint/all",
+        "plugin:@stylistic/disable-legacy",
+        "plugin:@stylistic/all-extends",
+        "plugin:unicorn/all",
+    ],
+});
+
 const allOtherRules = { ...allImportRules, ...allJsdocRules, ...allPreferArrowRules, ...allPromiseRules };
 
 const shouldRuleBeInConfig = ([id]: [string, ...unknown[]]) =>
-    id.includes("@typescript-eslint/") || id.includes("unicorn/") || !id.includes("/");
+    id.includes("@typescript-eslint/") || id.includes("@stylistic/") || id.includes("unicorn/") || !id.includes("/");
 
 const hasAllKeys = (original: Record<string, unknown>, tester: Record<string, unknown>, message: string) => {
     for (const id of Object.keys(original)) {
@@ -25,50 +32,61 @@ const hasAllKeys = (original: Record<string, unknown>, tester: Record<string, un
     }
 };
 
-describe("index.js", () => {
-    describe("should change the defaults of rules listed in 'all' configs", () => {
-        const ourRuleInConfigChanges = Object.entries(ourChanges).filter((e) => shouldRuleBeInConfig(e));
+// eslint-disable-next-line promise/always-return
+getAllRulesInConfig().then((allRulesInConfig) => {
+    describe("index.js", () => {
+        describe("should change the defaults of rules listed in 'all' configs", () => {
+            const ourRuleInConfigChanges = Object.entries(ourChanges).filter((e) => shouldRuleBeInConfig(e));
 
-        // Since ../index.js extends from the "eslint:all", "plugin:@typescript-eslint/all" and "plugin:unicorn/all"
-        // configs, we need to test that the rule ids in ourChanges are listed in allRulesInConfig and that we apply
-        // severity/options that are different.
-        for (const [id, ourEntry] of ourRuleInConfigChanges) {
-            it(id, () => {
-                const entry = allRulesInConfig[id];
-                assert(Boolean(entry), `${id} is not in the list of extended from rules.`);
-                assert(!isDeepStrictEqual(ourEntry, entry), `${id} does not change the default.`);
-            });
-        }
+            // Since ../index.js extends from the "eslint:all", "plugin:@typescript-eslint/all",
+            // "plugin:@stylistic/all-extends" and "plugin:unicorn/all" configs, we need to test that the rule ids in
+            // ourChanges are listed in allRulesInConfig and that we apply severity/options that are different.
+            for (const [id, ourEntry] of ourRuleInConfigChanges) {
+                it(id, () => {
+                    const entry = allRulesInConfig[id];
+                    assert(Boolean(entry), `${id} is not in the list of extended from rules.`);
+                    assert(!isDeepStrictEqual(ourEntry, entry), `${id} does not change the default.`);
+                });
+            }
+        });
+
+        const ourOtherChanges = Object.fromEntries(Object.entries(ourChanges).filter((e) => !shouldRuleBeInConfig(e)));
+
+        // ../index.js doesn't extend from any config related to allOtherRules. For these we test that *all* rule ids
+        // are listed in ourChanges and vice versa. While we would not need to list rules that we turn off, doing so
+        // ensures that we will be alerted when rules are added in subsequent versions. We can then consciously either
+        // turn these off or set the severity/options we need.
+        describe(
+            "should list all other rules",
+            () => hasAllKeys(allOtherRules, ourOtherChanges, "is not in index.js."),
+        );
+
+        describe(
+            "should not list unknown rules",
+            () => hasAllKeys(ourOtherChanges, allOtherRules, "is an unknown rule."),
+        );
     });
 
-    const ourOtherChanges = Object.fromEntries(Object.entries(ourChanges).filter((e) => !shouldRuleBeInConfig(e)));
+    const allRules = { ...allRulesInConfig, ...allOtherRules };
 
-    // ../index.js doesn't extend from any config related to allOtherRules. For these we test that *all* rule ids
-    // are listed in ourChanges and vice versa. While we would not need to list rules that we turn off, doing so ensures
-    // that we will be alerted when rules are added in subsequent versions. We can then consciously either turn these
-    // off or set the severity/options we need.
-    describe("should list all other rules", () => hasAllKeys(allOtherRules, ourOtherChanges, "is not in index.js."));
-    describe("should not list unknown rules", () => hasAllKeys(ourOtherChanges, allOtherRules, "is an unknown rule."));
-});
-
-const allRules = { ...allRulesInConfig, ...allOtherRules };
-
-describe(`${Object.keys(allRules).length} rules`, () => {
-    it("Default severity should be 'off' or 'error', without options", () => {
-        assert(Object.values(allRules).filter((v) => v !== "off" && v !== "error").length === 0);
+    describe(`${Object.keys(allRules).length} rules`, () => {
+        it("Default severity should be 'off' or 'error', without options", () => {
+            assert(Object.values(allRules).filter((v) => v !== "off" && v !== "error").length === 0);
+        });
     });
-});
-
-const getActiveCount = (rules: Record<string, unknown>) => Object.values(rules).filter((v) => v !== "off").length;
+// eslint-disable-next-line unicorn/prefer-top-level-await
+}).catch((error) => console.error(error));
 
 const showStats = async () => {
-    const recommendedCount = getActiveCount({
-        ...await getRecommendedEslintRules(),
-        ...recommendedTypescriptEslintRules,
-    });
+    const recommendedCount = Object.keys(await getActiveRules({
+        extends: [
+            "eslint:recommended",
+            "plugin:@typescript-eslint/recommended",
+        ],
+    })).length;
 
     console.log(`eslint & @typescript-eslint recommended active rules: ${recommendedCount}`);
-    const ourCount = getActiveCount({ ...allRules, ...ourChanges });
+    const ourCount = Object.keys(await getActiveRules()).length;
     console.log(`@andreashuber/eslint-config active rules: ${ourCount}`);
 };
 
