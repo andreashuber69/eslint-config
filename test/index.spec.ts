@@ -11,7 +11,7 @@ import { allPreferArrowRules } from "./allPreferArrowRules";
 import { allPromiseRules } from "./allPromiseRules";
 import { getActiveRules } from "./getActiveRules";
 
-const getAllRulesInConfig = async () => await getActiveRules({
+const getAllConfigsRules = async () => await getActiveRules({
     extends: [
         "eslint:all",
         "plugin:@typescript-eslint/all",
@@ -23,7 +23,7 @@ const getAllRulesInConfig = async () => await getActiveRules({
 
 const allOtherRules = { ...allImportRules, ...allJsdocRules, ...allPreferArrowRules, ...allPromiseRules };
 
-const shouldRuleBeInConfig = ([id]: [string, ...unknown[]]) =>
+const isInAllConfigs = ([id]: [string, ...unknown[]]) =>
     id.includes("@typescript-eslint/") || id.includes("@stylistic/") || id.includes("unicorn/") || !id.includes("/");
 
 const hasAllKeys = (original: Record<string, unknown>, tester: Record<string, unknown>, message: string) => {
@@ -33,24 +33,22 @@ const hasAllKeys = (original: Record<string, unknown>, tester: Record<string, un
 };
 
 // eslint-disable-next-line promise/always-return
-getAllRulesInConfig().then((allRulesInConfig) => {
+getAllConfigsRules().then((allConfigsRules) => {
     describe("index.js", () => {
         describe("should change the defaults of rules listed in 'all' configs", () => {
-            const ourRuleInConfigChanges = Object.entries(ourChanges).filter((e) => shouldRuleBeInConfig(e));
-
             // Since ../index.js extends from the "eslint:all", "plugin:@typescript-eslint/all",
             // "plugin:@stylistic/all-extends" and "plugin:unicorn/all" configs, we need to test that the rule ids in
             // ourChanges are listed in allRulesInConfig and that we apply severity/options that are different.
-            for (const [id, ourEntry] of ourRuleInConfigChanges) {
+            for (const [id, ourEntry] of Object.entries(ourChanges).filter((e) => isInAllConfigs(e))) {
                 it(id, () => {
-                    const entry = allRulesInConfig[id];
+                    const entry = allConfigsRules[id];
                     assert(Boolean(entry), `${id} is not in the list of extended from rules.`);
                     assert(!isDeepStrictEqual(ourEntry, entry), `${id} does not change the default.`);
                 });
             }
         });
 
-        const ourOtherChanges = Object.fromEntries(Object.entries(ourChanges).filter((e) => !shouldRuleBeInConfig(e)));
+        const ourOtherChanges = Object.fromEntries(Object.entries(ourChanges).filter((e) => !isInAllConfigs(e)));
 
         // ../index.js doesn't extend from any config related to allOtherRules. For these we test that *all* rule ids
         // are listed in ourChanges and vice versa. While we would not need to list rules that we turn off, doing so
@@ -67,7 +65,7 @@ getAllRulesInConfig().then((allRulesInConfig) => {
         );
     });
 
-    const allRules = { ...allRulesInConfig, ...allOtherRules };
+    const allRules = { ...allConfigsRules, ...allOtherRules };
 
     describe(`${Object.keys(allRules).length} rules`, () => {
         it("Default severity should be 'off' or 'error', without options", () => {
