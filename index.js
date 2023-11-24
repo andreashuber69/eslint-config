@@ -492,6 +492,9 @@ module.exports = {
         "unicorn/no-keyword-prefix": "off",
         // The suggested alternative Array.from does not seem to be available for typed arrays.
         "unicorn/no-new-array": "off",
+        // While generally a good idea, this rule creates a conflict with consistent-return for functions with an
+        // implicit return type that is a union of undefined and another type.
+        "unicorn/no-useless-undefined": "off",
         "unicorn/prefer-module": "off", // Not all projects can afford to use ESM.
         "unicorn/prevent-abbreviations": "off", // See id-length, sometimes one character is enough for an identifier.
         // The built-in and turned on no-case-declarations renders braces for cases useless.
@@ -499,9 +502,6 @@ module.exports = {
             "error",
             "avoid",
         ],
-        // While generally a good idea, this rule creates a conflict with consistent-return for functions with an
-        // implicit return type that is a union of undefined and another type.
-        "unicorn/no-useless-undefined": "off",
         "import/consistent-type-specifier-style": [
             "error",
             "prefer-top-level",
@@ -549,8 +549,8 @@ module.exports = {
         "import/no-import-module-exports": "error",
         "import/no-internal-modules": "off", // Seems too restrictive.
         "import/no-mutable-exports": "error",
-        "import/no-named-as-default-member": "error",
         "import/no-named-as-default": "error",
+        "import/no-named-as-default-member": "error",
         "import/no-named-default": "error",
         "import/no-named-export": "off", // Does not make sense.
         "import/no-namespace": "error",
@@ -637,23 +637,23 @@ module.exports = {
         // For what code elements docs are necessary must be the decision of the developer. Forcing docs leads to lots
         // of "standard" phrases without any real value.
         "jsdoc/require-jsdoc": "off",
+        // In keeping with the general philosophy, it should not be necessary to document obvious parameters.
+        "jsdoc/require-param": "off",
         "jsdoc/require-param-description": "warn",
         // This is turned on so that documentation names are checked against code names. Unfortunately, it seems that
         // we cannot just document some parameters. Either we document none or all.
         "jsdoc/require-param-name": "warn",
         // Parameter types in jsdoc would just duplicate the types already visible in the TypeScript code.
         "jsdoc/require-param-type": "off",
-        // In keeping with the general philosophy, it should not be necessary to document obvious parameters.
-        "jsdoc/require-param": "off",
         "jsdoc/require-property": "off",
         "jsdoc/require-property-description": "warn",
         "jsdoc/require-property-name": "warn",
         "jsdoc/require-property-type": "off",
+        "jsdoc/require-returns": "off",
         "jsdoc/require-returns-check": "warn",
         "jsdoc/require-returns-description": "warn",
         // Return types in jsdoc would just duplicate the types already visible in the TypeScript code.
         "jsdoc/require-returns-type": "off",
-        "jsdoc/require-returns": "off",
         "jsdoc/require-throws": "off",
         "jsdoc/require-yields": "off",
         "jsdoc/require-yields-check": "warn",
