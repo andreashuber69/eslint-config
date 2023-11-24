@@ -39,151 +39,6 @@ module.exports = {
     ],
     root: true,
     rules: {
-        "@stylistic/array-element-newline": [
-            "error",
-            "consistent",
-        ],
-        "@stylistic/brace-style": [
-            "error",
-            "1tbs",
-            {
-                allowSingleLine: true,
-            },
-        ],
-        "@stylistic/comma-dangle": [
-            "error",
-            "always-multiline",
-        ],
-        "@stylistic/function-call-argument-newline": [
-            "error",
-            "consistent",
-        ],
-        "@stylistic/function-paren-newline": [
-            "error",
-            "multiline-arguments",
-        ],
-        // For short arrows "beside" is best. For longer ones "below" makes more sense.
-        "@stylistic/implicit-arrow-linebreak": "off",
-        "@stylistic/indent": [
-            "error",
-            4,
-            {
-                SwitchCase: 1,
-                ignoredNodes: [
-                    // The indent rule is broken, see https://github.com/eslint-stylistic/eslint-stylistic/issues/126.
-                    // The following ignored nodes aim to disable the indent rule where it is broken most obviously,
-                    // thus allowing the developer to format these code parts as (s)he sees fit.
-                    "FunctionExpression[params]:has(Identifier[decorators])",
-                    "PropertyDefinition[decorators]",
-                    "TSIntersectionType",
-                    "TSTypeParameterInstantiation",
-                    "TSUnionType",
-                ],
-            },
-        ],
-        "@stylistic/lines-around-comment": [
-            "error",
-            {
-                allowArrayStart: true,
-                allowBlockStart: true,
-                allowEnumStart: true,
-                allowInterfaceStart: true,
-                allowModuleStart: true,
-                allowObjectStart: true,
-                allowTypeStart: true,
-            },
-        ],
-        "@stylistic/lines-between-class-members": [
-            "error",
-            "always",
-            {
-                exceptAfterSingleLine: true,
-            },
-        ],
-        "@stylistic/max-len": [
-            "error",
-            {
-                code: 120,
-            },
-        ],
-        "@stylistic/multiline-ternary": [
-            "error",
-            "always-multiline",
-        ],
-        "@stylistic/newline-per-chained-call": "off", // This rule seems too restrictive.
-        "@stylistic/no-extra-parens": "off", // Turned off in favor of no-mixed-operators.
-        "@stylistic/object-curly-spacing": [
-            "error",
-            "always",
-        ],
-        "@stylistic/object-property-newline": [
-            "error",
-            {
-                allowAllPropertiesOnSameLine: true,
-            },
-        ],
-        "@stylistic/operator-linebreak": [
-            "error",
-            "after",
-        ],
-        "@stylistic/padded-blocks": [
-            "error",
-            "never",
-        ],
-        "@stylistic/padding-line-between-statements": [
-            "error",
-            {
-                blankLine: "always",
-                prev: "*",
-                next: [
-                    "class",
-                    "export",
-                    "interface",
-                    "multiline-block-like",
-                    "multiline-const",
-                    "multiline-expression",
-                    "multiline-let",
-                    "type",
-                ],
-            },
-            {
-                blankLine: "always",
-                prev: [
-                    "class",
-                    "export",
-                    "interface",
-                    "multiline-block-like",
-                    "multiline-const",
-                    "multiline-expression",
-                    "multiline-let",
-                    "type",
-                ],
-                next: "*",
-            },
-        ],
-        "@stylistic/quote-props": [
-            "error",
-            "as-needed",
-        ],
-        "@stylistic/space-before-function-paren": [
-            "error",
-            {
-                anonymous: "never",
-                named: "never",
-                asyncArrow: "always",
-            },
-        ],
-        "@stylistic/space-in-parens": [
-            "error",
-            "never",
-        ],
-        "@stylistic/spaced-comment": [
-            "error",
-            "always",
-            {
-                exceptions: ["/"],
-            },
-        ],
         "@typescript-eslint/array-type": [
             "error",
             {
@@ -615,6 +470,151 @@ module.exports = {
             },
         ],
         "@typescript-eslint/prefer-enum-initializers": "off", // Implicitly defined values should be common knowledge.
+        "@stylistic/array-element-newline": [
+            "error",
+            "consistent",
+        ],
+        "@stylistic/brace-style": [
+            "error",
+            "1tbs",
+            {
+                allowSingleLine: true,
+            },
+        ],
+        "@stylistic/comma-dangle": [
+            "error",
+            "always-multiline",
+        ],
+        "@stylistic/function-call-argument-newline": [
+            "error",
+            "consistent",
+        ],
+        "@stylistic/function-paren-newline": [
+            "error",
+            "multiline-arguments",
+        ],
+        // For short arrows "beside" is best. For longer ones "below" makes more sense.
+        "@stylistic/implicit-arrow-linebreak": "off",
+        "@stylistic/indent": [
+            "error",
+            4,
+            {
+                SwitchCase: 1,
+                ignoredNodes: [
+                    // The indent rule is broken, see https://github.com/eslint-stylistic/eslint-stylistic/issues/126.
+                    // The following ignored nodes aim to disable the indent rule where it is broken most obviously,
+                    // thus allowing the developer to format these code parts as (s)he sees fit.
+                    "FunctionExpression[params]:has(Identifier[decorators])",
+                    "PropertyDefinition[decorators]",
+                    "TSIntersectionType",
+                    "TSTypeParameterInstantiation",
+                    "TSUnionType",
+                ],
+            },
+        ],
+        "@stylistic/lines-around-comment": [
+            "error",
+            {
+                allowArrayStart: true,
+                allowBlockStart: true,
+                allowEnumStart: true,
+                allowInterfaceStart: true,
+                allowModuleStart: true,
+                allowObjectStart: true,
+                allowTypeStart: true,
+            },
+        ],
+        "@stylistic/lines-between-class-members": [
+            "error",
+            "always",
+            {
+                exceptAfterSingleLine: true,
+            },
+        ],
+        "@stylistic/max-len": [
+            "error",
+            {
+                code: 120,
+            },
+        ],
+        "@stylistic/multiline-ternary": [
+            "error",
+            "always-multiline",
+        ],
+        "@stylistic/newline-per-chained-call": "off", // This rule seems too restrictive.
+        "@stylistic/no-extra-parens": "off", // Turned off in favor of no-mixed-operators.
+        "@stylistic/object-curly-spacing": [
+            "error",
+            "always",
+        ],
+        "@stylistic/object-property-newline": [
+            "error",
+            {
+                allowAllPropertiesOnSameLine: true,
+            },
+        ],
+        "@stylistic/operator-linebreak": [
+            "error",
+            "after",
+        ],
+        "@stylistic/padded-blocks": [
+            "error",
+            "never",
+        ],
+        "@stylistic/padding-line-between-statements": [
+            "error",
+            {
+                blankLine: "always",
+                prev: "*",
+                next: [
+                    "class",
+                    "export",
+                    "interface",
+                    "multiline-block-like",
+                    "multiline-const",
+                    "multiline-expression",
+                    "multiline-let",
+                    "type",
+                ],
+            },
+            {
+                blankLine: "always",
+                prev: [
+                    "class",
+                    "export",
+                    "interface",
+                    "multiline-block-like",
+                    "multiline-const",
+                    "multiline-expression",
+                    "multiline-let",
+                    "type",
+                ],
+                next: "*",
+            },
+        ],
+        "@stylistic/quote-props": [
+            "error",
+            "as-needed",
+        ],
+        "@stylistic/space-before-function-paren": [
+            "error",
+            {
+                anonymous: "never",
+                named: "never",
+                asyncArrow: "always",
+            },
+        ],
+        "@stylistic/space-in-parens": [
+            "error",
+            "never",
+        ],
+        "@stylistic/spaced-comment": [
+            "error",
+            "always",
+            {
+                exceptions: ["/"],
+            },
+        ],
         "prefer-arrow/prefer-arrow-functions": [
             "error",
             {
