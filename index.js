@@ -319,6 +319,17 @@ module.exports = {
             },
         ],
         "@typescript-eslint/prefer-enum-initializers": "off", // Implicitly defined values should be common knowledge.
+        // Unrealistic to enforce this in just about any codebase without lots of exceptions.
+        "@typescript-eslint/prefer-readonly-parameter-types": "off",
+        "@typescript-eslint/restrict-template-expressions": "off", // The advantages are unclear.
+        "@typescript-eslint/return-await": [
+            "error",
+            "always",
+        ],
+        "@typescript-eslint/strict-boolean-expressions": "off", // Takes away too much expressive power.
+        // Value is questionable, see
+        // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/typedef.md.
+        "@typescript-eslint/typedef": "off",
         "@stylistic/array-element-newline": [
             "error",
             "consistent",
@@ -658,8 +669,6 @@ module.exports = {
                 classPropertiesAllowed: false,
             },
         ],
-        // Unrealistic to enforce this in just about any codebase without lots of exceptions.
-        "@typescript-eslint/prefer-readonly-parameter-types": "off",
         "promise/always-return": "error",
         // Promises aren't that hard to create manually, so it seems dubious to require promisify or pify.
         "promise/avoid-new": "off",
@@ -678,15 +687,6 @@ module.exports = {
         "promise/prefer-await-to-callbacks": "off",
         "promise/prefer-await-to-then": "error",
         "promise/valid-params": "error",
-        "@typescript-eslint/restrict-template-expressions": "off", // The advantages are unclear.
-        "@typescript-eslint/return-await": [
-            "error",
-            "always",
-        ],
-        "@typescript-eslint/strict-boolean-expressions": "off", // Takes away too much expressive power.
-        // Value is questionable, see
-        // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/typedef.md.
-        "@typescript-eslint/typedef": "off",
     },
     settings: {
         // The following settings are taken from https://github.com/import-js/eslint-plugin-import#typescript and
