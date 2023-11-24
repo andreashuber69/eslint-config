@@ -43,17 +43,151 @@ module.exports = {
             "error",
             "consistent",
         ],
-        "@typescript-eslint/array-type": [
-            "error",
-            {
-                default: "array-simple",
-            },
-        ],
         "@stylistic/brace-style": [
             "error",
             "1tbs",
             {
                 allowSingleLine: true,
+            },
+        ],
+        "@stylistic/comma-dangle": [
+            "error",
+            "always-multiline",
+        ],
+        "@stylistic/function-call-argument-newline": [
+            "error",
+            "consistent",
+        ],
+        "@stylistic/function-paren-newline": [
+            "error",
+            "multiline-arguments",
+        ],
+        // For short arrows "beside" is best. For longer ones "below" makes more sense.
+        "@stylistic/implicit-arrow-linebreak": "off",
+        "@stylistic/indent": [
+            "error",
+            4,
+            {
+                SwitchCase: 1,
+                ignoredNodes: [
+                    // The indent rule is broken, see https://github.com/eslint-stylistic/eslint-stylistic/issues/126.
+                    // The following ignored nodes aim to disable the indent rule where it is broken most obviously,
+                    // thus allowing the developer to format these code parts as (s)he sees fit.
+                    "FunctionExpression[params]:has(Identifier[decorators])",
+                    "PropertyDefinition[decorators]",
+                    "TSIntersectionType",
+                    "TSTypeParameterInstantiation",
+                    "TSUnionType",
+                ],
+            },
+        ],
+        "@stylistic/lines-around-comment": [
+            "error",
+            {
+                allowArrayStart: true,
+                allowBlockStart: true,
+                allowEnumStart: true,
+                allowInterfaceStart: true,
+                allowModuleStart: true,
+                allowObjectStart: true,
+                allowTypeStart: true,
+            },
+        ],
+        "@stylistic/lines-between-class-members": [
+            "error",
+            "always",
+            {
+                exceptAfterSingleLine: true,
+            },
+        ],
+        "@stylistic/max-len": [
+            "error",
+            {
+                code: 120,
+            },
+        ],
+        "@stylistic/multiline-ternary": [
+            "error",
+            "always-multiline",
+        ],
+        "@stylistic/newline-per-chained-call": "off", // This rule seems too restrictive.
+        "@stylistic/no-extra-parens": "off", // Turned off in favor of no-mixed-operators.
+        "@stylistic/object-curly-spacing": [
+            "error",
+            "always",
+        ],
+        "@stylistic/object-property-newline": [
+            "error",
+            {
+                allowAllPropertiesOnSameLine: true,
+            },
+        ],
+        "@stylistic/operator-linebreak": [
+            "error",
+            "after",
+        ],
+        "@stylistic/padded-blocks": [
+            "error",
+            "never",
+        ],
+        "@stylistic/padding-line-between-statements": [
+            "error",
+            {
+                blankLine: "always",
+                prev: "*",
+                next: [
+                    "class",
+                    "export",
+                    "interface",
+                    "multiline-block-like",
+                    "multiline-const",
+                    "multiline-expression",
+                    "multiline-let",
+                    "type",
+                ],
+            },
+            {
+                blankLine: "always",
+                prev: [
+                    "class",
+                    "export",
+                    "interface",
+                    "multiline-block-like",
+                    "multiline-const",
+                    "multiline-expression",
+                    "multiline-let",
+                    "type",
+                ],
+                next: "*",
+            },
+        ],
+        "@stylistic/quote-props": [
+            "error",
+            "as-needed",
+        ],
+        "@stylistic/space-before-function-paren": [
+            "error",
+            {
+                anonymous: "never",
+                named: "never",
+                asyncArrow: "always",
+            },
+        ],
+        "@stylistic/space-in-parens": [
+            "error",
+            "never",
+        ],
+        "@stylistic/spaced-comment": [
+            "error",
+            "always",
+            {
+                exceptions: ["/"],
+            },
+        ],
+        "@typescript-eslint/array-type": [
+            "error",
+            {
+                default: "array-simple",
             },
         ],
         // Turned off in favor of @typescript-eslint/naming-convention.
@@ -74,10 +208,6 @@ module.exports = {
         // could be made static are no longer flagged, but these are relatively minor (and easily detectable &
         // correctable) warts compared to having to litter code with more eslint-disable comments.
         "@typescript-eslint/class-methods-use-this": "off",
-        "@stylistic/comma-dangle": [
-            "error",
-            "always-multiline",
-        ],
         "@typescript-eslint/consistent-type-assertions": [
             "error",
             {
@@ -108,17 +238,7 @@ module.exports = {
             "error",
             "as-needed",
         ],
-        "@stylistic/function-call-argument-newline": [
-            "error",
-            "consistent",
-        ],
-        "@stylistic/function-paren-newline": [
-            "error",
-            "multiline-arguments",
-        ],
         "id-length": "off", // Seems too restrictive, sometimes one character is enough (e.g. for inline arrows).
-        // For short arrows "beside" is best. For longer ones "below" makes more sense.
-        "@stylistic/implicit-arrow-linebreak": "off",
         // Since the introduction of @typescript-eslint/no-import-type-side-effects, it makes much more sense to import
         // types with a top level type specifier and everything else in a second import.
         "import/consistent-type-specifier-style": [
@@ -197,32 +317,6 @@ module.exports = {
         // Would make sense if var declarations were allowed (to avoid different behavior in and outside of a loop).
         // Since var declarations are not allowed, we can safely turn this off.
         "@typescript-eslint/init-declarations": "off",
-        "@stylistic/indent": [
-            "error",
-            4,
-            {
-                SwitchCase: 1,
-                ignoredNodes: [
-                    // The indent rule is broken and a fix is unlikely to appear anytime soon because eslint no longer
-                    // maintains formatting rules and recommends formatters like prettier instead, see
-                    // https://typescript-eslint.io/linting/troubleshooting/formatting. For an in-depth discussion
-                    // of the indent issues see https://github.com/typescript-eslint/typescript-eslint/issues/1824.
-                    // While prettier is an option for some projects, it clearly isn't for the majority, due to an
-                    // intentional lack of configurability. Using prettier leads to >95% of your code looking pretty
-                    // good while the rest looks questionable and in some rare cases downright ugly. dprint looks like
-                    // an option due to its better configurability but currently seems to lack the community support
-                    // that prettier has. Hopefully this will change soon, so that formatting can be automated with
-                    // a dedicated (and fast) tool, rather than eslint.
-                    // The following ignored nodes aim to disable the indent rule where it is broken most obviously,
-                    // thus allowing the developer to format these code parts as (s)he sees fit.
-                    "FunctionExpression[params]:has(Identifier[decorators])",
-                    "PropertyDefinition[decorators]",
-                    "TSIntersectionType",
-                    "TSTypeParameterInstantiation",
-                    "TSUnionType",
-                ],
-            },
-        ],
         "jsdoc/check-access": "warn",
         "jsdoc/check-alignment": "warn",
         "jsdoc/check-examples": "off", // Currently turned off due to https://github.com/eslint/eslint/issues/14745.
@@ -310,35 +404,10 @@ module.exports = {
         "jsdoc/text-escaping": "off", // Requires project-specific configuration.
         "jsdoc/valid-types": "warn",
         "line-comment-position": "off", // We want to allow comments above and beside code.
-        "@stylistic/lines-around-comment": [
-            "error",
-            {
-                allowArrayStart: true,
-                allowBlockStart: true,
-                allowEnumStart: true,
-                allowInterfaceStart: true,
-                allowModuleStart: true,
-                allowObjectStart: true,
-                allowTypeStart: true,
-            },
-        ],
-        "@stylistic/lines-between-class-members": [
-            "error",
-            "always",
-            {
-                exceptAfterSingleLine: true,
-            },
-        ],
         // Sometimes it makes more sense to use a couple of tiny classes instead of interfaces to describe some data
         // structure. Since this rule only affects classes and cannot be extended to other types, it's best to turn this
         // off and trust the developer to not overdo it.
         "max-classes-per-file": "off",
-        "@stylistic/max-len": [
-            "error",
-            {
-                code: 120,
-            },
-        ],
         "max-lines": [
             "error",
             1000,
@@ -403,10 +472,6 @@ module.exports = {
             "error",
             "separate-lines",
         ],
-        "@stylistic/multiline-ternary": [
-            "error",
-            "always-multiline",
-        ],
         "@typescript-eslint/naming-convention": [
             "error",
             {
@@ -459,7 +524,6 @@ module.exports = {
         ],
         // TypeScript ensures that constructor functions are only called with new, so the convention is not necessary.
         "new-cap": "off",
-        "@stylistic/newline-per-chained-call": "off", // This rule seems too restrictive.
         // This isn't particularly helpful. For example, the runtime type implementing the Error interface will almost
         // always have a meaningful implementation for toString(), yet calls to toString() on that interface are all
         // flagged with this error.
@@ -490,7 +554,6 @@ module.exports = {
                 ],
             },
         ],
-        "@stylistic/no-extra-parens": "off", // Turned off in favor of no-mixed-operators.
         "@typescript-eslint/no-extraneous-class": [
             "error",
             {
@@ -499,8 +562,7 @@ module.exports = {
         ],
         "no-inline-comments": "off", // We want to allow inline comments.
         "@typescript-eslint/no-magic-numbers": "off", // Makes sense but appears to be too restrictive.
-        // Most of the problems with the ++ and -- operators are avoided because we've turned on
-        // @stylistic/semi.
+        // Most of the problems with the ++ and -- operators are avoided because @stylistic/semi is turned on
         "no-plusplus": "off",
         // The following would make promise construction much more verbose for avoiding a bug that is easily detected.
         "no-promise-executor-return": "off",
@@ -545,56 +607,7 @@ module.exports = {
         // We use void to avoid @typescript-eslint/no-confusing-void-expression.
         "no-void": "off",
         "no-warning-comments": "warn",
-        "@stylistic/object-curly-spacing": [
-            "error",
-            "always",
-        ],
-        "@stylistic/object-property-newline": [
-            "error",
-            {
-                allowAllPropertiesOnSameLine: true,
-            },
-        ],
         "one-var": "off", // Does not seem to work with const and let?
-        "@stylistic/operator-linebreak": [
-            "error",
-            "after",
-        ],
-        "@stylistic/padded-blocks": [
-            "error",
-            "never",
-        ],
-        "@stylistic/padding-line-between-statements": [
-            "error",
-            {
-                blankLine: "always",
-                prev: "*",
-                next: [
-                    "class",
-                    "export",
-                    "interface",
-                    "multiline-block-like",
-                    "multiline-const",
-                    "multiline-expression",
-                    "multiline-let",
-                    "type",
-                ],
-            },
-            {
-                blankLine: "always",
-                prev: [
-                    "class",
-                    "export",
-                    "interface",
-                    "multiline-block-like",
-                    "multiline-const",
-                    "multiline-expression",
-                    "multiline-let",
-                    "type",
-                ],
-                next: "*",
-            },
-        ],
         "@typescript-eslint/parameter-properties": [
             "error",
             {
@@ -630,10 +643,6 @@ module.exports = {
         "promise/prefer-await-to-callbacks": "off",
         "promise/prefer-await-to-then": "error",
         "promise/valid-params": "error",
-        "@stylistic/quote-props": [
-            "error",
-            "as-needed",
-        ],
         "@typescript-eslint/restrict-template-expressions": "off", // The advantages are unclear.
         "@typescript-eslint/return-await": [
             "error",
@@ -647,25 +656,6 @@ module.exports = {
             },
         ],
         "sort-keys": "off",
-        "@stylistic/space-before-function-paren": [
-            "error",
-            {
-                anonymous: "never",
-                named: "never",
-                asyncArrow: "always",
-            },
-        ],
-        "@stylistic/space-in-parens": [
-            "error",
-            "never",
-        ],
-        "@stylistic/spaced-comment": [
-            "error",
-            "always",
-            {
-                exceptions: ["/"],
-            },
-        ],
         "@typescript-eslint/strict-boolean-expressions": "off", // Takes away too much expressive power.
         // Value is questionable, see
         // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/typedef.md.
