@@ -146,195 +146,9 @@ module.exports = {
         "@typescript-eslint/explicit-function-return-type": "off",
         // Could make sense for larger projects with multiple developers, seems overkill for small projects.
         "@typescript-eslint/explicit-module-boundary-types": "off",
-        // The filename case should be the same for the code element and the file name. So, if the main export of a file
-        // is a class or a type, the filename should be in PascalCase, otherwise it should be camelCase.
-        "unicorn/filename-case": [
-            "error",
-            {
-                cases: {
-                    camelCase: true,
-                    pascalCase: true,
-                },
-            },
-        ],
-        "unicorn/no-array-reduce": "off", // Does not make much sense, reduce is unbeatable in some cases.
-        "unicorn/no-await-expression-member": "off", // Seems arbitrary.
-        // This is not an issue with modern editors, where keywords have a different color.
-        "unicorn/no-keyword-prefix": "off",
-        // The suggested alternative Array.from does not seem to be available for typed arrays.
-        "unicorn/no-new-array": "off",
-        "unicorn/prefer-module": "off", // Not all projects can afford to use ESM.
-        "unicorn/prevent-abbreviations": "off", // See id-length, sometimes one character is enough for an identifier.
-        // The built-in and turned on no-case-declarations renders braces for cases useless.
-        "unicorn/switch-case-braces": [
-            "error",
-            "avoid",
-        ],
-        // While generally a good idea, this rule creates a conflict with consistent-return for functions with an
-        // implicit return type that is a union of undefined and another type.
-        "unicorn/no-useless-undefined": "off",
-        "import/consistent-type-specifier-style": [
-            "error",
-            "prefer-top-level",
-        ],
-        "import/default": "off", // Already covered by typescript.
-        "import/dynamic-import-chunkname": "error",
-        "import/export": "off", // Already covered by typescript.
-        "import/exports-last": "error",
-        "import/extensions": "off", // Already covered by typescript.
-        "import/first": "error",
-        // There are advantages and disadvantages to turning this on or off. "off" seems the better choice.
-        "import/group-exports": "off",
-        "import/imports-first": "off", // Deprecated in favor of import/first.
-        "import/max-dependencies": [
-            "error",
-            {
-                max: 30,
-            },
-        ],
-        "import/named": "off", // Already covered by typescript.
-        "import/namespace": "off", // Already covered by typescript.
-        "import/newline-after-import": "error",
-        "import/no-absolute-path": "error",
-        "import/no-amd": "error",
-        "import/no-anonymous-default-export": [
-            "error",
-            {
-                allowArray: false,
-                allowArrowFunction: false,
-                allowAnonymousClass: false,
-                allowAnonymousFunction: false,
-                allowCallExpression: false,
-                allowLiteral: false,
-                allowObject: false,
-            },
-        ],
-        "import/no-commonjs": "error",
-        "import/no-cycle": "error",
-        "import/no-default-export": "error",
-        "import/no-deprecated": "error",
-        "import/no-duplicates": "error",
-        "import/no-dynamic-require": "error",
-        "import/no-empty-named-blocks": "error",
-        "import/no-extraneous-dependencies": "error",
-        "import/no-import-module-exports": "error",
-        "import/no-internal-modules": "off", // Seems too restrictive.
-        "import/no-mutable-exports": "error",
-        "import/no-named-as-default-member": "error",
-        "import/no-named-as-default": "error",
-        "import/no-named-default": "error",
-        "import/no-named-export": "off", // Does not make sense.
-        "import/no-namespace": "error",
-        "import/no-nodejs-modules": "off",
-        "import/no-relative-packages": "error",
-        "import/no-relative-parent-imports": "off", // Seems too restrictive.
-        "import/no-restricted-paths": "off", // Seems too restrictive.
-        "import/no-self-import": "error",
-        "import/no-unassigned-import": "error",
-        "import/no-unresolved": "off", // Already covered by typescript.
-        "import/no-unused-modules": "error",
-        "import/no-useless-path-segments": "error",
-        "import/no-webpack-loader-syntax": "error",
-        "import/order": [
-            "error",
-            {
-                alphabetize: {
-                    order: "asc",
-                    caseInsensitive: true,
-                },
-            },
-        ],
-        "import/prefer-default-export": "off", // Does not make much sense.
-        "import/unambiguous": "error",
         // Would make sense if var declarations were allowed (to avoid different behavior in and outside of a loop).
         // Since var declarations are not allowed, we can safely turn this off.
         "@typescript-eslint/init-declarations": "off",
-        "jsdoc/check-access": "warn",
-        "jsdoc/check-alignment": "warn",
-        "jsdoc/check-examples": "off", // Currently turned off due to https://github.com/eslint/eslint/issues/14745.
-        "jsdoc/check-indentation": "warn",
-        "jsdoc/check-line-alignment": "warn",
-        "jsdoc/check-param-names": "warn",
-        "jsdoc/check-property-names": "warn",
-        "jsdoc/check-syntax": "warn",
-        "jsdoc/check-tag-names": [
-            "warn",
-            {
-                definedTags: [
-                    "internal",
-                    "maximum",
-                    "minimum",
-                    "multipleOf",
-                ],
-            },
-        ],
-        "jsdoc/check-types": "warn",
-        "jsdoc/check-values": "warn",
-        "jsdoc/empty-tags": "warn",
-        "jsdoc/implements-on-classes": "warn",
-        "jsdoc/imports-as-dependencies": "warn",
-        "jsdoc/informative-docs": "warn",
-        "jsdoc/match-description": "warn",
-        // Does not appear to deliver a lot of value and would require project-specific configuration.
-        "jsdoc/match-name": "off",
-        "jsdoc/multiline-blocks": "warn",
-        "jsdoc/no-bad-blocks": "warn",
-        "jsdoc/no-blank-blocks": "warn",
-        "jsdoc/no-blank-block-descriptions": "warn",
-        "jsdoc/no-defaults": "warn",
-        // Exactly what syntax a jsdoc block needs to contain must be the decision of the developer.
-        "jsdoc/no-missing-syntax": "off",
-        "jsdoc/no-multi-asterisks": "warn",
-        // Exactly what syntax a jsdoc block needs to contain must be the decision of the developer.
-        "jsdoc/no-restricted-syntax": "off",
-        "jsdoc/no-types": "warn",
-        "jsdoc/no-undefined-types": "warn",
-        "jsdoc/require-asterisk-prefix": "warn",
-        // This interferes with documentation that uses HTML tags e.g. <ul>, <li>, etc., because the rule does not seem
-        // to recognize those tags and thus warns that the last tag of a paragraph should be followed by a period.
-        "jsdoc/require-description-complete-sentence": "off",
-        "jsdoc/require-description": "warn",
-        "jsdoc/require-example": "off",
-        "jsdoc/require-file-overview": "off",
-        // Hyphens make some sense to separate the type/name combo of a parameter from the description. In TS however,
-        // duplicating in jsdoc the type already mentioned in the code does not make sense, which is why it's best to
-        // never use hyphens.
-        "jsdoc/require-hyphen-before-param-description": [
-            "warn",
-            "never",
-            {
-                tags: {
-                    "*": "never",
-                },
-            },
-        ],
-        // For what code elements docs are necessary must be the decision of the developer. Forcing docs leads to lots
-        // of "standard" phrases without any real value.
-        "jsdoc/require-jsdoc": "off",
-        "jsdoc/require-param-description": "warn",
-        // This is turned on so that documentation names are checked against code names. Unfortunately, it seems that
-        // we cannot just document some parameters. Either we document none or all.
-        "jsdoc/require-param-name": "warn",
-        // Parameter types in jsdoc would just duplicate the types already visible in the TypeScript code.
-        "jsdoc/require-param-type": "off",
-        // In keeping with the general philosophy, it should not be necessary to document obvious parameters.
-        "jsdoc/require-param": "off",
-        "jsdoc/require-property": "off",
-        "jsdoc/require-property-description": "warn",
-        "jsdoc/require-property-name": "warn",
-        "jsdoc/require-property-type": "off",
-        "jsdoc/require-returns-check": "warn",
-        "jsdoc/require-returns-description": "warn",
-        // Return types in jsdoc would just duplicate the types already visible in the TypeScript code.
-        "jsdoc/require-returns-type": "off",
-        "jsdoc/require-returns": "off",
-        "jsdoc/require-throws": "off",
-        "jsdoc/require-yields": "off",
-        "jsdoc/require-yields-check": "warn",
-        "jsdoc/sort-tags": "warn",
-        "jsdoc/tag-lines": "warn",
-        "jsdoc/text-escaping": "off", // Requires project-specific configuration.
-        "jsdoc/valid-types": "warn",
         "@typescript-eslint/max-params": [
             "error",
             {
@@ -650,6 +464,192 @@ module.exports = {
                 exceptions: ["/"],
             },
         ],
+        // The filename case should be the same for the code element and the file name. So, if the main export of a file
+        // is a class or a type, the filename should be in PascalCase, otherwise it should be camelCase.
+        "unicorn/filename-case": [
+            "error",
+            {
+                cases: {
+                    camelCase: true,
+                    pascalCase: true,
+                },
+            },
+        ],
+        "unicorn/no-array-reduce": "off", // Does not make much sense, reduce is unbeatable in some cases.
+        "unicorn/no-await-expression-member": "off", // Seems arbitrary.
+        // This is not an issue with modern editors, where keywords have a different color.
+        "unicorn/no-keyword-prefix": "off",
+        // The suggested alternative Array.from does not seem to be available for typed arrays.
+        "unicorn/no-new-array": "off",
+        "unicorn/prefer-module": "off", // Not all projects can afford to use ESM.
+        "unicorn/prevent-abbreviations": "off", // See id-length, sometimes one character is enough for an identifier.
+        // The built-in and turned on no-case-declarations renders braces for cases useless.
+        "unicorn/switch-case-braces": [
+            "error",
+            "avoid",
+        ],
+        // While generally a good idea, this rule creates a conflict with consistent-return for functions with an
+        // implicit return type that is a union of undefined and another type.
+        "unicorn/no-useless-undefined": "off",
+        "import/consistent-type-specifier-style": [
+            "error",
+            "prefer-top-level",
+        ],
+        "import/default": "off", // Already covered by typescript.
+        "import/dynamic-import-chunkname": "error",
+        "import/export": "off", // Already covered by typescript.
+        "import/exports-last": "error",
+        "import/extensions": "off", // Already covered by typescript.
+        "import/first": "error",
+        // There are advantages and disadvantages to turning this on or off. "off" seems the better choice.
+        "import/group-exports": "off",
+        "import/imports-first": "off", // Deprecated in favor of import/first.
+        "import/max-dependencies": [
+            "error",
+            {
+                max: 30,
+            },
+        ],
+        "import/named": "off", // Already covered by typescript.
+        "import/namespace": "off", // Already covered by typescript.
+        "import/newline-after-import": "error",
+        "import/no-absolute-path": "error",
+        "import/no-amd": "error",
+        "import/no-anonymous-default-export": [
+            "error",
+            {
+                allowArray: false,
+                allowArrowFunction: false,
+                allowAnonymousClass: false,
+                allowAnonymousFunction: false,
+                allowCallExpression: false,
+                allowLiteral: false,
+                allowObject: false,
+            },
+        ],
+        "import/no-commonjs": "error",
+        "import/no-cycle": "error",
+        "import/no-default-export": "error",
+        "import/no-deprecated": "error",
+        "import/no-duplicates": "error",
+        "import/no-dynamic-require": "error",
+        "import/no-empty-named-blocks": "error",
+        "import/no-extraneous-dependencies": "error",
+        "import/no-import-module-exports": "error",
+        "import/no-internal-modules": "off", // Seems too restrictive.
+        "import/no-mutable-exports": "error",
+        "import/no-named-as-default-member": "error",
+        "import/no-named-as-default": "error",
+        "import/no-named-default": "error",
+        "import/no-named-export": "off", // Does not make sense.
+        "import/no-namespace": "error",
+        "import/no-nodejs-modules": "off",
+        "import/no-relative-packages": "error",
+        "import/no-relative-parent-imports": "off", // Seems too restrictive.
+        "import/no-restricted-paths": "off", // Seems too restrictive.
+        "import/no-self-import": "error",
+        "import/no-unassigned-import": "error",
+        "import/no-unresolved": "off", // Already covered by typescript.
+        "import/no-unused-modules": "error",
+        "import/no-useless-path-segments": "error",
+        "import/no-webpack-loader-syntax": "error",
+        "import/order": [
+            "error",
+            {
+                alphabetize: {
+                    order: "asc",
+                    caseInsensitive: true,
+                },
+            },
+        ],
+        "import/prefer-default-export": "off", // Does not make much sense.
+        "import/unambiguous": "error",
+        "jsdoc/check-access": "warn",
+        "jsdoc/check-alignment": "warn",
+        "jsdoc/check-examples": "off", // Currently turned off due to https://github.com/eslint/eslint/issues/14745.
+        "jsdoc/check-indentation": "warn",
+        "jsdoc/check-line-alignment": "warn",
+        "jsdoc/check-param-names": "warn",
+        "jsdoc/check-property-names": "warn",
+        "jsdoc/check-syntax": "warn",
+        "jsdoc/check-tag-names": [
+            "warn",
+            {
+                definedTags: [
+                    "internal",
+                    "maximum",
+                    "minimum",
+                    "multipleOf",
+                ],
+            },
+        ],
+        "jsdoc/check-types": "warn",
+        "jsdoc/check-values": "warn",
+        "jsdoc/empty-tags": "warn",
+        "jsdoc/implements-on-classes": "warn",
+        "jsdoc/imports-as-dependencies": "warn",
+        "jsdoc/informative-docs": "warn",
+        "jsdoc/match-description": "warn",
+        // Does not appear to deliver a lot of value and would require project-specific configuration.
+        "jsdoc/match-name": "off",
+        "jsdoc/multiline-blocks": "warn",
+        "jsdoc/no-bad-blocks": "warn",
+        "jsdoc/no-blank-blocks": "warn",
+        "jsdoc/no-blank-block-descriptions": "warn",
+        "jsdoc/no-defaults": "warn",
+        // Exactly what syntax a jsdoc block needs to contain must be the decision of the developer.
+        "jsdoc/no-missing-syntax": "off",
+        "jsdoc/no-multi-asterisks": "warn",
+        // Exactly what syntax a jsdoc block needs to contain must be the decision of the developer.
+        "jsdoc/no-restricted-syntax": "off",
+        "jsdoc/no-types": "warn",
+        "jsdoc/no-undefined-types": "warn",
+        "jsdoc/require-asterisk-prefix": "warn",
+        // This interferes with documentation that uses HTML tags e.g. <ul>, <li>, etc., because the rule does not seem
+        // to recognize those tags and thus warns that the last tag of a paragraph should be followed by a period.
+        "jsdoc/require-description-complete-sentence": "off",
+        "jsdoc/require-description": "warn",
+        "jsdoc/require-example": "off",
+        "jsdoc/require-file-overview": "off",
+        // Hyphens make some sense to separate the type/name combo of a parameter from the description. In TS however,
+        // duplicating in jsdoc the type already mentioned in the code does not make sense, which is why it's best to
+        // never use hyphens.
+        "jsdoc/require-hyphen-before-param-description": [
+            "warn",
+            "never",
+            {
+                tags: {
+                    "*": "never",
+                },
+            },
+        ],
+        // For what code elements docs are necessary must be the decision of the developer. Forcing docs leads to lots
+        // of "standard" phrases without any real value.
+        "jsdoc/require-jsdoc": "off",
+        "jsdoc/require-param-description": "warn",
+        // This is turned on so that documentation names are checked against code names. Unfortunately, it seems that
+        // we cannot just document some parameters. Either we document none or all.
+        "jsdoc/require-param-name": "warn",
+        // Parameter types in jsdoc would just duplicate the types already visible in the TypeScript code.
+        "jsdoc/require-param-type": "off",
+        // In keeping with the general philosophy, it should not be necessary to document obvious parameters.
+        "jsdoc/require-param": "off",
+        "jsdoc/require-property": "off",
+        "jsdoc/require-property-description": "warn",
+        "jsdoc/require-property-name": "warn",
+        "jsdoc/require-property-type": "off",
+        "jsdoc/require-returns-check": "warn",
+        "jsdoc/require-returns-description": "warn",
+        // Return types in jsdoc would just duplicate the types already visible in the TypeScript code.
+        "jsdoc/require-returns-type": "off",
+        "jsdoc/require-returns": "off",
+        "jsdoc/require-throws": "off",
+        "jsdoc/require-yields": "off",
+        "jsdoc/require-yields-check": "warn",
+        "jsdoc/sort-tags": "warn",
+        "jsdoc/tag-lines": "warn",
+        "jsdoc/text-escaping": "off", // Requires project-specific configuration.
+        "jsdoc/valid-types": "warn",
         "prefer-arrow/prefer-arrow-functions": [
             "error",
             {
