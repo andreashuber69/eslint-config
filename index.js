@@ -39,12 +39,6 @@ module.exports = {
     ],
     root: true,
     rules: {
-        "@typescript-eslint/array-type": [
-            "error",
-            {
-                default: "array-simple",
-            },
-        ],
         // Turned off in favor of @typescript-eslint/naming-convention.
         camelcase: "off",
         "capitalized-comments": [
@@ -54,6 +48,76 @@ module.exports = {
                 ignoreConsecutiveComments: true,
                 ignoreInlineComments: true,
                 ignorePattern: "cSpell",
+            },
+        ],
+        eqeqeq: [
+            "error",
+            "always",
+        ],
+        // The rule prefer-arrow/prefer-arrow-functions generally disallows function expressions. However, since arrow
+        // functions cannot contain yield keywords, function expressions are still needed. This rule ensures that such
+        // expressions are only named as needed (to avoid duplication).
+        "func-names": [
+            "error",
+            "as-needed",
+        ],
+        "id-length": "off", // Seems too restrictive, sometimes one character is enough (e.g. for inline arrows).
+        "line-comment-position": "off", // We want to allow comments above and beside code.
+        // Sometimes it makes more sense to use a couple of tiny classes instead of interfaces to describe some data
+        // structure. Since this rule only affects classes and cannot be extended to other types, it's best to turn this
+        // off and trust the developer to not overdo it.
+        "max-classes-per-file": "off",
+        "max-lines": [
+            "error",
+            1000,
+        ],
+        "max-lines-per-function": "off", // Does not make much sense for describe-style tests.
+        "max-statements": "off", // Does not make much sense for describe-style tests.
+        "multiline-comment-style": [
+            "error",
+            "separate-lines",
+        ],
+        // TypeScript ensures that constructor functions are only called with new, so the convention is not necessary.
+        "new-cap": "off",
+        // TypeScript already catches many of the bugs that this rule would because bitwise operators are not allowed
+        // for booleans.
+        "no-bitwise": "off",
+        "no-console": "off", // Does not make sense for most projects.
+        // Does not make sense for typescript. Importing types *and* other stuff from the same module is best achieved
+        // with two import statements (one imports types only and the other everything else), which is enforced with
+        // import/no-duplicates and the import/consistent-type-specifier-style rules. The rule
+        // @typescript-eslint/no-import-type-side-effects is turned on by default, see there for more information.
+        "no-duplicate-imports": "off",
+        "no-inline-comments": "off", // We want to allow inline comments.
+        // Most of the problems with the ++ and -- operators are avoided because @stylistic/semi is turned on
+        "no-plusplus": "off",
+        // The following would make promise construction much more verbose for avoiding a bug that is easily detected.
+        "no-promise-executor-return": "off",
+        "no-restricted-syntax": [
+            "error",
+            "ForInStatement",
+        ],
+        "no-ternary": "off",
+        // Does not make sense for js code >= ES5 with no-global-assign and no-shadow-restricted-names turned on.
+        "no-undefined": "off",
+        // We use void to avoid @typescript-eslint/no-confusing-void-expression.
+        "no-void": "off",
+        "no-warning-comments": "warn",
+        "one-var": "off", // Does not seem to work with const and let?
+        "sort-imports": [
+            "error",
+            {
+                ignoreCase: true,
+                ignoreDeclarationSort: true,
+            },
+        ],
+        "sort-keys": "off",
+        // Since the introduction of @typescript-eslint/no-import-type-side-effects, it makes much more sense to import
+        // types with a top level type specifier and everything else in a second import.
+        "@typescript-eslint/array-type": [
+            "error",
+            {
+                default: "array-simple",
             },
         ],
         // We want to use the most appropriate style for each property.
@@ -71,10 +135,6 @@ module.exports = {
             },
         ],
         "@typescript-eslint/consistent-type-definitions": "off", // We want to use both interfaces and types.
-        eqeqeq: [
-            "error",
-            "always",
-        ],
         "@typescript-eslint/dot-notation": [
             "error",
             {
@@ -86,16 +146,6 @@ module.exports = {
         "@typescript-eslint/explicit-function-return-type": "off",
         // Could make sense for larger projects with multiple developers, seems overkill for small projects.
         "@typescript-eslint/explicit-module-boundary-types": "off",
-        // The rule prefer-arrow/prefer-arrow-functions generally disallows function expressions. However, since arrow
-        // functions cannot contain yield keywords, function expressions are still needed. This rule ensures that such
-        // expressions are only named as needed (to avoid duplication).
-        "func-names": [
-            "error",
-            "as-needed",
-        ],
-        "id-length": "off", // Seems too restrictive, sometimes one character is enough (e.g. for inline arrows).
-        // Since the introduction of @typescript-eslint/no-import-type-side-effects, it makes much more sense to import
-        // types with a top level type specifier and everything else in a second import.
         "import/consistent-type-specifier-style": [
             "error",
             "prefer-top-level",
@@ -258,16 +308,6 @@ module.exports = {
         "jsdoc/tag-lines": "warn",
         "jsdoc/text-escaping": "off", // Requires project-specific configuration.
         "jsdoc/valid-types": "warn",
-        "line-comment-position": "off", // We want to allow comments above and beside code.
-        // Sometimes it makes more sense to use a couple of tiny classes instead of interfaces to describe some data
-        // structure. Since this rule only affects classes and cannot be extended to other types, it's best to turn this
-        // off and trust the developer to not overdo it.
-        "max-classes-per-file": "off",
-        "max-lines": [
-            "error",
-            1000,
-        ],
-        "max-lines-per-function": "off", // Does not make much sense for describe-style tests.
         "@typescript-eslint/max-params": [
             "error",
             {
@@ -275,7 +315,6 @@ module.exports = {
                 max: 5,
             },
         ],
-        "max-statements": "off", // Does not make much sense for describe-style tests.
         "@typescript-eslint/member-ordering": [
             "error",
             {
@@ -322,10 +361,6 @@ module.exports = {
                     "#private-instance-method",
                 ],
             },
-        ],
-        "multiline-comment-style": [
-            "error",
-            "separate-lines",
         ],
         "@typescript-eslint/naming-convention": [
             "error",
@@ -377,15 +412,10 @@ module.exports = {
                 trailingUnderscore: "forbid",
             },
         ],
-        // TypeScript ensures that constructor functions are only called with new, so the convention is not necessary.
-        "new-cap": "off",
         // This isn't particularly helpful. For example, the runtime type implementing the Error interface will almost
         // always have a meaningful implementation for toString(), yet calls to toString() on that interface are all
         // flagged with this error.
         "@typescript-eslint/no-base-to-string": "off",
-        // TypeScript already catches many of the bugs that this rule would because bitwise operators are not allowed
-        // for booleans.
-        "no-bitwise": "off",
         "@typescript-eslint/no-confusing-void-expression": [
             "error",
             {
@@ -393,12 +423,6 @@ module.exports = {
                 ignoreVoidOperator: true,
             },
         ],
-        "no-console": "off", // Does not make sense for most projects.
-        // Does not make sense for typescript. Importing types *and* other stuff from the same module is best achieved
-        // with two import statements (one imports types only and the other everything else), which is enforced with
-        // import/no-duplicates and the import/consistent-type-specifier-style rules. The rule
-        // @typescript-eslint/no-import-type-side-effects is turned on by default, see there for more information.
-        "no-duplicate-imports": "off",
         "@typescript-eslint/no-empty-function": [
             "error",
             {
@@ -415,26 +439,14 @@ module.exports = {
                 allowStaticOnly: true,
             },
         ],
-        "no-inline-comments": "off", // We want to allow inline comments.
         "@typescript-eslint/no-magic-numbers": "off", // Makes sense but appears to be too restrictive.
-        // Most of the problems with the ++ and -- operators are avoided because @stylistic/semi is turned on
-        "no-plusplus": "off",
-        // The following would make promise construction much more verbose for avoiding a bug that is easily detected.
-        "no-promise-executor-return": "off",
         "@typescript-eslint/no-restricted-imports": "off", // Requires project-specific configuration.
-        "no-restricted-syntax": [
-            "error",
-            "ForInStatement",
-        ],
         "@typescript-eslint/no-shadow": [
             "error",
             {
                 hoist: "all",
             },
         ],
-        "no-ternary": "off",
-        // Does not make sense for js code >= ES5 with no-global-assign and no-shadow-restricted-names turned on.
-        "no-undefined": "off",
         "@typescript-eslint/no-unnecessary-condition": "off", // Flags expressions like `... || "Error"`.
         "@typescript-eslint/no-unused-expressions": [
             "error",
@@ -459,10 +471,6 @@ module.exports = {
                 enums: false,
             },
         ],
-        // We use void to avoid @typescript-eslint/no-confusing-void-expression.
-        "no-void": "off",
-        "no-warning-comments": "warn",
-        "one-var": "off", // Does not seem to work with const and let?
         "@typescript-eslint/parameter-properties": [
             "error",
             {
@@ -648,14 +656,6 @@ module.exports = {
             "error",
             "always",
         ],
-        "sort-imports": [
-            "error",
-            {
-                ignoreCase: true,
-                ignoreDeclarationSort: true,
-            },
-        ],
-        "sort-keys": "off",
         "@typescript-eslint/strict-boolean-expressions": "off", // Takes away too much expressive power.
         // Value is questionable, see
         // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/typedef.md.
