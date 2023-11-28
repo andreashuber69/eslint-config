@@ -112,8 +112,6 @@ module.exports = {
             },
         ],
         "sort-keys": "off",
-        // Since the introduction of @typescript-eslint/no-import-type-side-effects, it makes much more sense to import
-        // types with a top level type specifier and everything else in a second import.
         "@typescript-eslint/array-type": [
             "error",
             {
@@ -328,7 +326,7 @@ module.exports = {
         ],
         "@typescript-eslint/strict-boolean-expressions": "off", // Takes away too much expressive power.
         // Value is questionable, see
-        // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/typedef.md.
+        // https://typescript-eslint.io/rules/typedef/.
         "@typescript-eslint/typedef": "off",
         "@stylistic/array-element-newline": [
             "error",
@@ -502,6 +500,8 @@ module.exports = {
             "error",
             "avoid",
         ],
+        // Since the introduction of @typescript-eslint/no-import-type-side-effects, it makes much more sense to import
+        // types with a top level type specifier and everything else in a second import.
         "import/consistent-type-specifier-style": [
             "error",
             "prefer-top-level",
