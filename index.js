@@ -1,5 +1,5 @@
 // https://github.com/andreashuber69/eslint-config/blob/master/README.md#----andreashuber69eslint-config
-/* eslint-disable @typescript-eslint/naming-convention, import/unambiguous, import/no-commonjs, @stylistic/max-len */
+/* eslint-disable @typescript-eslint/naming-convention, import/unambiguous, import/no-commonjs */
 const allExtensions = [
     ".ts",
     ".tsx",
