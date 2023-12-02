@@ -31,7 +31,7 @@
   "scripts": {
     "prelint": "cspell '**' && markdownlint '**/*.md'",
     "lint": "eslint --report-unused-disable-directives 'index.js' 'test/**' ",
-    "test-no-coverage": "node --import tsx --test test/*.spec.ts",
+    "test-no-coverage": "node --loader tsx --test test/*.spec.ts",
     "test": "c8 --exclude 'test/**' --reporter=text --reporter=lcov npm run test-no-coverage",
     "show-coverage": "vite 'coverage/lcov-report' --logLevel error --open",
     "preci": "npm run lint",
