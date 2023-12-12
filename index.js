@@ -370,6 +370,10 @@ module.exports = {
                 ],
             },
         ],
+        "@stylistic/indent-binary-ops": [
+            "error",
+            4,
+        ],
         "@stylistic/lines-around-comment": [
             "error",
             {
