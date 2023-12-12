@@ -31,7 +31,7 @@
   "scripts": {
     "prelint": "cspell '**' && markdownlint '**/*.md'",
     "lint": "eslint --report-unused-disable-directives 'index.js' 'test/**' ",
-    "test-no-coverage": "node --loader tsx --test test/*.spec.ts",
+    "test-no-coverage": "node --import tsx --test test/*.spec.ts",
     "test": "c8 --exclude 'test/**' --reporter=text --reporter=lcov npm run test-no-coverage",
     "show-coverage": "vite 'coverage/lcov-report' --logLevel error --open",
     "preci": "npm run lint",
@@ -53,7 +53,7 @@
     "@stylistic/eslint-plugin": "^1.5.1",
     "@tsconfig/node-lts-strictest": "^18.12.1",
     "@types/eslint": "^8.44.8",
-    "@types/node": "18.17",
+    "@types/node": "^20.10.4",
     "@types/node-fetch": "^2.6.9",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",

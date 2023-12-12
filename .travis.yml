@@ -3,13 +3,16 @@ os: linux
 dist: focal
 language: node_js
 node_js:
-- 18.18
+- lts/*
 
 script:
 - npm run ci
 
 after_script:
 - npx coveralls <./coverage/lcov.info
+
+before_deploy:
+- npm install -g npm@9
 
 deploy:
   provider: npm

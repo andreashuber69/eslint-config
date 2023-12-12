@@ -26,15 +26,16 @@ const allOtherRules = { ...allImportRules, ...allJsdocRules, ...allPreferArrowRu
 const isInAllConfigs = ([id]: [string, ...unknown[]]) =>
     id.includes("@typescript-eslint/") || id.includes("@stylistic/") || id.includes("unicorn/") || !id.includes("/");
 
-const hasAllKeys = (original: Record<string, unknown>, tester: Record<string, unknown>, message: string) => {
+const hasAllKeys = async (original: Record<string, unknown>, tester: Record<string, unknown>, message: string) => {
     for (const id of Object.keys(original)) {
-        it(id, () => assert(Boolean(tester[id]), `${id} ${message}`));
+        // eslint-disable-next-line no-await-in-loop
+        await it(id, () => assert(Boolean(tester[id]), `${id} ${message}`));
     }
 };
 
 // eslint-disable-next-line promise/always-return
-getAllConfigsRules().then((allConfigsRules) => {
-    describe("index.js", () => {
+getAllConfigsRules().then(async (allConfigsRules) => {
+    await describe("index.js", async () => {
         // According to https://eslint.style/guide/config-presets#enable-all-avaible-rules,
         // plugin:@stylistic/all-extends deliberately does not include non-fixable rules, we therefore need to
         // test these differently.
@@ -46,19 +47,21 @@ getAllConfigsRules().then((allConfigsRules) => {
             "@stylistic/no-tabs",
         ];
 
-        describe("should list all non-fixable stylistic rules", () => {
+        await describe("should list all non-fixable stylistic rules", async () => {
             for (const id of nonFixableStylisticRuleIds) {
-                it(id, () => {
+                // eslint-disable-next-line no-await-in-loop
+                await it(id, () => {
                     assert(Boolean(ourChanges[id]), `${id} is not in index.js.`);
                     assert(!allConfigsRules[id], `${id} is unexpectedly in the list of extended from rules.`);
                 });
             }
         });
 
-        describe("should change the defaults of rules listed in 'all' configs", () => {
+        await describe("should change the defaults of rules listed in 'all' configs", async () => {
             for (const [id, ourEntry] of Object.entries(ourChanges).filter((e) => isInAllConfigs(e))) {
                 if (!nonFixableStylisticRuleIds.includes(id)) {
-                    it(id, () => {
+                    // eslint-disable-next-line no-await-in-loop
+                    await it(id, () => {
                         // Since ../index.js extends from the "eslint:all", "plugin:@typescript-eslint/all",
                         // "plugin:@stylistic/all-extends" and "plugin:unicorn/all" configs, we need to test that the
                         // rule ids in ourChanges are listed in allRulesInConfig and that we apply severity/options that
@@ -77,21 +80,21 @@ getAllConfigsRules().then((allConfigsRules) => {
         // are listed in ourChanges and vice versa. While we would not need to list rules that we turn off, doing so
         // ensures that we will be alerted when rules are added in subsequent versions. We can then consciously either
         // turn these off or set the severity/options we need.
-        describe(
+        await describe(
             "should list all other rules",
-            () => hasAllKeys(allOtherRules, ourOtherChanges, "is not in index.js."),
+            async () => await hasAllKeys(allOtherRules, ourOtherChanges, "is not in index.js."),
         );
 
-        describe(
+        await describe(
             "should not list unknown rules",
-            () => hasAllKeys(ourOtherChanges, allOtherRules, "is an unknown rule."),
+            async () => await hasAllKeys(ourOtherChanges, allOtherRules, "is an unknown rule."),
         );
     });
 
     const allRules = { ...allConfigsRules, ...allOtherRules };
 
-    describe(`${Object.keys(allRules).length} rules`, () => {
-        it("Default severity should be 'off' or 'error', without options", () => {
+    await describe(`${Object.keys(allRules).length} rules`, async () => {
+        await it("Default severity should be 'off' or 'error', without options", () => {
             assert(Object.values(allRules).filter((v) => v !== "off" && v !== "error").length === 0);
         });
     });
