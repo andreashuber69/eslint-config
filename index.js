@@ -395,12 +395,20 @@ module.exports = {
                 code: 120,
             },
         ],
+        // Not in plugin:@stylistic/all-extends, see https://eslint.style/guide/config-presets#enable-all-avaible-rules
+        "@stylistic/max-statements-per-line": "error",
         "@stylistic/multiline-ternary": [
             "error",
             "always-multiline",
         ],
         "@stylistic/newline-per-chained-call": "off", // This rule seems too restrictive.
         "@stylistic/no-extra-parens": "off", // Turned off in favor of no-mixed-operators.
+        // Not in plugin:@stylistic/all-extends, see https://eslint.style/guide/config-presets#enable-all-avaible-rules
+        "@stylistic/no-mixed-operators": "error",
+        // Not in plugin:@stylistic/all-extends, see https://eslint.style/guide/config-presets#enable-all-avaible-rules
+        "@stylistic/no-mixed-spaces-and-tabs": "error",
+        // Not in plugin:@stylistic/all-extends, see https://eslint.style/guide/config-presets#enable-all-avaible-rules
+        "@stylistic/no-tabs": "error",
         "@stylistic/object-curly-spacing": [
             "error",
             "always",

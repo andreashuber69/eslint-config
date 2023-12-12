@@ -35,16 +35,39 @@ const hasAllKeys = (original: Record<string, unknown>, tester: Record<string, un
 // eslint-disable-next-line promise/always-return
 getAllConfigsRules().then((allConfigsRules) => {
     describe("index.js", () => {
-        describe("should change the defaults of rules listed in 'all' configs", () => {
-            // Since ../index.js extends from the "eslint:all", "plugin:@typescript-eslint/all",
-            // "plugin:@stylistic/all-extends" and "plugin:unicorn/all" configs, we need to test that the rule ids in
-            // ourChanges are listed in allRulesInConfig and that we apply severity/options that are different.
-            for (const [id, ourEntry] of Object.entries(ourChanges).filter((e) => isInAllConfigs(e))) {
+        // According to https://eslint.style/guide/config-presets#enable-all-avaible-rules,
+        // plugin:@stylistic/all-extends deliberately does not include non-fixable rules, we therefore need to
+        // test these differently.
+        const nonFixableStylisticRuleIds = [
+            "@stylistic/max-len",
+            "@stylistic/max-statements-per-line",
+            "@stylistic/no-mixed-operators",
+            "@stylistic/no-mixed-spaces-and-tabs",
+            "@stylistic/no-tabs",
+        ];
+
+        describe("should list all non-fixable stylistic rules", () => {
+            for (const id of nonFixableStylisticRuleIds) {
                 it(id, () => {
-                    const entry = allConfigsRules[id];
-                    assert(Boolean(entry), `${id} is not in the list of extended from rules.`);
-                    assert(!isDeepStrictEqual(ourEntry, entry), `${id} does not change the default.`);
+                    assert(Boolean(ourChanges[id]), `${id} is not in index.js.`);
+                    assert(!allConfigsRules[id], `${id} is unexpectedly in the list of extended from rules.`);
                 });
+            }
+        });
+
+        describe("should change the defaults of rules listed in 'all' configs", () => {
+            for (const [id, ourEntry] of Object.entries(ourChanges).filter((e) => isInAllConfigs(e))) {
+                if (!nonFixableStylisticRuleIds.includes(id)) {
+                    it(id, () => {
+                        // Since ../index.js extends from the "eslint:all", "plugin:@typescript-eslint/all",
+                        // "plugin:@stylistic/all-extends" and "plugin:unicorn/all" configs, we need to test that the
+                        // rule ids in ourChanges are listed in allRulesInConfig and that we apply severity/options that
+                        // are different.
+                        const entry = allConfigsRules[id];
+                        assert(Boolean(entry), `${id} is not in the list of extended from rules.`);
+                        assert(!isDeepStrictEqual(ourEntry, entry), `${id} does not change the default.`);
+                    });
+                }
             }
         });
 

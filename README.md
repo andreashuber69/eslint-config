@@ -1,5 +1,7 @@
 <h1 align="center">
-  <img width="128" src="https://raw.githubusercontent.com/andreashuber69/eslint-config/master/doc/icon.svg?sanitize=true"><br>
+  <img
+    width="128" alt="logo"
+    src="https://raw.githubusercontent.com/andreashuber69/eslint-config/master/doc/icon.svg?sanitize=true"><br>
   @andreashuber69/eslint-config
 </h1>
 <p align="center">
@@ -35,7 +37,7 @@ this abundance, I've failed to find a package that satisfies what I was looking 
 - Leverage the best eslint-plugins to thoroughly inspect code. To get an idea of what this config tries to achieve, it's
   probably best to compare the number of active rules recommended for **TypeScript** projects
   ([see TS eslint quick start](https://typescript-eslint.io/getting-started#quickstart)) to the number of active rules
-  in this configuration. At the time of writing the count is 76 for the recommended set compared to 522 in this package.
+  in this configuration. At the time of writing the count is 76 for the recommended set compared to 505 in this package.
   More specifically, we try to ...
   - flag as many problems and as much inconsistent formatting as possible while keeping false positives low. Developers
     should be able to correct most errors and warnings by rewriting the code as opposed to sprinkling it with
