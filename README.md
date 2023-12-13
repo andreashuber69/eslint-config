@@ -64,8 +64,33 @@ your liking, see below.
 The configuration and the instructions below are designed to work out of the box for already setup simple **TypeScript**
 projects. More specifically, the project root folder must contain a
 [tsconfig.json](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) file. While not required, it is highly
-recommended to have your _tsconfig.json_ extend from a strict configuration, e.g.
-[@tsconfig/node-lts-strictest](https://www.npmjs.com/package/@tsconfig/node-lts-strictest).
+recommended to have your _tsconfig.json_ extend from a strict configuration. Here's an example for node:
+
+```jsonc
+{
+  // The following only works with the eslint-plugin-import package due to an override in package.json, see
+  // https://github.com/import-js/eslint-plugin-import/issues/2751#issuecomment-1496216195
+  "extends": [
+    "@tsconfig/strictest/tsconfig",
+    "@tsconfig/node-lts/tsconfig"
+  ],
+  "compilerOptions": {
+    // Additional compiler options to the ones set by @tsconfig
+  },
+  "include": [
+    "src/**/*"
+  ]
+}
+```
+
+Note the comment, due to an incompatibility with the `eslint-plugin-import` package, you also need to add the following
+to your _package.json_:
+
+```json
+  "overrides": {
+    "tsconfig-paths": "^4.2.0"
+  },
+```
 
 ## Getting Started
 
