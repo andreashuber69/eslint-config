@@ -37,6 +37,9 @@
     "preci": "npm run lint",
     "ci": "npm test"
   },
+  "overrides": {
+    "tsconfig-paths": "^4.2.0"
+  },
   "peerDependencies": {
     "@stylistic/eslint-plugin": "^1.5.1",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
@@ -51,9 +54,9 @@
   },
   "devDependencies": {
     "@stylistic/eslint-plugin": "^1.5.1",
-    "@tsconfig/node-lts-strictest": "^18.12.1",
-    "@types/eslint": "^8.44.8",
-    "@types/node": "^20.10.4",
+    "@tsconfig/node-lts": "^20.1.0",
+    "@tsconfig/strictest": "^2.0.2",
+    "@types/eslint": "^8.44.9",
     "@types/node-fetch": "^2.6.9",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
