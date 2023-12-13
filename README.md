@@ -94,8 +94,8 @@ recommended to have your _tsconfig.json_ extend from a strict configuration. Her
    },
    ```
 
-   This is due to an [incompatibility with the `eslint-plugin-import` package]
-   (https://github.com/import-js/eslint-plugin-import/issues/2751#issuecomment-1499270368).
+   This is due to an [incompatibility with the `eslint-plugin-import` package](
+   https://github.com/import-js/eslint-plugin-import/issues/2751#issuecomment-1499270368).
 2. On the command line, first enter `npm -v` to see what version of `npm` you have installed. If you have a version
    >=7.0.0, please use this command:
 
