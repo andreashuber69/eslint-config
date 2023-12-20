@@ -12,5 +12,6 @@
   "files.autoSave": "onFocusChange",
   "git.confirmSync": false,
   "typescript.tsdk": "./node_modules/typescript/lib",
-  "typescript.preferences.quoteStyle": "double"
+  "typescript.preferences.quoteStyle": "double",
+  "terminal.integrated.scrollback": 3000
 }
