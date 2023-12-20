@@ -37,7 +37,7 @@ this abundance, I've failed to find a package that satisfies what I was looking 
 - Leverage the best eslint-plugins to thoroughly inspect code. To get an idea of what this config tries to achieve, it's
   probably best to compare the number of active rules recommended for **TypeScript** projects
   ([see TS eslint quick start](https://typescript-eslint.io/getting-started#quickstart)) to the number of active rules
-  in this configuration. At the time of writing the count is 76 for the recommended set compared to 504 in this package.
+  in this configuration. At the time of writing the count is 76 for the recommended set compared to 505 in this package.
   More specifically, we try to ...
   - flag as many problems and as much inconsistent formatting as possible while keeping false positives low. Developers
     should be able to correct most errors and warnings by rewriting the code as opposed to sprinkling it with
@@ -133,7 +133,7 @@ recommended to have your _tsconfig.json_ extend from a strict configuration. Her
    ```
 
    This is typically enough, as **eslint** will merge the above with `parserOptions: { ecmaVersion: "latest" }`,
-   `env: { es2022: true }` and other defaults. To see the complete configuration you might want to run ...
+   `env: { es2024: true }` and other defaults. To see the complete configuration you might want to run ...
 
    ```bash
    npx eslint --print-config .eslintrc.cjs >eslint-config.json
