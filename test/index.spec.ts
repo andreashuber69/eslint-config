@@ -11,6 +11,27 @@ import { allPreferArrowRules } from "./allPreferArrowRules";
 import { allPromiseRules } from "./allPromiseRules";
 import { getRules } from "./getRules";
 
+const compare = (a: string, b: string) => {
+    // Sort rules without prefix before rules with prefix
+    const result = (a.includes("/") ? 1 : 0) - (b.includes("/") ? 1 : 0);
+    return result === 0 ? a.localeCompare(b) : result;
+};
+
+const strip = (id: string) => (id.includes("/") ? id.slice(id.indexOf("/") + 1) : id);
+
+const sort = (rules: Record<string, unknown>) => {
+    const lookup: Record<string, string> = {};
+
+    for (const id of Object.keys(rules).sort(compare)) {
+        lookup[strip(id)] = id;
+    }
+
+    type Entry = readonly [string, unknown];
+
+    const strippedCompare = ([a]: Entry, [b]: Entry) => lookup[strip(a)]?.localeCompare(lookup[strip(b)] ?? "") ?? 0;
+    return Object.entries(rules).sort(strippedCompare);
+};
+
 const getAllConfigsRules = async () => await getRules({
     extends: [
         "eslint:all",
@@ -27,7 +48,7 @@ const isInAllConfigs = ([id]: [string, ...unknown[]]) =>
     id.includes("@typescript-eslint/") || id.includes("@stylistic/") || id.includes("unicorn/") || !id.includes("/");
 
 const hasAllKeys = async (original: Record<string, unknown>, tester: Record<string, unknown>, message: string) => {
-    for (const id of Object.keys(original)) {
+    for (const [id, _] of sort(original)) {
         // eslint-disable-next-line no-await-in-loop
         await it(id, () => assert(Boolean(tester[id]), `${id} ${message}`));
     }
@@ -58,7 +79,7 @@ getAllConfigsRules().then(async (allConfigsRules) => {
         });
 
         await describe("should change the defaults of rules listed in 'all' configs", async () => {
-            for (const [id, ourEntry] of Object.entries(ourChanges).filter((e) => isInAllConfigs(e))) {
+            for (const [id, ourEntry] of sort(ourChanges).filter((e) => isInAllConfigs(e))) {
                 if (!nonFixableStylisticRuleIds.includes(id)) {
                     // eslint-disable-next-line no-await-in-loop
                     await it(id, () => {
@@ -74,7 +95,7 @@ getAllConfigsRules().then(async (allConfigsRules) => {
             }
         });
 
-        const ourOtherChanges = Object.fromEntries(Object.entries(ourChanges).filter((e) => !isInAllConfigs(e)));
+        const ourOtherChanges = Object.fromEntries(sort(ourChanges).filter((e) => !isInAllConfigs(e)));
 
         // ../index.js doesn't extend from any config related to allOtherRules. For these we test that *all* rule ids
         // are listed in ourChanges and vice versa. While we would not need to list rules that we turn off, doing so
