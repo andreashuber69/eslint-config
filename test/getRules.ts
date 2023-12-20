@@ -2,7 +2,7 @@ import type { Linter } from "eslint";
 import { ESLint } from "eslint";
 import { getSeverities } from "./getSeverities";
 
-export const getActiveRules = async (config?: Linter.Config) => {
+export const getRules = async (config?: Linter.Config) => {
     const options = {
         useEslintrc: false,
         overrideConfig: {
@@ -27,5 +27,5 @@ export const getActiveRules = async (config?: Linter.Config) => {
 
     const eslint = new ESLint(config ? options : undefined);
     const fullConfig: unknown = (await eslint.calculateConfigForFile("index.js")) ?? {};
-    return Object.fromEntries(Object.entries(getSeverities(fullConfig?.rules)).filter(([_, c]) => c !== "off"));
+    return Object.fromEntries(Object.entries(getSeverities(fullConfig?.rules)));
 };

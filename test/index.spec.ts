@@ -9,9 +9,9 @@ import { allImportRules } from "./allImportRules";
 import { allJsdocRules } from "./allJsdocRules";
 import { allPreferArrowRules } from "./allPreferArrowRules";
 import { allPromiseRules } from "./allPromiseRules";
-import { getActiveRules } from "./getActiveRules";
+import { getRules } from "./getRules";
 
-const getAllConfigsRules = async () => await getActiveRules({
+const getAllConfigsRules = async () => await getRules({
     extends: [
         "eslint:all",
         "plugin:@typescript-eslint/all",
@@ -101,16 +101,18 @@ getAllConfigsRules().then(async (allConfigsRules) => {
 // eslint-disable-next-line unicorn/prefer-top-level-await
 }).catch((error) => console.error(error));
 
+const getRuleCount = (rules: Record<string, unknown>) => Object.entries(rules).filter(([_, s]) => s !== "off").length;
+
 const showStats = async () => {
-    const recommendedCount = Object.keys(await getActiveRules({
+    const recommendedCount = getRuleCount(await getRules({
         extends: [
             "eslint:recommended",
             "plugin:@typescript-eslint/recommended",
         ],
-    })).length;
+    }));
 
     console.log(`eslint & @typescript-eslint recommended active rules: ${recommendedCount}`);
-    const ourCount = Object.keys(await getActiveRules()).length;
+    const ourCount = getRuleCount(await getRules());
     console.log(`@andreashuber/eslint-config active rules: ${ourCount}`);
 };
 
