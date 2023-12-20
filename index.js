@@ -506,6 +506,8 @@ module.exports = {
         // implicit return type that is a union of undefined and another type.
         "unicorn/no-useless-undefined": "off",
         "unicorn/prefer-module": "off", // Not all projects can afford to use ESM.
+        // Only flags a subset of issues of @typescript-eslint/prefer-string-starts-ends-with
+        "unicorn/prefer-string-starts-ends-with": "off",
         "unicorn/prevent-abbreviations": "off", // See id-length, sometimes one character is enough for an identifier.
         // The built-in and turned on no-case-declarations renders braces for cases useless.
         "unicorn/switch-case-braces": [
