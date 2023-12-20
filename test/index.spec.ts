@@ -114,11 +114,12 @@ getAllConfigsRules().then(async (allConfigsRules) => {
         );
     });
 
-    const allRules = { ...allConfigsRules, ...allOtherRules };
-
-    await describe(`${Object.keys(allRules).length} rules`, async () => {
-        await it("Default severity should be 'off' or 'error', without options", () => {
-            assert(Object.values(allRules).filter((v) => v !== "off" && v !== "error").length === 0);
+    await describe("All rules", async () => {
+        await describe("Default severity should be 'off' or 'error', without options", async () => {
+            for (const [id, severity] of sort({ ...allConfigsRules, ...allOtherRules })) {
+                // eslint-disable-next-line no-await-in-loop
+                await it(`"${id}": "${severity}"`, () => assert(severity === "off" || severity === "error"));
+            }
         });
     });
 // eslint-disable-next-line unicorn/prefer-top-level-await
