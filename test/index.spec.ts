@@ -20,15 +20,17 @@ const compare = (a: string, b: string) => {
 const strip = (id: string) => (id.includes("/") ? id.slice(id.indexOf("/") + 1) : id);
 
 const sort = (rules: Record<string, unknown>) => {
-    const lookup: Record<string, string> = {};
+    // This lookup together with the strippedCompare function is designed to group together variants of the same rule,
+    // such that it becomes apparent which rules are replaced with what other rules.
+    const lookup = new Map<string, string>();
 
     for (const id of Object.keys(rules).sort(compare)) {
-        lookup[strip(id)] = id;
+        lookup.set(strip(id), id);
     }
 
     type Entry = readonly [string, unknown];
 
-    const strippedCompare = ([a]: Entry, [b]: Entry) => lookup[strip(a)]?.localeCompare(lookup[strip(b)] ?? "") ?? 0;
+    const strippedCompare = ([a]: Entry, [b]: Entry) => compare(lookup.get(strip(a)) ?? "", lookup.get(strip(b)) ?? "");
     return Object.entries(rules).sort(strippedCompare);
 };
 
