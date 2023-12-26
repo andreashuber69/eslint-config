@@ -37,8 +37,9 @@ this abundance, I've failed to find a package that satisfies what I was looking 
 - Leverage the best eslint-plugins to thoroughly inspect code. To get an idea of what this config tries to achieve, it's
   probably best to compare the number of active rules recommended for **TypeScript** projects
   ([see TS eslint quick start](https://typescript-eslint.io/getting-started#quickstart)) to the number of active rules
-  in this configuration. At the time of writing the count is 76 for the recommended set compared to 506 in this package.
-  More specifically, we try to ...
+  in this configuration. At the time of writing the count is **only 76** for the recommended set compared to
+  **506 rules in this package**.
+  More specifically, ...
   - flag as many problems and as much inconsistent formatting as possible while keeping false positives low. Developers
     should be able to correct most errors and warnings by rewriting the code as opposed to sprinkling it with
     `eslint-disable`.
@@ -50,8 +51,12 @@ this abundance, I've failed to find a package that satisfies what I was looking 
   update this package. All dependencies are kept up to date automatically, see [Getting Started](#getting-started) for
   more information.
 - Closely track the versions of all dependencies and release new config versions as necessary.
-- Last but not least: Automatically test the configuration, such that changes (e.g. added or removed rules) are detected
-  and the rules listed in the configuration are always in sync with the rules provided by **eslint** and the plugins.
+- Last but not least: **Automatically test the configuration**, such that changes in **eslint** and the plugins (e.g.
+  added or removed rules) are detected and the rules listed in the configuration are always in sync with the rules
+  provided. With 7 plugins adding rules to this package, it's hard to overstate the importance of testing for
+  completeness and consistency. No other eslint configuration out there seems to do that, which is probably why some of
+  them still needlessly turn off **eslint** base rules in favor of their **@typescript-eslint** counterparts, even
+  though they extend from the **@typescript-eslint/recommended** list (which already does that).
 
 To see how the linted code will look like, you can look at
 [async-css-plugin](https://github.com/andreashuber69/async-css-plugin/tree/develop/src) and
