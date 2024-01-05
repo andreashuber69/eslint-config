@@ -1,5 +1,9 @@
 # https://github.com/andreashuber69/eslint-config/blob/master/README.md#----andreashuber69eslint-config
 os: linux
+arch:
+  - arm64
+  - ppc64le
+  - s390x
 dist: focal
 language: node_js
 node_js:
