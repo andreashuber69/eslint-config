@@ -90,34 +90,23 @@ recommended to have your _tsconfig.json_ extend from a strict configuration. Her
 
 ### Installation
 
-1. If you've followed the recommendation in the [Prerequisites](#prerequisites) and now use an array to extend from
-   `@tsconfig` bases, you first need to add the following to your _package.json_:
+On the command line, first enter `npm -v` to see what version of `npm` you have installed. If you have a version
+&gt;=7.0.0, please use this command:
 
-   ```json
-   "overrides": {
-     "tsconfig-paths": "^4.2.0"
-   },
-   ```
+```bash
+npm install --save-dev @andreashuber69/eslint-config
+```
 
-   This is due to an [incompatibility with the `eslint-plugin-import` package](
-   https://github.com/import-js/eslint-plugin-import/issues/2751#issuecomment-1499270368).
-2. On the command line, first enter `npm -v` to see what version of `npm` you have installed. If you have a version
-   &gt;=7.0.0, please use this command:
+Otherwise, please use this command:
 
-   ```bash
-   npm install --save-dev @andreashuber69/eslint-config
-   ```
+```bash
+npx install-peerdeps @andreashuber69/eslint-config --dev
+```
 
-   Otherwise, please use this command:
-
-   ```bash
-   npx install-peerdeps @andreashuber69/eslint-config --dev
-   ```
-
-   On npm 7 and newer, peer dependencies
-   [are installed automatically](https://github.com/npm/rfcs/blob/main/implemented/0025-install-peer-deps.md). On
-   older versions of npm, you can use the tool `install-peerdeps` as shown above or install the peer dependencies
-   manually.
+On npm 7 and newer, peer dependencies
+[are installed automatically](https://github.com/npm/rfcs/blob/main/implemented/0025-install-peer-deps.md). On
+older versions of npm, you can use the tool `install-peerdeps` as shown above or install the peer dependencies
+manually.
 
 ### Configuration
 
