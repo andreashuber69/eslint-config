@@ -38,7 +38,7 @@
     "ci": "npm test"
   },
   "peerDependencies": {
-    "@stylistic/eslint-plugin": "^1.5.3",
+    "@stylistic/eslint-plugin": "^1.5.4",
     "@typescript-eslint/eslint-plugin": "^6.19.0",
     "@typescript-eslint/parser": "^6.19.0",
     "eslint": "^8.56.0",
@@ -50,11 +50,11 @@
     "eslint-plugin-unicorn": "^50.0.1"
   },
   "devDependencies": {
-    "@stylistic/eslint-plugin": "^1.5.3",
+    "@stylistic/eslint-plugin": "^1.5.4",
     "@tsconfig/node-lts": "^20.1.1",
     "@tsconfig/strictest": "^2.0.2",
     "@types/eslint": "^8.56.2",
-    "@types/node-fetch": "^2.6.10",
+    "@types/node-fetch": "^2.6.11",
     "@typescript-eslint/eslint-plugin": "^6.19.0",
     "@typescript-eslint/parser": "^6.19.0",
     "c8": "^9.1.0",
@@ -71,6 +71,6 @@
     "node-fetch": "^2.7.0",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3",
-    "vite": "^5.0.11"
+    "vite": "^5.0.12"
   }
 }
