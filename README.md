@@ -66,10 +66,11 @@ your liking, see below.
 
 ## Prerequisites
 
-The configuration and the instructions below are designed to work out of the box for already setup simple **TypeScript**
-projects. More specifically, the project root folder must contain a
-[tsconfig.json](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) file. While not required, it is
-recommended to have your _tsconfig.json_ extend from a strict configuration. Here's an example for node:
+The configuration provided by this package and the instructions below are designed to work out of the box for already
+setup **TypeScript** projects. That is, there must be a _tsconfig.json_ file in a direct or indirect parent folder of
+every linted _.ts_ file, see [this article](https://typescript-eslint.io/blog/parser-options-project-true/) for details.
+Also, while not required, it is recommended to have your _tsconfig.json_ extend from a strict configuration. Here's an
+example for node:
 
 ```jsonc
 {
