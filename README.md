@@ -11,8 +11,8 @@
   <a href="https://github.com/andreashuber69/eslint-config/releases">
     <img src="https://img.shields.io/github/release-date/andreashuber69/eslint-config.svg" alt="Release Date">
   </a>
-  <a href="https://travis-ci.com/github/andreashuber69/eslint-config">
-    <img src="https://travis-ci.com/andreashuber69/eslint-config.svg?branch=master" alt="Build">
+  <a href="https://github.com/andreashuber69/eslint-config/actions/workflows/ci.yml">
+    <img src="https://github.com/andreashuber69/eslint-config/actions/workflows/ci.yml/badge.svg" alt="CI">
   </a>
   <a href="https://github.com/andreashuber69/eslint-config/issues">
     <img src="https://img.shields.io/github/issues-raw/andreashuber69/eslint-config.svg" alt="Issues">
