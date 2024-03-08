@@ -26,6 +26,6 @@ export const getRules = async (config?: Linter.Config) => {
     };
 
     const eslint = new ESLint(config ? options : undefined);
-    const fullConfig: unknown = (await eslint.calculateConfigForFile("index.js")) ?? {};
+    const fullConfig = (await eslint.calculateConfigForFile("index.js")) as { rules?: unknown } | undefined;
     return Object.fromEntries(Object.entries(getSeverities(fullConfig?.rules)));
 };

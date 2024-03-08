@@ -4,10 +4,12 @@
     "@tsconfig/node-lts/tsconfig"
   ],
   "compilerOptions": {
+    "checkJs": true,
     "noEmit": true
   },
   "include": [
-    "index.js",
-    "test/**/*"
+    "./.eslintrc.cjs",
+    "./index.js",
+    "./test/**/*.ts"
   ]
 }
