@@ -31,12 +31,10 @@
   "scripts": {
     "prelint": "cspell '**' && markdownlint '**/*.md'",
     "lint": "eslint --ext .cjs,.js,.ts --report-unused-disable-directives '.'",
-    "pretest-no-coverage": "tsc",
     "test-no-coverage": "node --import tsx --test test/*.spec.ts",
     "test": "c8 --exclude 'test/**' --reporter=text --reporter=lcov npm run test-no-coverage",
     "show-coverage": "vite 'coverage/lcov-report' --logLevel error --open",
-    "preci": "npm run lint",
-    "ci": "npm test"
+    "ci": "npm run lint && tsc && npm test"
   },
   "peerDependencies": {
     "@stylistic/eslint-plugin": "^1.6.3",

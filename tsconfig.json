@@ -8,8 +8,8 @@
     "noEmit": true
   },
   "include": [
-    "./.eslintrc.cjs",
-    "./index.js",
-    "./test/**/*.ts"
+    ".eslintrc.cjs",
+    "index.js",
+    "test/**/*.ts"
   ]
 }
