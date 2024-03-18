@@ -38,6 +38,7 @@ const getAllConfigsRules = async () => await getRules({
     extends: [
         "eslint:all",
         "plugin:@typescript-eslint/all",
+        "plugin:react/all",
         "plugin:@stylistic/disable-legacy",
         "plugin:@stylistic/all-extends",
         "plugin:unicorn/all",
@@ -96,10 +97,9 @@ getAllConfigsRules().then(async (allConfigsRules) => {
                 if (!nonFixableStylisticRuleIds.includes(id)) {
                     // eslint-disable-next-line no-await-in-loop
                     await it(id, () => {
-                        // Since ../index.js extends from the "eslint:all", "plugin:@typescript-eslint/all",
-                        // "plugin:@stylistic/all-extends" and "plugin:unicorn/all" configs, we need to test that the
-                        // rule ids in ourChanges are listed in allRulesInConfig and that we apply severity/options that
-                        // are different.
+                        // Since ../index.js extends from the all the rules returned by getAllConfigsRules, we need to
+                        // test that the rule ids in ourChanges are listed in allRulesInConfig and that we apply
+                        // severity/options that are different.
                         const entry = allConfigsRules[id];
                         assert(Boolean(entry), `${id} is not in the list of extended from rules.`);
                         assert(!isDeepStrictEqual(ourEntry, entry), `${id} does not change the default.`);
@@ -128,6 +128,9 @@ getAllConfigsRules().then(async (allConfigsRules) => {
     await describe("Modified rules", async () => {
         await describe("should activate at most one variant of a given rule", async () => {
             const exceptions = new Set([
+                // Same name, but address completely different issues
+                "import/no-deprecated",
+                "react/no-deprecated",
                 "no-lonely-if",
                 // Adds to no-lonely-if, see
                 // https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-lonely-if.md
@@ -171,6 +174,7 @@ const showStats = async () => {
         extends: [
             "eslint:recommended",
             "plugin:@typescript-eslint/recommended",
+            "plugin:react/recommended",
         ],
     }));
 

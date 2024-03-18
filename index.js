@@ -17,6 +17,7 @@ module.exports = {
         // and reconfigure some others.
         "eslint:all",
         "plugin:@typescript-eslint/all",
+        "plugin:react/all",
         "plugin:@stylistic/disable-legacy",
         "plugin:@stylistic/all-extends",
         "plugin:unicorn/all",
@@ -725,6 +726,9 @@ module.exports = {
                 // The default "project" config should work just fine in most cases. If not, the project using this
                 // config must override accordingly.
             },
+        },
+        react: {
+            version: "18",
         },
     },
 };
