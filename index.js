@@ -368,6 +368,7 @@ module.exports = {
                     "TSIntersectionType",
                     "TSTypeParameterInstantiation",
                     "TSUnionType",
+                    "JsxElement", // JSX indent will be checked by react/jsx-indent
                 ],
             },
         ],
