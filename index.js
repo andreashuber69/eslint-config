@@ -384,6 +384,8 @@ module.exports = {
                     // https://github.com/airbnb/javascript/issues/1569
                     "JsxElement *",
                     "JsxElement",
+                    "JsxFragment *",
+                    "JsxFragment",
                 ],
             },
         ],
@@ -394,7 +396,7 @@ module.exports = {
         // No JSX rules are in plugin:@stylistic/all-extends, see
         // https://eslint.style/guide/config-presets#enable-all-avaible-rules
         "@stylistic/jsx-child-element-spacing": "off", // Uglifies JSX for very little gain
-        "@stylistic/jsx-closing-bracket-location": "error",
+        "@stylistic/jsx-closing-bracket-location": ["error", "after-props"],
         "@stylistic/jsx-closing-tag-location": "error",
         "@stylistic/jsx-curly-brace-presence": "error",
         "@stylistic/jsx-curly-newline": "error",
@@ -402,7 +404,7 @@ module.exports = {
         "@stylistic/jsx-equals-spacing": "error",
         "@stylistic/jsx-first-prop-new-line": "error",
         "@stylistic/jsx-indent": ["error", 2], // 2 is the most common indent for HTML files
-        "@stylistic/jsx-indent-props": "error",
+        "@stylistic/jsx-indent-props": ["error", 2],
         "@stylistic/jsx-max-props-per-line": "off", // Already limited by max line length
         "@stylistic/jsx-newline": ["error", { prevent: true }],
         "@stylistic/jsx-one-expression-per-line": "off", // Incompatible with reasonably compact HTML code
