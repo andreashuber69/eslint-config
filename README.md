@@ -38,7 +38,7 @@ this abundance, I've failed to find a package that satisfies what I was looking 
   probably best to compare the number of active rules recommended for **TypeScript** projects
   ([see TS eslint quick start](https://typescript-eslint.io/getting-started#quickstart)) to the number of active rules
   in this configuration. At the time of writing the count is **only 97** for the recommended set compared to
-  **590 rules in this package**.
+  **604 rules in this package**.
   More specifically, ...
   - flag as many problems and as much inconsistent formatting as possible while keeping false positives low. Developers
     should be able to correct most errors and warnings by rewriting the code as opposed to sprinkling it with

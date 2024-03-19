@@ -333,6 +333,14 @@ module.exports = {
         // Value is questionable, see
         // https://typescript-eslint.io/rules/typedef/.
         "@typescript-eslint/typedef": "off",
+        "react/jsx-filename-extension": ["error", { extensions: allExtensions.filter((e) => e.endsWith("x")) }],
+        "react/jsx-max-depth": "off", // Doesn't make a whole lot of sense
+        "react/jsx-no-literals": "off", // Doesn't make a whole lot of sense
+        "react/jsx-pascal-case": "off", // https://github.com/eslint-stylistic/eslint-stylistic/issues/299
+        "react/no-adjacent-inline-elements": "off", // Doesn't make a whole lot of sense
+        // eslint-disable-next-line @stylistic/max-len
+        // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/react-in-jsx-scope.md#when-not-to-use-it
+        "react/react-in-jsx-scope": "off", // We're using React 18 or later
         "@stylistic/array-element-newline": [
             "error",
             "consistent",
@@ -372,7 +380,10 @@ module.exports = {
                     "TSIntersectionType",
                     "TSTypeParameterInstantiation",
                     "TSUnionType",
-                    "JsxElement", // JSX indent will be checked by react/jsx-indent
+                    // JSX indent will be checked by react/jsx-indent
+                    // https://github.com/airbnb/javascript/issues/1569
+                    "JsxElement *",
+                    "JsxElement",
                 ],
             },
         ],
@@ -728,7 +739,6 @@ module.exports = {
         "promise/prefer-await-to-callbacks": "off",
         "promise/prefer-await-to-then": "error",
         "promise/valid-params": "error",
-        "react/jsx-pascal-case": "off", // https://github.com/eslint-stylistic/eslint-stylistic/issues/299
     },
     settings: {
         // The following settings are taken from https://github.com/import-js/eslint-plugin-import#typescript and
