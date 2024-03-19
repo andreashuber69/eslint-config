@@ -12,7 +12,7 @@ export const getRules = async (config?: Linter.Config) => {
             },
             parser: "@typescript-eslint/parser",
             parserOptions: {
-                project: ["./tsconfig.json"],
+                project: true,
                 ecmaVersion: "latest" as const,
                 sourceType: "module" as const,
             },
