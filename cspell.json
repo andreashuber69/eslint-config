@@ -6,6 +6,8 @@
     "chunkname",
     "coldcard",
     "linebreak",
+    "mjsx",
+    "mtsx",
     "peerdeps",
     "pify",
     "plusplus",

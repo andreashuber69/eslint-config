@@ -1,10 +1,14 @@
 // https://github.com/andreashuber69/eslint-config/blob/master/README.md#----andreashuber69eslint-config
 /* eslint-disable @typescript-eslint/naming-convention, import/unambiguous, import/no-commonjs */
 const allExtensions = [
+    ".js",
+    ".cjs",
+    ".mjs",
+    ".jsx",
+    ".mjsx",
     ".ts",
     ".tsx",
-    ".js",
-    ".jsx",
+    ".mtsx",
 ];
 
 module.exports = {
@@ -716,6 +720,7 @@ module.exports = {
             "@typescript-eslint/parser": [
                 ".ts",
                 ".tsx",
+                ".mtsx",
             ],
         },
         "import/resolver": {
