@@ -48,7 +48,8 @@ const getAllConfigsRules = async () => await getRules({
 const allOtherRules = { ...allImportRules, ...allJsdocRules, ...allPreferArrowRules, ...allPromiseRules };
 
 const isInAllConfigs = ([id]: [string, unknown]) =>
-    id.includes("@typescript-eslint/") || id.includes("@stylistic/") || id.includes("unicorn/") || !id.includes("/");
+    id.includes("@typescript-eslint/") || id.includes("react/") ||
+    id.includes("@stylistic/") || id.includes("unicorn/") || !id.includes("/");
 
 const hasAllKeys = async (original: Record<string, unknown>, tester: Record<string, unknown>, message: string) => {
     for (const [id, _] of sort(original)) {
@@ -69,10 +70,29 @@ getAllConfigsRules().then(async (allConfigsRules) => {
     });
 
     await describe("index.js", async () => {
-        // According to https://eslint.style/guide/config-presets#enable-all-avaible-rules,
-        // plugin:@stylistic/all-extends deliberately does not include non-fixable rules, we therefore need to
+        // According to https://eslint.style/guide/config-presets#enable-all-available-rules,
+        // plugin:@stylistic/all-extends deliberately does not include JSX and non-fixable rules, we therefore need to
         // test these differently.
-        const nonFixableStylisticRuleIds = [
+        const jsxAndNonFixableStylisticRuleIds = [
+            "@stylistic/jsx-child-element-spacing",
+            "@stylistic/jsx-closing-bracket-location",
+            "@stylistic/jsx-closing-tag-location",
+            "@stylistic/jsx-curly-brace-presence",
+            "@stylistic/jsx-curly-newline",
+            "@stylistic/jsx-curly-spacing",
+            "@stylistic/jsx-equals-spacing",
+            "@stylistic/jsx-first-prop-new-line",
+            "@stylistic/jsx-indent",
+            "@stylistic/jsx-indent-props",
+            "@stylistic/jsx-max-props-per-line",
+            "@stylistic/jsx-newline",
+            "@stylistic/jsx-one-expression-per-line",
+            "@stylistic/jsx-pascal-case",
+            "@stylistic/jsx-props-no-multi-spaces",
+            "@stylistic/jsx-self-closing-comp",
+            "@stylistic/jsx-sort-props",
+            "@stylistic/jsx-tag-spacing",
+            "@stylistic/jsx-wrap-multilines",
             "@stylistic/max-len",
             "@stylistic/max-statements-per-line",
             "@stylistic/no-mixed-operators",
@@ -81,7 +101,7 @@ getAllConfigsRules().then(async (allConfigsRules) => {
         ];
 
         await describe("should list all non-fixable stylistic rules", async () => {
-            for (const id of nonFixableStylisticRuleIds) {
+            for (const id of jsxAndNonFixableStylisticRuleIds) {
                 // eslint-disable-next-line no-await-in-loop
                 await it(id, () => {
                     assert(Boolean(ourChanges[id]), `${id} is not in index.js.`);
@@ -94,7 +114,7 @@ getAllConfigsRules().then(async (allConfigsRules) => {
 
         await describe("should change the defaults of rules listed in 'all' configs", async () => {
             for (const [id, ourEntry] of sort(ourAllConfigsChanges)) {
-                if (!nonFixableStylisticRuleIds.includes(id)) {
+                if (!jsxAndNonFixableStylisticRuleIds.includes(id)) {
                     // eslint-disable-next-line no-await-in-loop
                     await it(id, () => {
                         // Since ../index.js extends from the all the rules returned by getAllConfigsRules, we need to

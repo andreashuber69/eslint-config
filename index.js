@@ -380,6 +380,27 @@ module.exports = {
             "error",
             4,
         ],
+        // No JSX rules are in plugin:@stylistic/all-extends, see
+        // https://eslint.style/guide/config-presets#enable-all-avaible-rules
+        "@stylistic/jsx-child-element-spacing": "error",
+        "@stylistic/jsx-closing-bracket-location": "error",
+        "@stylistic/jsx-closing-tag-location": "error",
+        "@stylistic/jsx-curly-brace-presence": "error",
+        "@stylistic/jsx-curly-newline": "error",
+        "@stylistic/jsx-curly-spacing": "error",
+        "@stylistic/jsx-equals-spacing": "error",
+        "@stylistic/jsx-first-prop-new-line": "error",
+        "@stylistic/jsx-indent": "error",
+        "@stylistic/jsx-indent-props": "error",
+        "@stylistic/jsx-max-props-per-line": "error",
+        "@stylistic/jsx-newline": "error",
+        "@stylistic/jsx-one-expression-per-line": "error",
+        "@stylistic/jsx-pascal-case": "error",
+        "@stylistic/jsx-props-no-multi-spaces": "error",
+        "@stylistic/jsx-self-closing-comp": "error",
+        "@stylistic/jsx-sort-props": "error",
+        "@stylistic/jsx-tag-spacing": "error",
+        "@stylistic/jsx-wrap-multilines": "error",
         "@stylistic/lines-around-comment": [
             "error",
             {
@@ -707,6 +728,7 @@ module.exports = {
         "promise/prefer-await-to-callbacks": "off",
         "promise/prefer-await-to-then": "error",
         "promise/valid-params": "error",
+        "react/jsx-pascal-case": "off", // https://github.com/eslint-stylistic/eslint-stylistic/issues/299
     },
     settings: {
         // The following settings are taken from https://github.com/import-js/eslint-plugin-import#typescript and
