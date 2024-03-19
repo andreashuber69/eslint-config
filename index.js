@@ -393,7 +393,7 @@ module.exports = {
         ],
         // No JSX rules are in plugin:@stylistic/all-extends, see
         // https://eslint.style/guide/config-presets#enable-all-avaible-rules
-        "@stylistic/jsx-child-element-spacing": "error",
+        "@stylistic/jsx-child-element-spacing": "off", // Uglifies JSX for very little gain
         "@stylistic/jsx-closing-bracket-location": "error",
         "@stylistic/jsx-closing-tag-location": "error",
         "@stylistic/jsx-curly-brace-presence": "error",
@@ -401,15 +401,23 @@ module.exports = {
         "@stylistic/jsx-curly-spacing": "error",
         "@stylistic/jsx-equals-spacing": "error",
         "@stylistic/jsx-first-prop-new-line": "error",
-        "@stylistic/jsx-indent": "error",
+        "@stylistic/jsx-indent": ["error", 2], // 2 is the most common indent for HTML files
         "@stylistic/jsx-indent-props": "error",
-        "@stylistic/jsx-max-props-per-line": "error",
-        "@stylistic/jsx-newline": "error",
-        "@stylistic/jsx-one-expression-per-line": "error",
+        "@stylistic/jsx-max-props-per-line": "off", // Already limited by max line length
+        "@stylistic/jsx-newline": ["error", { prevent: true }],
+        "@stylistic/jsx-one-expression-per-line": "off", // Incompatible with reasonably compact HTML code
         "@stylistic/jsx-pascal-case": "error",
         "@stylistic/jsx-props-no-multi-spaces": "error",
         "@stylistic/jsx-self-closing-comp": "error",
-        "@stylistic/jsx-sort-props": "error",
+        "@stylistic/jsx-sort-props": [
+            "error",
+            {
+                callbacksLast: true,
+                noSortAlphabetically: true,
+                reservedFirst: true,
+                shorthandLast: true,
+            },
+        ],
         "@stylistic/jsx-tag-spacing": "error",
         "@stylistic/jsx-wrap-multilines": "error",
         "@stylistic/lines-around-comment": [
