@@ -749,11 +749,7 @@ module.exports = {
             "node_modules/@types",
         ],
         "import/parsers": {
-            "@typescript-eslint/parser": [
-                ".ts",
-                ".tsx",
-                ".mtsx",
-            ],
+            "@typescript-eslint/parser": allExtensions.filter((e) => e.includes("ts")),
         },
         "import/resolver": {
             node: {
