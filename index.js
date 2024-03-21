@@ -338,10 +338,13 @@ module.exports = {
         "react/jsx-max-depth": "off", // Doesn't make a whole lot of sense
         "react/jsx-no-literals": "off", // Doesn't make a whole lot of sense
         "react/jsx-pascal-case": "off", // https://github.com/eslint-stylistic/eslint-stylistic/issues/299
-        "react/no-adjacent-inline-elements": "off", // Doesn't make a whole lot of sense
+        "react/no-adjacent-inline-elements": "off", // HTML fragments become overly wrong when this rule is enforced
+        // Optimization should only be done when a performance problem has been identified
+        "react/require-optimization": "off",
         // eslint-disable-next-line @stylistic/max-len
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/react-in-jsx-scope.md#when-not-to-use-it
         "react/react-in-jsx-scope": "off", // We're using React 18 or later
+        "react/sort-comp": "off", // Clashes with @typescript-eslint/member-ordering
         "@stylistic/array-element-newline": [
             "error",
             "consistent",
