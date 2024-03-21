@@ -47,6 +47,7 @@
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-unicorn": "^51.0.1"
   },
   "devDependencies": {
@@ -67,6 +68,7 @@
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-unicorn": "^51.0.1",
     "markdownlint-cli": "^0.39.0",
     "node-fetch": "^2.7.0",

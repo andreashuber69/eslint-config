@@ -41,6 +41,7 @@ module.exports = {
         "jsdoc",
         "prefer-arrow",
         "promise",
+        "react-hooks",
     ],
     root: true,
     rules: {
@@ -749,6 +750,8 @@ module.exports = {
         "promise/prefer-await-to-callbacks": "off",
         "promise/prefer-await-to-then": "error",
         "promise/valid-params": "error",
+        "react-hooks/exhaustive-deps": "error",
+        "react-hooks/rules-of-hooks": "error",
     },
     settings: {
         // The following settings are taken from https://github.com/import-js/eslint-plugin-import#typescript and

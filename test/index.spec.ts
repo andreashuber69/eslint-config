@@ -9,6 +9,7 @@ import { allImportRules } from "./allImportRules";
 import { allJsdocRules } from "./allJsdocRules";
 import { allPreferArrowRules } from "./allPreferArrowRules";
 import { allPromiseRules } from "./allPromiseRules";
+import { allReactHooksRules } from "./allReactHooksRules";
 import { getRules } from "./getRules";
 
 const compare = (a: string, b: string) => {
@@ -45,7 +46,9 @@ const getAllConfigsRules = async () => await getRules({
     ],
 });
 
-const allOtherRules = { ...allImportRules, ...allJsdocRules, ...allPreferArrowRules, ...allPromiseRules };
+const allOtherRules = {
+    ...allImportRules, ...allJsdocRules, ...allPreferArrowRules, ...allPromiseRules, ...allReactHooksRules,
+};
 
 const isInAllConfigs = ([id]: [string, unknown]) =>
     id.includes("@typescript-eslint/") || id.includes("react/") ||
