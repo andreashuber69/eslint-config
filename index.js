@@ -39,7 +39,6 @@ module.exports = {
         // rule.
         "import",
         "jsdoc",
-        "prefer-arrow",
         "promise",
         "react-hooks",
     ],
@@ -60,9 +59,6 @@ module.exports = {
             "error",
             "always",
         ],
-        // The rule prefer-arrow/prefer-arrow-functions generally disallows function expressions. However, since arrow
-        // functions cannot contain yield keywords, function expressions are still needed. This rule ensures that such
-        // expressions are only named as needed (to avoid duplication).
         "func-names": [
             "error",
             "as-needed",
@@ -216,7 +212,11 @@ module.exports = {
                 trailingUnderscore: "forbid",
             },
             {
-                selector: ["import"],
+                selector: [
+                    // React component names must start with an uppercase letter, even if implemented as a function.
+                    "function",
+                    "import",
+                ],
                 format: [
                     "StrictPascalCase",
                     "strictCamelCase",
@@ -334,11 +334,13 @@ module.exports = {
         // Value is questionable, see
         // https://typescript-eslint.io/rules/typedef/.
         "@typescript-eslint/typedef": "off",
+        "react/function-component-definition": "off", // No technical reason to prefer one over the other
         "react/jsx-filename-extension": ["error", { extensions: allExtensions.filter((e) => e.endsWith("x")) }],
         "react/jsx-max-depth": "off", // Doesn't make a whole lot of sense
         "react/jsx-no-literals": "off", // Doesn't make a whole lot of sense
         "react/jsx-pascal-case": "off", // https://github.com/eslint-stylistic/eslint-stylistic/issues/299
-        "react/no-adjacent-inline-elements": "off", // HTML fragments become overly wrong when this rule is enforced
+        "react/no-adjacent-inline-elements": "off", // HTML fragments become overly long when this rule is enforced
+        "react/no-multi-comp": "off", // Has some merit, but should not be enforced unconditionally
         // Optimization should only be done when a performance problem has been identified
         "react/require-optimization": "off",
         // eslint-disable-next-line @stylistic/max-len
@@ -727,14 +729,6 @@ module.exports = {
         "jsdoc/tag-lines": "warn",
         "jsdoc/text-escaping": "off", // Requires project-specific configuration.
         "jsdoc/valid-types": "warn",
-        "prefer-arrow/prefer-arrow-functions": [
-            "error",
-            {
-                disallowPrototype: true,
-                singleReturnOnly: false,
-                classPropertiesAllowed: false,
-            },
-        ],
         "promise/always-return": "error",
         // Promises aren't that hard to create manually, so it seems dubious to require promisify or pify.
         "promise/avoid-new": "off",
