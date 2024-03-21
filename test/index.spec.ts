@@ -201,7 +201,7 @@ const showStats = async () => {
         ],
     }));
 
-    console.log(`eslint & @typescript-eslint recommended active rules: ${recommendedCount}`);
+    console.log(`eslint, @typescript-eslint & eslint-plugin-react recommended active rules: ${recommendedCount}`);
     const ourCount = getRuleCount(await getRules());
     console.log(`@andreashuber/eslint-config active rules: ${ourCount}`);
 };
