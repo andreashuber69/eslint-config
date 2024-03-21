@@ -54,7 +54,7 @@
     "@stylistic/eslint-plugin": "^1.7.0",
     "@tsconfig/node-lts": "^20.1.1",
     "@tsconfig/strictest": "^2.0.3",
-    "@types/eslint": "^8.56.5",
+    "@types/eslint": "^8.56.6",
     "@types/node-fetch": "^2.6.11",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
@@ -73,7 +73,7 @@
     "markdownlint-cli": "^0.39.0",
     "node-fetch": "^2.7.0",
     "tsx": "^4.7.1",
-    "typescript": "^5.4.2",
-    "vite": "^5.1.6"
+    "typescript": "^5.4.3",
+    "vite": "^5.2.2"
   }
 }
