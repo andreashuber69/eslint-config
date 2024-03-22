@@ -350,22 +350,25 @@ module.exports = {
             "always",
         ],
         "@typescript-eslint/strict-boolean-expressions": "off", // Takes away too much expressive power.
-        // Value is questionable, see
-        // https://typescript-eslint.io/rules/typedef/.
+        // Value is questionable, see https://typescript-eslint.io/rules/typedef/.
         "@typescript-eslint/typedef": "off",
-        "react/function-component-definition": "off", // No technical reason to prefer one over the other
+        // There's no technical reason to prefer one over the other. react/display-name ensures that all components are
+        // named, no matter how they are implemented. Since naming is automatic with function expressions, developers
+        // will choose that option whenever suitable.
+        "react/function-component-definition": "off",
         "react/jsx-filename-extension": ["error", { extensions: allExtensions.filter((e) => e.endsWith("x")) }],
-        "react/jsx-max-depth": "off", // Doesn't make a whole lot of sense
-        "react/jsx-no-literals": "off", // Doesn't make a whole lot of sense
+        "react/jsx-max-depth": "off", // This is an artificial limitation with no technical background.
+        "react/jsx-no-literals": "off", // This is an artificial limitation with no technical background.
+        "react/jsx-props-no-spreading": "off", // Severly hinders the implementation of generic higher order components.
         "react/jsx-pascal-case": "off", // https://github.com/eslint-stylistic/eslint-stylistic/issues/299
-        "react/no-adjacent-inline-elements": "off", // HTML fragments become overly long when this rule is enforced
-        "react/no-multi-comp": "off", // Has some merit, but should not be enforced unconditionally
-        // Optimization should only be done when a performance problem has been identified
+        "react/no-adjacent-inline-elements": "off", // HTML fragments become overly long when this rule is enforced.
+        "react/no-multi-comp": "off", // Has some merit, but should not be enforced unconditionally.
+        // Optimization should only be done when a performance problem has been identified.
         "react/require-optimization": "off",
         // eslint-disable-next-line @stylistic/max-len
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/react-in-jsx-scope.md#when-not-to-use-it
-        "react/react-in-jsx-scope": "off", // We're using React 18 or later
-        "react/sort-comp": "off", // Clashes with @typescript-eslint/member-ordering
+        "react/react-in-jsx-scope": "off", // We're using React 18 or later.
+        "react/sort-comp": "off", // Clashes with @typescript-eslint/member-ordering.
         "@stylistic/array-element-newline": [
             "error",
             "consistent",
