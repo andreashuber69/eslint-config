@@ -214,6 +214,7 @@ module.exports = {
             {
                 selector: [
                     // React component names must start with an uppercase letter, even if implemented as a function.
+                    // All other functions must be strictCamelCase.
                     "function",
                     "import",
                 ],
@@ -229,7 +230,25 @@ module.exports = {
                     "parameter",
                     "variable",
                 ],
-                format: ["strictCamelCase"],
+                format: [
+                    // When passed to a function, a parameter representing a React component must start with an
+                    // uppercase letter. The same is true when a React component is stored in a variable.
+                    "StrictPascalCase",
+                    // All other parameters and variables must be strictCamelCase.
+                    "strictCamelCase",
+                ],
+                leadingUnderscore: "forbid",
+                trailingUnderscore: "forbid",
+            },
+            {
+                selector: [
+                    "parameter",
+                    "variable",
+                ],
+                format: [
+                    "StrictPascalCase",
+                    "strictCamelCase",
+                ],
                 modifiers: ["unused"],
                 leadingUnderscore: "require",
                 trailingUnderscore: "forbid",
