@@ -359,7 +359,8 @@ module.exports = {
         "react/jsx-filename-extension": ["error", { extensions: allExtensions.filter((e) => e.endsWith("x")) }],
         "react/jsx-max-depth": "off", // This is an artificial limitation with no technical background.
         "react/jsx-no-literals": "off", // This is an artificial limitation with no technical background.
-        "react/jsx-props-no-spreading": "off", // Severly hinders the implementation of generic higher order components.
+        // Severely hinders the implementation of generic higher order components.
+        "react/jsx-props-no-spreading": "off",
         "react/jsx-pascal-case": "off", // https://github.com/eslint-stylistic/eslint-stylistic/issues/299
         "react/no-adjacent-inline-elements": "off", // HTML fragments become overly long when this rule is enforced.
         "react/no-multi-comp": "off", // Has some merit, but should not be enforced unconditionally.
