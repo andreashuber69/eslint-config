@@ -352,6 +352,9 @@ module.exports = {
         "@typescript-eslint/strict-boolean-expressions": "off", // Takes away too much expressive power.
         // Value is questionable, see https://typescript-eslint.io/rules/typedef/.
         "@typescript-eslint/typedef": "off",
+        // Already covered by the more sensible @typescript-eslint/prefer-destructuring and
+        // unicorn/consistent-destructuring
+        "react/destructuring-assignment": "off",
         // There's no technical reason to prefer one over the other. react/display-name ensures that all components are
         // named, no matter how they are implemented. Since naming is automatic with function expressions, developers
         // will choose that option whenever suitable.
