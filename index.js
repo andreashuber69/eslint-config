@@ -5,9 +5,13 @@ const allExtensions = [
     ".cjs",
     ".mjs",
     ".jsx",
+    ".cjsx",
     ".mjsx",
     ".ts",
+    ".cts",
+    ".mts",
     ".tsx",
+    ".ctsx",
     ".mtsx",
 ];
 
