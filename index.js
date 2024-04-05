@@ -580,6 +580,8 @@ module.exports = {
                 },
             },
         ],
+        // Turned off in favor of import/no-anonymous-default-export, which is more configurable.
+        "unicorn/no-anonymous-default-export": "off",
         "unicorn/no-array-reduce": "off", // Does not make much sense, reduce is unbeatable in some cases.
         "unicorn/no-await-expression-member": "off", // Seems arbitrary.
         // This is not an issue with modern editors, where keywords have a different color.
