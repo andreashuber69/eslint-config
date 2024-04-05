@@ -580,6 +580,23 @@ module.exports = {
                 },
             },
         ],
+        "unicorn/import-style": [
+            "error",
+            {
+                // There are good examples where named imports from the following modules do make sense.
+                styles: {
+                    chalk: {
+                        named: true,
+                    },
+                    "node:path": {
+                        named: true,
+                    },
+                    path: {
+                        named: true,
+                    },
+                },
+            },
+        ],
         // Turned off in favor of import/no-anonymous-default-export, which is more configurable.
         "unicorn/no-anonymous-default-export": "off",
         "unicorn/no-array-reduce": "off", // Does not make much sense, reduce is unbeatable in some cases.
