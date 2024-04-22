@@ -185,7 +185,7 @@ getAllConfigsRules().then(async (allConfigsRules) => {
     });
 
 // eslint-disable-next-line unicorn/prefer-top-level-await
-}).catch((error) => console.error(error));
+}).catch((error: unknown) => console.error(error));
 
 const getRuleCount = (rules: Record<string, unknown>) => Object.entries(rules).filter(([_, s]) => s !== "off").length;
 
@@ -206,4 +206,4 @@ const showStats = async () => {
 // This is a CommonJS module, where top-level await is not available. Compiling tests differently is possible but not
 // worth the effort.
 // eslint-disable-next-line unicorn/prefer-top-level-await
-showStats().catch((error) => console.error(error));
+showStats().catch((error: unknown) => console.error(error));
