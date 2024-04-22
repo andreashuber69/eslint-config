@@ -34,7 +34,8 @@
     "test-no-coverage": "node --import tsx --test test/*.spec.ts",
     "test": "c8 --exclude 'test/**' --reporter=text --reporter=lcov npm run test-no-coverage",
     "show-coverage": "vite 'coverage/lcov-report' --logLevel error --open",
-    "ci": "npm run lint && tsc && npm test"
+    "ci": "npm run lint && tsc && npm test",
+    "finish-release": "git push && git push --tags"
   },
   "peerDependencies": {
     "@stylistic/eslint-plugin": "^1.7.2",
