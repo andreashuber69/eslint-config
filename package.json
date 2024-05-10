@@ -1,6 +1,6 @@
 {
   "name": "@andreashuber69/eslint-config",
-  "version": "1.2.14",
+  "version": "1.2.15-beta.0",
   "description": "Provides a comprehensive, carefullly curated and tested shareable eslint config for TypeScript projects.",
   "keywords": [
     "eslint",
