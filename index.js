@@ -79,10 +79,6 @@ module.exports = {
         ],
         "max-lines-per-function": "off", // Does not make much sense for describe-style tests.
         "max-statements": "off", // Does not make much sense for describe-style tests.
-        "multiline-comment-style": [
-            "error",
-            "separate-lines",
-        ],
         // TypeScript ensures that constructor functions are only called with new, so the convention is not necessary.
         "new-cap": "off",
         // TypeScript already catches many of the bugs that this rule would because bitwise operators are not allowed
@@ -485,6 +481,11 @@ module.exports = {
         ],
         // Not in plugin:@stylistic/all-extends, see https://eslint.style/guide/config-presets#enable-all-avaible-rules
         "@stylistic/max-statements-per-line": "error",
+        "multiline-comment-style": "off", // Temporary, until this is turned off in @stylistic/disable-legacy
+        "@stylistic/multiline-comment-style": [
+            "error",
+            "separate-lines",
+        ],
         "@stylistic/multiline-ternary": [
             "error",
             "always-multiline",
