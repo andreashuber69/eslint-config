@@ -44,7 +44,7 @@
     "eslint": "^8.57.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jsdoc": "^48.2.7",
+    "eslint-plugin-jsdoc": "^48.2.9",
     "eslint-plugin-promise": "^6.2.0",
     "eslint-plugin-react": "^7.34.2",
     "eslint-plugin-react-hooks": "^4.6.2",
@@ -64,15 +64,15 @@
     "eslint": "^8.57.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jsdoc": "^48.2.7",
+    "eslint-plugin-jsdoc": "^48.2.9",
     "eslint-plugin-promise": "^6.2.0",
     "eslint-plugin-react": "^7.34.2",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-unicorn": "^53.0.0",
     "markdownlint-cli": "^0.41.0",
     "node-fetch": "^2.7.0",
-    "tsx": "^4.11.2",
+    "tsx": "^4.13.3",
     "typescript": "^5.4.5",
-    "vite": "^5.2.12"
+    "vite": "^5.2.13"
   }
 }
