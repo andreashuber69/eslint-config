@@ -418,6 +418,7 @@ module.exports = {
                     "JsxElement",
                     "JsxFragment *",
                     "JsxFragment",
+                    "JSXText",
                 ],
             },
         ],
