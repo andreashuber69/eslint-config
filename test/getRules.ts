@@ -1,6 +1,6 @@
 import type { Linter } from "eslint";
 import { ESLint } from "eslint";
-import { getSeverities } from "./getSeverities";
+import { getSeverities } from "./getSeverities.js";
 
 export const getRules = async (config?: Linter.Config) => {
     const options = {

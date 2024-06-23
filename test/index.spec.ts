@@ -3,13 +3,13 @@ import assert from "node:assert";
 import { describe, it } from "node:test";
 import { isDeepStrictEqual } from "node:util";
 
-import { rules as ourTypedChanges } from "../index";
+import { rules as ourTypedChanges } from "../index.js";
 
-import { allImportRules } from "./allImportRules";
-import { allJsdocRules } from "./allJsdocRules";
-import { allPromiseRules } from "./allPromiseRules";
-import { allReactHooksRules } from "./allReactHooksRules";
-import { getRules } from "./getRules";
+import { allImportRules } from "./allImportRules.js";
+import { allJsdocRules } from "./allJsdocRules.js";
+import { allPromiseRules } from "./allPromiseRules.js";
+import { allReactHooksRules } from "./allReactHooksRules.js";
+import { getRules } from "./getRules.js";
 
 const ourChanges = ourTypedChanges as Record<string, unknown>;
 
