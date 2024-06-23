@@ -3,13 +3,15 @@ import assert from "node:assert";
 import { describe, it } from "node:test";
 import { isDeepStrictEqual } from "node:util";
 
-import { rules as ourChanges } from "../index";
+import { rules as ourTypedChanges } from "../index";
 
 import { allImportRules } from "./allImportRules";
 import { allJsdocRules } from "./allJsdocRules";
 import { allPromiseRules } from "./allPromiseRules";
 import { allReactHooksRules } from "./allReactHooksRules";
 import { getRules } from "./getRules";
+
+const ourChanges = ourTypedChanges as Record<string, unknown>;
 
 const compare = (a: string, b: string) => {
     // Sort rules without prefix before rules with prefix
