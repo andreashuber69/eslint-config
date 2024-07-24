@@ -1,4 +1,5 @@
 // https://github.com/andreashuber69/eslint-config/blob/master/README.md#----andreashuber69eslint-config
+
 /* eslint-disable @typescript-eslint/naming-convention, import/unambiguous, import/no-commonjs */
 const allExtensions = [
     ".js",
@@ -714,8 +715,10 @@ module.exports = {
                 ],
             },
         ],
+        "jsdoc/check-template-names": "warn",
         "jsdoc/check-types": "warn",
         "jsdoc/check-values": "warn",
+        "jsdoc/convert-to-jsdoc-comments": "warn",
         "jsdoc/empty-tags": "warn",
         "jsdoc/implements-on-classes": "warn",
         "jsdoc/imports-as-dependencies": "warn",
@@ -774,6 +777,7 @@ module.exports = {
         "jsdoc/require-returns-description": "warn",
         // Return types in jsdoc would just duplicate the types already visible in the TypeScript code.
         "jsdoc/require-returns-type": "off",
+        "jsdoc/require-template": "warn",
         "jsdoc/require-throws": "off",
         "jsdoc/require-yields": "off",
         "jsdoc/require-yields-check": "warn",

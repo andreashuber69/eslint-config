@@ -1,4 +1,5 @@
 // https://github.com/andreashuber69/eslint-config/blob/master/README.md#----andreashuber69eslint-config
+
 const getRuleLevel = (entry: unknown): unknown => {
     switch (typeof entry) {
         case "number":

@@ -1,4 +1,5 @@
 // https://github.com/andreashuber69/eslint-config/blob/master/README.md#----andreashuber69eslint-config
+
 import assert from "node:assert";
 import { describe, it } from "node:test";
 import { isDeepStrictEqual } from "node:util";

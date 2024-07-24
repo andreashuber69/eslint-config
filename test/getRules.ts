@@ -1,3 +1,5 @@
+// https://github.com/andreashuber69/eslint-config/blob/master/README.md#----andreashuber69eslint-config
+
 import type { Linter } from "eslint";
 import { ESLint } from "eslint";
 import { getSeverities } from "./getSeverities.js";
