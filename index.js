@@ -313,6 +313,8 @@ module.exports = {
             },
         ],
         "@typescript-eslint/no-unnecessary-condition": "off", // Flags expressions like `... || "Error"`.
+        // Currently considered experimental: https://typescript-eslint.io/rules/no-unnecessary-type-parameters/
+        "@typescript-eslint/no-unnecessary-type-parameters": "off",
         "@typescript-eslint/no-unused-expressions": [
             "error",
             {
