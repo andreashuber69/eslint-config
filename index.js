@@ -725,6 +725,7 @@ module.exports = {
         "jsdoc/implements-on-classes": "warn",
         "jsdoc/imports-as-dependencies": "warn",
         "jsdoc/informative-docs": "warn",
+        "jsdoc/lines-before-block": "warn",
         "jsdoc/match-description": "warn",
         // Does not appear to deliver a lot of value and would require project-specific configuration.
         "jsdoc/match-name": "off",
@@ -804,6 +805,8 @@ module.exports = {
         // describe-style tests).
         "promise/prefer-await-to-callbacks": "off",
         "promise/prefer-await-to-then": "error",
+        "promise/prefer-catch": "error",
+        "promise/spec-only": "error",
         "promise/valid-params": "error",
         "react-hooks/exhaustive-deps": "error",
         "react-hooks/rules-of-hooks": "error",
