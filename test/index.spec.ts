@@ -4,15 +4,28 @@ import assert from "node:assert";
 import { describe, it } from "node:test";
 import { isDeepStrictEqual } from "node:util";
 
-import { rules as ourTypedChanges } from "../index.js";
+import type { FixupPluginDefinition } from "@eslint/compat";
+import { fixupPluginRules } from "@eslint/compat";
+import { FlatCompat } from "@eslint/eslintrc";
+import js from "@eslint/js";
+import stylistic from "@stylistic/eslint-plugin";
+import importPlugin from "eslint-plugin-import";
+import jsdoc from "eslint-plugin-jsdoc";
+import promise from "eslint-plugin-promise";
+import reactHooks from "eslint-plugin-react-hooks";
+import unicorn from "eslint-plugin-unicorn";
+import tsEslint from "typescript-eslint";
+
+import ourTypedChanges from "../index.js";
 
 import { allImportRules } from "./allImportRules.js";
 import { allJsdocRules } from "./allJsdocRules.js";
 import { allPromiseRules } from "./allPromiseRules.js";
 import { allReactHooksRules } from "./allReactHooksRules.js";
 import { getRules } from "./getRules.js";
+import { getRuleSeverities } from "./getRuleSeverities.js";
 
-const ourChanges = ourTypedChanges as Record<string, unknown>;
+const ourChanges = await getRules(ourTypedChanges);
 
 const compare = (a: string, b: string) => {
     // Sort rules without prefix before rules with prefix
@@ -37,16 +50,26 @@ const sort = (rules: Record<string, unknown>) => {
     return Object.entries(rules).sort(strippedCompare);
 };
 
-const getAllConfigsRules = async () => await getRules({
-    extends: [
-        "eslint:all",
-        "plugin:@typescript-eslint/all",
-        "plugin:react/all",
-        "plugin:@stylistic/disable-legacy",
-        "plugin:@stylistic/all-extends",
-        "plugin:unicorn/all",
-    ],
-});
+const getAllConfigsRules = async () => await getRuleSeverities([
+    js.configs.all,
+    // eslint-disable-next-line import/no-named-as-default-member
+    ...tsEslint.configs.all,
+    ...new FlatCompat().extends("plugin:react/all"),
+    stylistic.configs["disable-legacy"],
+    stylistic.configs["all-flat"],
+    unicorn.configs["flat/all"],
+    {
+        plugins: {
+            // "@stylistic": stylistic,
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
+            import: fixupPluginRules(importPlugin as FixupPluginDefinition),
+            jsdoc,
+            promise,
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
+            "react-hooks": fixupPluginRules(reactHooks as FixupPluginDefinition),
+        },
+    },
+]);
 
 const allOtherRules = { ...allImportRules, ...allJsdocRules, ...allPromiseRules, ...allReactHooksRules };
 
@@ -85,6 +108,7 @@ getAllConfigsRules().then(async (allConfigsRules) => {
             "@stylistic/jsx-curly-spacing",
             "@stylistic/jsx-equals-spacing",
             "@stylistic/jsx-first-prop-new-line",
+            "@stylistic/jsx-function-call-newline",
             "@stylistic/jsx-indent",
             "@stylistic/jsx-indent-props",
             "@stylistic/jsx-max-props-per-line",
@@ -92,10 +116,12 @@ getAllConfigsRules().then(async (allConfigsRules) => {
             "@stylistic/jsx-one-expression-per-line",
             "@stylistic/jsx-pascal-case",
             "@stylistic/jsx-props-no-multi-spaces",
+            "@stylistic/jsx-quotes",
             "@stylistic/jsx-self-closing-comp",
             "@stylistic/jsx-sort-props",
             "@stylistic/jsx-tag-spacing",
             "@stylistic/jsx-wrap-multilines",
+            "@stylistic/line-comment-position",
             "@stylistic/max-len",
             "@stylistic/max-statements-per-line",
             "@stylistic/no-mixed-operators",
@@ -172,7 +198,7 @@ getAllConfigsRules().then(async (allConfigsRules) => {
 
 
             const rulesToTest = Object.fromEntries(
-                Object.entries(await getRules()).filter(([i, s]) => s !== "off" && !exceptions.has(i)),
+                Object.entries(await getRuleSeverities()).filter(([i, s]) => s !== "off" && !exceptions.has(i)),
             );
 
             const lookup = new Map<string, string>();
@@ -193,19 +219,25 @@ getAllConfigsRules().then(async (allConfigsRules) => {
 const getRuleCount = (rules: Record<string, unknown>) => Object.entries(rules).filter(([_, s]) => s !== "off").length;
 
 const showStats = async () => {
-    const recommendedCount = getRuleCount(await getRules({
-        extends: [
-            "eslint:recommended",
-            "plugin:@typescript-eslint/recommended",
-            "plugin:react/recommended",
-        ],
-    }));
+    const recommendedCount = getRuleCount(await getRuleSeverities([
+        js.configs.recommended,
+        // eslint-disable-next-line import/no-named-as-default-member
+        ...tsEslint.configs.recommended,
+        ...new FlatCompat().extends("plugin:react/recommended"),
+        {
+            plugins: {
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
+                "react-hooks": fixupPluginRules(reactHooks as FixupPluginDefinition),
+            },
+        },
+    ]));
 
     console.log(`eslint, @typescript-eslint & eslint-plugin-react recommended active rules: ${recommendedCount}`);
-    const ourCount = getRuleCount(await getRules());
+    const ourCount = getRuleCount(await getRuleSeverities());
     console.log(`@andreashuber/eslint-config active rules: ${ourCount}`);
 };
 
+// FIX
 // This is a CommonJS module, where top-level await is not available. Compiling tests differently is possible but not
 // worth the effort.
 // eslint-disable-next-line unicorn/prefer-top-level-await

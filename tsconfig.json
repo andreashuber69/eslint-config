@@ -8,8 +8,6 @@
     "noEmit": true
   },
   "include": [
-    ".eslintrc.cjs",
-    "index.js",
     "test/**/*.ts"
   ]
 }

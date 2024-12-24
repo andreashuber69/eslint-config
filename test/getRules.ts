@@ -2,33 +2,32 @@
 
 import type { Linter } from "eslint";
 import { ESLint } from "eslint";
-import { getSeverities } from "./getSeverities.js";
+import { languageOptions } from "../languageOptions.js";
 
-export const getRules = async (config?: Linter.Config) => {
-    const options = {
-        useEslintrc: false,
-        overrideConfig: {
-            env: {
-                es2024: true,
-                node: true,
-            },
-            parser: "@typescript-eslint/parser",
-            parserOptions: {
-                project: true,
-                ecmaVersion: "latest" as const,
-                sourceType: "module" as const,
-            },
-            plugins: [
-                "@typescript-eslint",
-                "@stylistic",
-                "unicorn",
-            ],
-            ...config,
-        },
+const isRecord = (value: unknown): value is Record<string, unknown> =>
+    typeof value === "object" && value !== null;
+
+export const getRules = async (config?: unknown[]): Promise<Record<string, unknown>> => {
+    const options: ESLint.Options = {
+        overrideConfigFile: true,
+        overrideConfig: [
+            // There's no other way
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
+            ...((config ?? []) as Linter.Config[]),
+            { languageOptions },
+        ],
     };
 
     const eslint = new ESLint(config ? options : undefined);
     const fullConfig = (await eslint.calculateConfigForFile("index.js")) as unknown;
-    const rules = fullConfig && typeof fullConfig === "object" && "rules" in fullConfig ? fullConfig.rules : undefined;
-    return Object.fromEntries(Object.entries(getSeverities(rules)));
+
+    if (fullConfig && typeof fullConfig === "object" && "rules" in fullConfig) {
+        const { rules } = fullConfig;
+
+        if (isRecord(rules)) {
+            return rules;
+        }
+    }
+
+    throw new Error("Unexpected config!");
 };
