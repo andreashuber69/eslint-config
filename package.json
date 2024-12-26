@@ -21,6 +21,7 @@
     "name": "Andreas Huber"
   },
   "type": "module",
+  "main": "index.js",
   "files": [
     "/index.js",
     "/*.md"
