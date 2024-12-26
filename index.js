@@ -2,13 +2,14 @@ import { fixupPluginRules } from "@eslint/compat";
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
 import stylistic from "@stylistic/eslint-plugin";
+import tsParser from "@typescript-eslint/parser";
 import importPlugin from "eslint-plugin-import";
 import jsdoc from "eslint-plugin-jsdoc";
 import promise from "eslint-plugin-promise";
 import reactHooks from "eslint-plugin-react-hooks";
 import unicorn from "eslint-plugin-unicorn";
+import globals from "globals";
 import tsEslint from "typescript-eslint";
-import { languageOptions } from "./languageOptions.js";
 
 const allExtensions = [
     ".js",
@@ -24,6 +25,22 @@ const allExtensions = [
     ".ctsx",
     ".mtsx",
 ];
+
+const languageOptions = {
+    globals: {
+        ...globals.node,
+    },
+    parser: tsParser,
+    parserOptions: {
+        // As of typescript-eslint v8.18.0, it is not entirely clear how projectService should be configured.
+        // Many examples specify allowDefaultProject: ["*.js"], but that does not work here.
+        projectService: {
+            allowDefaultProject: ["eslint.config.js"],
+            defaultProject: "./tsconfig.json",
+        },
+        tsconfigRootDir: process.cwd(),
+    },
+};
 
 const config = [
     // While the js.configs.all list really does turn on *all* eslint rules (except for the deprecated ones), the
@@ -869,6 +886,8 @@ const config = [
         },
     },
 ];
+
+export { languageOptions };
 
 // eslint-disable-next-line import/no-default-export
 export default config;
