@@ -1,3 +1,5 @@
+// https://github.com/andreashuber69/eslint-config/blob/develop/README.md#----andreashuber69eslint-config
+
 import generalConfig from "./index.js";
 
 const config = [

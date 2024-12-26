@@ -1,3 +1,5 @@
+// https://github.com/andreashuber69/eslint-config/blob/develop/README.md#----andreashuber69eslint-config
+
 import { fixupPluginRules } from "@eslint/compat";
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
