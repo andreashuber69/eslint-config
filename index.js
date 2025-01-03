@@ -830,7 +830,9 @@ const config = [
             "jsdoc/require-returns-description": "warn",
             // Return types in jsdoc would just duplicate the types already visible in the TypeScript code.
             "jsdoc/require-returns-type": "off",
-            "jsdoc/require-template": "warn",
+            // In keeping with the general philosophy, it should not be necessary to document obvious template
+            // parameters.
+            "jsdoc/require-template": "off",
             "jsdoc/require-throws": "off",
             "jsdoc/require-yields": "off",
             "jsdoc/require-yields-check": "warn",
