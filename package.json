@@ -30,7 +30,7 @@
   },
   "scripts": {
     "prelint": "cspell '**' && markdownlint '**/*.md'",
-    "lint": "eslint --report-unused-disable-directives '.'",
+    "lint": "eslint --report-unused-disable-directives",
     "test-no-coverage": "node --import tsx --test src/*.spec.ts",
     "test": "c8 --exclude 'src/*.ts' --reporter=text --reporter=lcov npm run test-no-coverage",
     "show-coverage": "vite 'coverage/lcov-report' --logLevel error --open",
