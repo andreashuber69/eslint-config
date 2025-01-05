@@ -16,14 +16,13 @@ import reactHooks from "eslint-plugin-react-hooks";
 import unicorn from "eslint-plugin-unicorn";
 import tsEslint from "typescript-eslint";
 
-import ourTypedChanges from "../index.js";
-
 import { allImportRules } from "./allImportRules.js";
 import { allJsdocRules } from "./allJsdocRules.js";
 import { allPromiseRules } from "./allPromiseRules.js";
 import { allReactHooksRules } from "./allReactHooksRules.js";
 import { getRules } from "./getRules.js";
 import { getRuleSeverities } from "./getRuleSeverities.js";
+import ourTypedChanges from "./index.js";
 
 const ourChanges = await getRules(ourTypedChanges);
 
