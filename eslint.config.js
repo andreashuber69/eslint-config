@@ -5,9 +5,6 @@ import generalConfig from "./src/index.js";
 const config = [
     ...generalConfig,
     {
-        files: ["**/*.ts"],
-    },
-    {
         ignores: ["coverage/", "dist/"],
     },
 ];
