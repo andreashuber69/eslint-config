@@ -41,26 +41,27 @@ const languageOptions = {
     },
 };
 
-const config = [
+const config = tsEslint.config(
     // While the js.configs.all list really does turn on *all* eslint rules (except for the deprecated ones), the
-    // tsEslint.configs.all and plugin:unicorn/all lists turn off those eslint rules that are replaced with
+    // tsEslint.configs.all and unicorn.configs["flat/all"] lists turn off those eslint rules that are replaced with
     // typescript-aware or more functional variants and also turn off the eslint rules that are already flagged
     // by the typescript compiler. In other words, by extending from the lists below, we have all rules turned on,
     // that *might* make sense in a typescript project. We thus "only" need to turn off the rules that we don't like
     // and reconfigure some others.
     js.configs.all,
     // eslint-disable-next-line import/no-named-as-default-member
-    ...tsEslint.configs.all,
-    ...new FlatCompat().extends("plugin:react/all"),
+    tsEslint.configs.all,
+    new FlatCompat().extends("plugin:react/all"),
     stylistic.configs["disable-legacy"],
     stylistic.configs["all-flat"],
     unicorn.configs["flat/all"],
     {
         plugins: {
-            // ...tsEslint.configs.all above also adds the tsEslint instance as a plugin, which is why it must not
+            // The tsEslint.configs.all above also adds the tsEslint instance as a plugin, which is why it must not
             // appear here, see implementation for details:
             // eslint-disable-next-line @stylistic/max-len
             // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/typescript-eslint/src/configs/base.ts
+            // @ts-expect-error There's no way we can make the types compatible
             "@stylistic": stylistic,
             // The unicorn.configs["flat/all"] above also adds the unicorn instance as a plugin, which is why it must
             // not appear here, see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/index.js for
@@ -886,7 +887,7 @@ const config = [
             },
         },
     },
-];
+);
 
 export { languageOptions };
 
