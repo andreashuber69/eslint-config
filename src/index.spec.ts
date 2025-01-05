@@ -49,17 +49,18 @@ const sort = (rules: Record<string, unknown>) => {
     return Object.entries(rules).sort(strippedCompare);
 };
 
-const getAllConfigsRules = async () => await getRuleSeverities([
+const getAllConfigsRules = async () => await getRuleSeverities(tsEslint.config(
     js.configs.all,
     // eslint-disable-next-line import/no-named-as-default-member
-    ...tsEslint.configs.all,
-    ...new FlatCompat().extends("plugin:react/all"),
+    tsEslint.configs.all,
+    new FlatCompat().extends("plugin:react/all"),
     stylistic.configs["disable-legacy"],
     stylistic.configs["all-flat"],
     unicorn.configs["flat/all"],
     {
         plugins: {
-            // "@stylistic": stylistic,
+            // @ts-expect-error There's no way we can make the types compatible
+            "@stylistic": stylistic,
             // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
             import: fixupPluginRules(importPlugin as FixupPluginDefinition),
             jsdoc,
@@ -68,7 +69,7 @@ const getAllConfigsRules = async () => await getRuleSeverities([
             "react-hooks": fixupPluginRules(reactHooks as FixupPluginDefinition),
         },
     },
-]);
+));
 
 const allOtherRules = { ...allImportRules, ...allJsdocRules, ...allPromiseRules, ...allReactHooksRules };
 

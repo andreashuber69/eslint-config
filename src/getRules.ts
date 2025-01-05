@@ -19,7 +19,7 @@ export const getRules = async (config?: unknown[]): Promise<Record<string, unkno
     };
 
     const eslint = new ESLint(config ? options : undefined);
-    const fullConfig = (await eslint.calculateConfigForFile("index.js")) as unknown;
+    const fullConfig = (await eslint.calculateConfigForFile("src/index.js")) as unknown;
 
     if (fullConfig && typeof fullConfig === "object" && "rules" in fullConfig) {
         const { rules } = fullConfig;
