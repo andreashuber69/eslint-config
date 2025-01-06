@@ -56,6 +56,9 @@ const config = tsEslint.config(
     stylistic.configs["all-flat"],
     unicorn.configs["flat/all"],
     {
+        linterOptions: {
+            reportUnusedDisableDirectives: "error",
+        },
         plugins: {
             // The tsEslint.configs.all above also adds the tsEslint instance as a plugin, which is why it must not
             // appear here, see implementation for details:
