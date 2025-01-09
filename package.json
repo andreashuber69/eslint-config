@@ -31,7 +31,7 @@
   "scripts": {
     "prelint": "cspell '**' && markdownlint '**/*.md'",
     "lint": "eslint",
-    "build": "tsc",
+    "build": "tsc && vite build --config vite.config.ts",
     "test-no-coverage": "vitest --run",
     "test": "vitest --run --coverage",
     "show-coverage": "vite 'coverage/lcov-report' --logLevel error --open",
