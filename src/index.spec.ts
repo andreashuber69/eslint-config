@@ -15,7 +15,6 @@ import unicorn from "eslint-plugin-unicorn";
 import tseslint from "typescript-eslint";
 import { describe, expect, it } from "vitest";
 
-
 import { allImportRules } from "./allImportRules.ts";
 import { allJsdocRules } from "./allJsdocRules.ts";
 import { allPromiseRules } from "./allPromiseRules.ts";
@@ -59,8 +58,8 @@ const allConfigsRules = await getRuleSeverities(tseslint.config(
     unicorn.configs["flat/all"],
     {
         plugins: {
-            // @ts-expect-error There's no way we can make the types compatible
-            "@stylistic": stylistic,
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
+            "@stylistic": stylistic as FixupPluginDefinition,
             // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
             import: fixupPluginRules(importPlugin as FixupPluginDefinition),
             jsdoc,
