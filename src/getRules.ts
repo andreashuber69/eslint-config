@@ -5,10 +5,9 @@ import { ESLint } from "eslint";
 
 import { languageOptions } from "./languageOptions.ts";
 
-const isRecord = (value: unknown): value is Record<string, unknown> =>
-    typeof value === "object" && value !== null;
+const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null;
 
-export const getRules = async (config?: unknown[]): Promise<Record<string, unknown>> => {
+export const getRules = async (config?: unknown[]) => {
     const overrideOptions: ESLint.Options = {
         overrideConfigFile: true,
         overrideConfig: [
