@@ -11,7 +11,7 @@ import promise from "eslint-plugin-promise";
 import reactHooks from "eslint-plugin-react-hooks";
 import unicorn from "eslint-plugin-unicorn";
 import globals from "globals";
-import tsEslint from "typescript-eslint";
+import tseslint from "typescript-eslint";
 
 const allExtensions = [
     ".js",
@@ -41,7 +41,7 @@ const languageOptions = {
     },
 };
 
-const config = tsEslint.config(
+const config = tseslint.config(
     // While the js.configs.all list really does turn on *all* eslint rules (except for the deprecated ones), the
     // tsEslint.configs.all and unicorn.configs["flat/all"] lists turn off those eslint rules that are replaced with
     // typescript-aware or more functional variants and also turn off the eslint rules that are already flagged
@@ -50,7 +50,7 @@ const config = tsEslint.config(
     // and reconfigure some others.
     js.configs.all,
     // eslint-disable-next-line import/no-named-as-default-member
-    tsEslint.configs.all,
+    tseslint.configs.all,
     new FlatCompat().extends("plugin:react/all"),
     stylistic.configs["disable-legacy"],
     stylistic.configs["all-flat"],
