@@ -4,6 +4,7 @@
     "@tsconfig/node-lts/tsconfig"
   ],
   "compilerOptions": {
+    "allowImportingTsExtensions": true,
     "checkJs": true,
     "noEmit": true
   },
