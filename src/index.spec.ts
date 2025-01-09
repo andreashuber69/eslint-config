@@ -12,7 +12,7 @@ import jsdoc from "eslint-plugin-jsdoc";
 import promise from "eslint-plugin-promise";
 import reactHooks from "eslint-plugin-react-hooks";
 import unicorn from "eslint-plugin-unicorn";
-import tsEslint from "typescript-eslint";
+import tseslint from "typescript-eslint";
 import { describe, expect, it } from "vitest";
 
 
@@ -49,10 +49,10 @@ const sort = (rules: Record<string, unknown>) => {
     return Object.entries(rules).sort(strippedCompare);
 };
 
-const allConfigsRules = await getRuleSeverities(tsEslint.config(
+const allConfigsRules = await getRuleSeverities(tseslint.config(
     js.configs.all,
     // eslint-disable-next-line import/no-named-as-default-member
-    tsEslint.configs.all,
+    tseslint.configs.all,
     new FlatCompat().extends("plugin:react/all"),
     stylistic.configs["disable-legacy"],
     stylistic.configs["all-flat"],
@@ -210,7 +210,7 @@ const getRuleCount = (rules: Record<string, unknown>) => Object.entries(rules).f
 const recommendedCount = getRuleCount(await getRuleSeverities([
     js.configs.recommended,
     // eslint-disable-next-line import/no-named-as-default-member
-    ...tsEslint.configs.recommended,
+    ...tseslint.configs.recommended,
     ...new FlatCompat().extends("plugin:react/recommended"),
     {
         plugins: {
