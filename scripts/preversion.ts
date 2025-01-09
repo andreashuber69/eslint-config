@@ -1,6 +1,6 @@
 // https://github.com/andreashuber69/eslint-config/blob/develop/README.md#----andreashuber69eslint-config
 
-import { exec } from "./exec.js";
+import { exec } from "./exec.ts";
 
 await exec("git checkout develop");
 await exec("git push");
