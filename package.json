@@ -28,7 +28,8 @@
     }
   },
   "files": [
-    "/*.md"
+    "/*.md",
+    "/dist/*.*s"
   ],
   "publishConfig": {
     "access": "public"
