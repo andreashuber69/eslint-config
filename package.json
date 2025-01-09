@@ -1,6 +1,6 @@
 {
   "name": "@andreashuber69/eslint-config",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.0-beta.2",
   "description": "Provides a comprehensive, carefullly curated and tested shareable eslint config for TypeScript projects.",
   "keywords": [
     "eslint",
@@ -23,8 +23,8 @@
   "type": "module",
   "exports": {
     ".": {
-      "node": "dist/index.js",
-      "types": "dist/index.d.ts"
+      "node": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     }
   },
   "files": [
