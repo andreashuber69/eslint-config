@@ -1,7 +1,7 @@
 // https://github.com/andreashuber69/eslint-config/blob/develop/README.md#----andreashuber69eslint-config
 
 import packageJson from "../package.json" with { type: "json" };
-import { exec } from "./exec.js";
+import { exec } from "./exec.ts";
 
 const { version } = packageJson;
 

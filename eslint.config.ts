@@ -1,15 +1,12 @@
 // https://github.com/andreashuber69/eslint-config/blob/develop/README.md#----andreashuber69eslint-config
 
-import generalConfig from "./index.js";
+import generalConfig from "./src/index.ts";
 
 const config = [
-    {
-        files: ["**/*.ts"],
-    },
-    {
-        ignores: ["coverage/"],
-    },
     ...generalConfig,
+    {
+        ignores: ["coverage/", "dist/"],
+    },
 ];
 
 // eslint-disable-next-line import/no-default-export

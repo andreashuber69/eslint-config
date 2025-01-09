@@ -2,13 +2,13 @@
 
 import type { Linter } from "eslint";
 import { ESLint } from "eslint";
-import { languageOptions } from "../index.js";
 
-const isRecord = (value: unknown): value is Record<string, unknown> =>
-    typeof value === "object" && value !== null;
+import { languageOptions } from "./languageOptions.ts";
 
-export const getRules = async (config?: unknown[]): Promise<Record<string, unknown>> => {
-    const options: ESLint.Options = {
+const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null;
+
+export const getRules = async (config?: unknown[]) => {
+    const overrideOptions: ESLint.Options = {
         overrideConfigFile: true,
         overrideConfig: [
             // There's no other way
@@ -18,8 +18,12 @@ export const getRules = async (config?: unknown[]): Promise<Record<string, unkno
         ],
     };
 
-    const eslint = new ESLint(config ? options : undefined);
-    const fullConfig = (await eslint.calculateConfigForFile("index.js")) as unknown;
+    const configFileOptions: ESLint.Options = {
+        flags: ["unstable_ts_config"],
+    };
+
+    const eslint = new ESLint(config ? overrideOptions : configFileOptions);
+    const fullConfig = (await eslint.calculateConfigForFile("src/index.js")) as unknown;
 
     if (fullConfig && typeof fullConfig === "object" && "rules" in fullConfig) {
         const { rules } = fullConfig;

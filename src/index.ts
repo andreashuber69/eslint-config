@@ -1,82 +1,56 @@
 // https://github.com/andreashuber69/eslint-config/blob/develop/README.md#----andreashuber69eslint-config
 
 import { fixupPluginRules } from "@eslint/compat";
+import type { FixupPluginDefinition } from "@eslint/compat";
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
 import stylistic from "@stylistic/eslint-plugin";
-import tsParser from "@typescript-eslint/parser";
 import importPlugin from "eslint-plugin-import";
 import jsdoc from "eslint-plugin-jsdoc";
 import promise from "eslint-plugin-promise";
 import reactHooks from "eslint-plugin-react-hooks";
 import unicorn from "eslint-plugin-unicorn";
-import globals from "globals";
-import tsEslint from "typescript-eslint";
+import tseslint from "typescript-eslint";
 
-const allExtensions = [
-    ".js",
-    ".cjs",
-    ".mjs",
-    ".jsx",
-    ".cjsx",
-    ".mjsx",
-    ".ts",
-    ".cts",
-    ".mts",
-    ".tsx",
-    ".ctsx",
-    ".mtsx",
-];
+import { allExtensions, languageOptions } from "./languageOptions.ts";
 
-const languageOptions = {
-    globals: {
-        ...globals.node,
-    },
-    parser: tsParser,
-    parserOptions: {
-        // As of typescript-eslint v8.18.0, it is not entirely clear how projectService should be configured.
-        // Many examples specify allowDefaultProject: ["*.js"], but that does not work here.
-        projectService: {
-            allowDefaultProject: ["eslint.config.js"],
-            defaultProject: "./tsconfig.json",
-        },
-        tsconfigRootDir: process.cwd(),
-    },
-};
-
-const config = [
+const config = tseslint.config(
     // While the js.configs.all list really does turn on *all* eslint rules (except for the deprecated ones), the
-    // tsEslint.configs.all and plugin:unicorn/all lists turn off those eslint rules that are replaced with
+    // tseslint.configs.all and unicorn.configs["flat/all"] lists turn off those eslint rules that are replaced with
     // typescript-aware or more functional variants and also turn off the eslint rules that are already flagged
     // by the typescript compiler. In other words, by extending from the lists below, we have all rules turned on,
     // that *might* make sense in a typescript project. We thus "only" need to turn off the rules that we don't like
     // and reconfigure some others.
     js.configs.all,
     // eslint-disable-next-line import/no-named-as-default-member
-    ...tsEslint.configs.all,
-    ...new FlatCompat().extends("plugin:react/all"),
+    tseslint.configs.all,
+    new FlatCompat().extends("plugin:react/all"),
     stylistic.configs["disable-legacy"],
     stylistic.configs["all-flat"],
     unicorn.configs["flat/all"],
     {
+        linterOptions: {
+            reportUnusedDisableDirectives: "error",
+        },
         plugins: {
-            // ...tsEslint.configs.all above also adds the tsEslint instance as a plugin, which is why it must not
+            // The tseslint.configs.all above also adds the tseslint instance as a plugin, which is why it must not
             // appear here, see implementation for details:
             // eslint-disable-next-line @stylistic/max-len
             // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/typescript-eslint/src/configs/base.ts
-            "@stylistic": stylistic,
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
+            "@stylistic": stylistic as FixupPluginDefinition,
             // The unicorn.configs["flat/all"] above also adds the unicorn instance as a plugin, which is why it must
             // not appear here, see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/index.js for
             // details.
             // The plugins below don't seem to offer "all" lists, so we need to turn on the associated rules explicitly.
             // Note that we also list the turned off rules below, so that we can test that we did not miss a newly added
             // rule.
-            // @ts-expect-error There's no way we can make the types compatible
-            import: fixupPluginRules(importPlugin),
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
+            import: fixupPluginRules(importPlugin as FixupPluginDefinition),
             jsdoc,
             promise,
-            // @ts-expect-error There's no way we can make the types compatible
-            "react-hooks": fixupPluginRules(reactHooks),
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
+            "react-hooks": fixupPluginRules(reactHooks as FixupPluginDefinition),
         },
 
         languageOptions,
@@ -889,9 +863,7 @@ const config = [
             },
         },
     },
-];
-
-export { languageOptions };
+);
 
 // eslint-disable-next-line import/no-default-export
 export default config;

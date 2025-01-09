@@ -1,6 +1,6 @@
 {
   "name": "@andreashuber69/eslint-config",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0-beta.1",
   "description": "Provides a comprehensive, carefullly curated and tested shareable eslint config for TypeScript projects.",
   "keywords": [
     "eslint",
@@ -21,9 +21,13 @@
     "name": "Andreas Huber"
   },
   "type": "module",
-  "main": "index.js",
+  "exports": {
+    ".": {
+      "node": "dist/index.js",
+      "types": "dist/index.d.ts"
+    }
+  },
   "files": [
-    "/index.js",
     "/*.md"
   ],
   "publishConfig": {
@@ -31,14 +35,15 @@
   },
   "scripts": {
     "prelint": "cspell '**' && markdownlint '**/*.md'",
-    "lint": "eslint --report-unused-disable-directives '.'",
-    "test-no-coverage": "node --import tsx --test test/*.spec.ts",
-    "test": "c8 --exclude 'test/**' --reporter=text --reporter=lcov npm run test-no-coverage",
+    "lint": "eslint --flag unstable_ts_config",
+    "build": "tsc && vite build --config vite.config.ts",
+    "test-no-coverage": "vitest --run",
+    "test": "vitest --run --coverage",
     "show-coverage": "vite 'coverage/lcov-report' --logLevel error --open",
-    "ci": "npm run lint && tsc && npm test",
-    "preversion": "tsx './scripts/preversion.ts'",
-    "version": "tsx './scripts/version.ts'",
-    "postversion": "tsx './scripts/postversion.ts'",
+    "ci": "npm run lint && npm run build && npm test",
+    "preversion": "jiti 'scripts/preversion.ts'",
+    "version": "jiti 'scripts/version.ts'",
+    "postversion": "jiti 'scripts/postversion.ts'",
     "finish-release": "git flow release finish -p -m \"chore: finish release\" v`cat package.json | jq -r '.version'`"
   },
   "peerDependencies": {
@@ -48,8 +53,8 @@
     "@stylistic/eslint-plugin": "^2.12.1",
     "@types/eslint": "^9.6.1",
     "@types/eslint__eslintrc": "^2.1.2",
-    "@typescript-eslint/eslint-plugin": "^8.18.2",
-    "@typescript-eslint/parser": "^8.18.2",
+    "@typescript-eslint/eslint-plugin": "^8.19.1",
+    "@typescript-eslint/parser": "^8.19.1",
     "eslint": "^9.17.0",
     "eslint-import-resolver-typescript": "^3.7.0",
     "eslint-plugin-import": "^2.31.0",
@@ -59,7 +64,7 @@
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-unicorn": "^56.0.1",
     "globals": "^15.14.0",
-    "typescript-eslint": "^8.18.2"
+    "typescript-eslint": "^8.19.1"
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.4",
@@ -71,8 +76,9 @@
     "@types/eslint": "^9.6.1",
     "@types/eslint__eslintrc": "^2.1.2",
     "@types/node-fetch": "^2.6.12",
-    "@typescript-eslint/eslint-plugin": "^8.18.2",
-    "@typescript-eslint/parser": "^8.18.2",
+    "@typescript-eslint/eslint-plugin": "^8.19.1",
+    "@typescript-eslint/parser": "^8.19.1",
+    "@vitest/coverage-istanbul": "^2.1.8",
     "c8": "^10.1.3",
     "coveralls": "^3.1.1",
     "cspell": "^8.17.1",
@@ -85,11 +91,13 @@
     "eslint-plugin-react-hooks": "5.1.0",
     "eslint-plugin-unicorn": "^56.0.1",
     "globals": "^15.14.0",
+    "jiti": "^2.4.2",
     "markdownlint-cli": "^0.43.0",
     "node-fetch": "^2.7.0",
-    "tsx": "^4.19.2",
-    "typescript": "^5.7.2",
-    "typescript-eslint": "^8.18.2",
-    "vite": "^6.0.5"
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.19.1",
+    "vite": "^6.0.7",
+    "vite-plugin-dts": "^4.4.0",
+    "vitest": "^2.1.8"
   }
 }
