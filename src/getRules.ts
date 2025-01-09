@@ -2,7 +2,8 @@
 
 import type { Linter } from "eslint";
 import { ESLint } from "eslint";
-import { languageOptions } from "./index.ts";
+
+import { languageOptions } from "./languageOptions.ts";
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
     typeof value === "object" && value !== null;
