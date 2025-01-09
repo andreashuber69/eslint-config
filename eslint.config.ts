@@ -1,6 +1,6 @@
 // https://github.com/andreashuber69/eslint-config/blob/develop/README.md#----andreashuber69eslint-config
 
-import generalConfig from "./src/index.js";
+import generalConfig from "./src/index.ts";
 
 const config = [
     ...generalConfig,

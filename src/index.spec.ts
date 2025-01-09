@@ -22,7 +22,7 @@ import { allPromiseRules } from "./allPromiseRules.ts";
 import { allReactHooksRules } from "./allReactHooksRules.ts";
 import { getRules } from "./getRules.ts";
 import { getRuleSeverities } from "./getRuleSeverities.ts";
-import ourTypedChanges from "./index.js";
+import ourTypedChanges from "./index.ts";
 
 const ourChanges = await getRules(ourTypedChanges);
 
