@@ -20,6 +20,9 @@
   "author": {
     "name": "Andreas Huber"
   },
+  "engines": {
+    "node": ">=18.18"
+  },
   "type": "module",
   "exports": {
     ".": {
@@ -28,8 +31,9 @@
     }
   },
   "files": [
-    "/*.md",
-    "/dist/*.*s"
+    "/dist/",
+    "!/**/*.map",
+    "/*.md"
   ],
   "publishConfig": {
     "access": "public"
