@@ -36,14 +36,14 @@ The configuration provided by this package and the instructions below are design
 [project service feature](https://typescript-eslint.io/blog/announcing-typescript-eslint-v8/#project-service) of
 [typescript-eslint](https://typescript-eslint.io/) is employed. For this to work correctly, ...
 
-1. ...the node version **must** be >=18.18 (imposed by eslint).
-1. ...all code in a direct or indirect subfolder of the project root that is not explicitly excluded from linting
+1. the node version **must** be >=18.18 (imposed by eslint).
+1. all code in a direct or indirect subfolder of the project root that is not explicitly excluded from linting
    **must** be included by a *tsconfig.json* file located in the same folder as an included file or a direct or indirect
    parent folder.
-1. ...the handful of code files in the root folder of the project (like *eslint.config.mjs*, see below)
+1. the handful of code files in the root folder of the project (like *eslint.config.mjs*, see below)
    **should not** be included by a *tsconfig.json* file.
-1. ...the root directory of the project **should** contain a *tsconfig.json* file.
-1. ...it is recommended to have your *tsconfig.json* file(s) extend from a strict configuration. Here's an example for
+1. the root directory of the project **should** contain a *tsconfig.json* file.
+1. it is recommended to have your *tsconfig.json* file(s) extend from a strict configuration. Here's an example for
    node:
 
    ```jsonc
@@ -99,7 +99,7 @@ npm install --save-dev @andreashuber69/eslint-config
    ];
    ```
 
-2. Add the following line to the `scripts` section of your *package.json*:
+1. Add the following line to the `scripts` section of your *package.json*:
 
    ```json
    "lint": "eslint",
@@ -122,7 +122,7 @@ import config from "@andreashuber69/eslint-config";
 export default [
     ...config,
     {
-        // List the folders of your project that must not be linted.
+        // List the folders of your project that are excluded from linting.
         // This is typically a superset of the folders listed in .gitignore
         ignores: ["coverage/", "dist/", "doc/"],
     },
@@ -130,7 +130,8 @@ export default [
         languageOptions: {
             parserOptions: {
                 projectService: {
-                    // Globs matching at most 8 code files not included by a tsconfig.json (can be empty).
+                    // Globs relative to the root folder matching at most 8 code files not included by a tsconfig.json
+                    // (can be empty).
                     allowDefaultProject: ["*.js", "*.cjs", "*.mjs", "*.ts", "*.cts", "*.mts"],
                     // The relative path to a tsconfig.json that will be used to lint the files matched with
                     // allowDefaultProject.
