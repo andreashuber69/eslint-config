@@ -18,11 +18,7 @@ export const getRules = async (config?: unknown[]) => {
         ],
     };
 
-    const configFileOptions: ESLint.Options = {
-        flags: ["unstable_ts_config"],
-    };
-
-    const eslint = new ESLint(config ? overrideOptions : configFileOptions);
+    const eslint = new ESLint(config ? overrideOptions : undefined);
     const fullConfig = (await eslint.calculateConfigForFile("src/index.js")) as unknown;
 
     if (fullConfig && typeof fullConfig === "object" && "rules" in fullConfig) {

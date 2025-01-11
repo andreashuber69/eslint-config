@@ -1,5 +1,4 @@
 import tsParser from "@typescript-eslint/parser";
-import globals from "globals";
 
 export const allExtensions = [
     ".js",
@@ -17,9 +16,6 @@ export const allExtensions = [
 ];
 
 export const languageOptions = {
-    globals: {
-        ...globals.node,
-    },
     parser: tsParser,
     parserOptions: {
         projectService: {
