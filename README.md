@@ -48,7 +48,7 @@ have to create a *tsconfig.json* file that includes them.
 
 ## Installation
 
-1. Execute the following on the command line:
+1. In the root folder of your project, execute the following on the command line:
 
    ```bash
    npm install @andreashuber69/eslint-config --save-dev
@@ -73,7 +73,7 @@ have to create a *tsconfig.json* file that includes them.
    For the above to work you have to install the required packages, as follows:
 
    ```bash
-   npm install @tsconfig/strictest/tsconfig @tsconfig/node-lts/tsconfig --save-dev
+   npm install @tsconfig/strictest @tsconfig/node-lts --save-dev
    ```
 
 1. Add the following line to the `scripts` section of your *package.json*:
