@@ -104,8 +104,8 @@ export default [
     ...config,
     {
         // List the folders of your project that are excluded from
-        // linting (node_modules is always excluded). This is
-        // typically a superset of the folders listed in .gitignore.
+        // linting. This is typically a superset of the folders
+        // listed in .gitignore (except for node_modules).
         ignores: ["coverage/", "dist/", "doc/"],
     },
     {
@@ -132,8 +132,8 @@ export default [
     ...config,
     {
         // List the folders of your project that are excluded from
-        // linting (node_modules is always excluded). This is
-        // typically a superset of the folders listed in .gitignore.
+        // linting. This is typically a superset of the folders
+        // listed in .gitignore (except for node_modules).
         ignores: ["coverage/", "dist/", "doc/"],
     },
     {
