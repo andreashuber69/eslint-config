@@ -103,7 +103,7 @@ import config from "@andreashuber69/eslint-config";
 export default [
     ...config,
     {
-        // List the folders of your project that are excluded from linting.
+        // List the folders of your project that are excluded from linting (node_modules is always excluded).
         // This is typically a superset of the folders listed in .gitignore.
         ignores: ["coverage/", "dist/", "doc/"],
     },
