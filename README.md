@@ -103,12 +103,13 @@ import config from "@andreashuber69/eslint-config";
 export default [
     ...config,
     {
-        // List the folders of your project that are excluded from linting (node_modules is always excluded).
-        // This is typically a superset of the folders listed in .gitignore.
+        // List the folders of your project that are excluded from
+        // linting (node_modules is always excluded). This is
+        // typically a superset of the folders listed in .gitignore.
         ignores: ["coverage/", "dist/", "doc/"],
     },
     {
-        // Only necessary if you'd like to change or turn off rules
+        // Only necessary if you'd like to change or turn off rules.
         rules: {
             // Change to your liking, e.g.
             "@typescript-eslint/return-await": "off",
@@ -130,18 +131,23 @@ import config from "@andreashuber69/eslint-config";
 export default [
     ...config,
     {
-        // List the folders of your project that are excluded from linting.
-        // This is typically a superset of the folders listed in .gitignore
+        // List the folders of your project that are excluded from
+        // linting (node_modules is always excluded). This is
+        // typically a superset of the folders listed in .gitignore.
         ignores: ["coverage/", "dist/", "doc/"],
     },
     {
         languageOptions: {
             parserOptions: {
                 projectService: {
-                    // Globs relative to the root folder matching at most 8 code files not included by a tsconfig.json
-                    // (can be empty).
-                    allowDefaultProject: ["*.js", "*.cjs", "*.mjs", "*.ts", "*.cts", "*.mts"],
-                    // The relative path to a tsconfig.json that will be used to lint the files matched with
+                    // Globs relative to the root folder matching at most
+                    // 8 code files not included by a tsconfig.json (can
+                    // be empty).
+                    allowDefaultProject: [
+                        "*.js", "*.cjs", "*.mjs", "*.ts", "*.cts", "*.mts"
+                    ],
+                    // The relative path to a tsconfig.json that will be
+                    // used to lint the files matched with
                     // allowDefaultProject.
                     defaultProject: "tsconfig.json",
                 },
