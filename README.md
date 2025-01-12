@@ -25,26 +25,37 @@
   </a>
 </p>
 
+## Introduction
+
 This is a comprehensive and carefully curated
-[shareable eslint config](https://eslint.org/docs/latest/developer-guide/shareable-configs) for
-[TypeScript](https://www.typescriptlang.org/) projects.
+[shareable eslint config](https://eslint.org/docs/latest/developer-guide/shareable-configs), designed to quickly add
+linting to [TypeScript](https://www.typescriptlang.org/) projects.
 
-## Prerequisites
+## Assumptions
 
-The configuration provided by this package and the instructions below are designed to quickly add linting to
-**TypeScript** projects. Towards that end, the new
+This configuration uses the
 [project service feature](https://typescript-eslint.io/blog/announcing-typescript-eslint-v8/#project-service) of
-[typescript-eslint](https://typescript-eslint.io/) is employed. For this to work correctly, ...
+[typescript-eslint](https://typescript-eslint.io/). With this feature even a large code base can be linted with minimal
+configuration, contingent on the following central assumptions:
 
-1. the node version **must** be >=18.18 (imposed by eslint).
-1. all code in a direct or indirect subfolder of the project root that is not explicitly excluded from linting
-   **must** be included by a *tsconfig.json* file located in the same folder as an included file or a direct or indirect
-   parent folder.
-1. the handful of code files in the root folder of the project (like *eslint.config.mjs*, see below)
-   **should not** be included by a *tsconfig.json* file.
-1. the root directory of the project **should** contain a *tsconfig.json* file.
-1. it is recommended to have your *tsconfig.json* file(s) extend from a strict configuration. Here's an example for
-   node:
+1. With very few exceptions, **all** linted code must be included by at least one *tsconfig.json* file.
+1. A *tsconfig.json* can only include code files located in the same folder or a direct or indirect subfolder.
+
+While both are probably correct for the majority of projects out there (especially the small ones), it is easy to
+break the second assumption. For example, instead of shell scripts some projects use *.ts* files run with something like
+[tsx](https://tsx.is/). **tsx** does not require a *tsconfig.json* for execution. If you want to lint such files, you'd
+have to create a *tsconfig.json* file that includes them.
+
+## Installation
+
+1. Execute the following on the command line:
+
+   ```bash
+   npm install @andreashuber69/eslint-config --save-dev
+   ```
+
+1. While not required, it is recommended to have your *tsconfig.json* file(s) extend from a strict configuration. Here's
+   an example for node:
 
    ```jsonc
    {
@@ -59,44 +70,10 @@ The configuration provided by this package and the instructions below are design
    }
    ```
 
-If your project already satisfies to the requirements above, then you can get up and running simply by following the
-steps under [Getting Started](#getting-started).
+   For the above to work you have to install the required packages, as follows:
 
-Note that only the first and second points above are hard requirements. For 3 & 4, there are ways to make linting work
-even if your project does not follow these rules, see [Advanced Configuration](#advanced-configuration)
-
-## Getting Started
-
-### Installation
-
-```bash
-npm install --save-dev @andreashuber69/eslint-config
-```
-
-### Configuration
-
-1. Create the new file *eslint.config.mjs* in the root folder of your project, with the following contents:
-
-   ```js
-   import config from "@andreashuber69/eslint-config";
-
-   // eslint-disable-next-line import/no-anonymous-default-export, import/no-default-export
-   export default [
-       ...config,
-       {
-           // List the folders of your project that are excluded from linting.
-           // This is typically a superset of the folders listed in .gitignore
-           ignores: ["coverage/", "dist/", "doc/"],
-       },
-       {
-           // Only necessary if you'd like to change or turn off rules
-           rules: {
-               // Change to your liking, e.g.
-               "@typescript-eslint/return-await": "off",
-               "unicorn/switch-case-braces": "off",
-           },
-       },
-   ];
+   ```bash
+   npm install @tsconfig/strictest/tsconfig @tsconfig/node-lts/tsconfig --save-dev
    ```
 
 1. Add the following line to the `scripts` section of your *package.json*:
@@ -105,15 +82,46 @@ npm install --save-dev @andreashuber69/eslint-config
    "lint": "eslint",
    ```
 
-### Lint
+## Configuration
 
-```bash
-npm run lint
+### Simple Configuration
+
+This configuration can be used in the following circumstances:
+
+- A handful of code files in the root folder of the project (like *eslint.config.mjs*, see below) are **not** included
+  by a *tsconfig.json* file.
+- The root folder of the project contains a *tsconfig.json* file.
+
+If one or both of these do not apply to your project, please see [Advanced Configuration](#advanced-configuration).
+
+Create the new file *eslint.config.mjs* in the root folder of your project, with the following contents:
+
+```js
+import config from "@andreashuber69/eslint-config";
+
+// eslint-disable-next-line import/no-anonymous-default-export, import/no-default-export
+export default [
+    ...config,
+    {
+        // List the folders of your project that are excluded from linting.
+        // This is typically a superset of the folders listed in .gitignore.
+        ignores: ["coverage/", "dist/", "doc/"],
+    },
+    {
+        // Only necessary if you'd like to change or turn off rules
+        rules: {
+            // Change to your liking, e.g.
+            "@typescript-eslint/return-await": "off",
+            "unicorn/switch-case-braces": "off",
+        },
+    },
+];
 ```
 
-## Advanced Configuration
+### Advanced Configuration
 
-A more flexible template for *eslint.config.mjs* looks as follows:
+If the [Simple Configuration](#simple-configuration) is not applicable to your project, create the new file
+*eslint.config.mjs* in the root folder of your project, with the following contents:
 
 ```js
 import config from "@andreashuber69/eslint-config";
@@ -150,9 +158,8 @@ export default [
 ```
 
 Above, the values for [`allowDefaultProject`](https://typescript-eslint.io/packages/parser/#allowdefaultproject) and
-[`defaultProject`](https://typescript-eslint.io/packages/parser/#defaultproject) show what is assumed with the
-simpler template under [Configuration](#configuration). Therefore, if your project does not satisfy the
-requirements 3 and/or 4 (see [Prerequisites](#prerequisites)), you can modify these to suit your needs.
+[`defaultProject`](https://typescript-eslint.io/packages/parser/#defaultproject) show what is assumed under
+[Simple Configuration](#simple-configuration). Modify their values to suit your needs.
 
 ## Rationale
 
