@@ -91,7 +91,7 @@ their default configuration, please see
 your configuration on a given file in your project you can use the following command and then inspect the contents of
 *eslint-config.json*.
 
-```
+```bash
 npx eslint --print-config src/index.ts >eslint-config.json
 ```
 
