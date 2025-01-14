@@ -646,7 +646,9 @@ const config = tseslint.config(
                 "prefer-top-level",
             ],
             "import/default": "off", // Already covered by typescript.
-            "import/dynamic-import-chunkname": "error",
+            // Many projects won't care about such optimizations and an increasing number does not use webpack, so this
+            // should at most be a warning.
+            "import/dynamic-import-chunkname": "warn",
             "import/export": "off", // Already covered by typescript.
             "import/exports-last": "error",
             "import/extensions": "off", // Already covered by typescript.
