@@ -58,15 +58,9 @@ const config = tseslint.config(
         rules: {
             // Turned off in favor of @typescript-eslint/naming-convention.
             camelcase: "off",
-            "capitalized-comments": [
-                "error",
-                "always",
-                {
-                    ignoreConsecutiveComments: true,
-                    ignoreInlineComments: true,
-                    ignorePattern: "cSpell",
-                },
-            ],
+            // Lower-case comments are often used to for on-the-fly configuration of tools (e.g. cSpell,
+            // webpackChunkName). It is impractical to capture them all in an appropriate ignorePattern.
+            "capitalized-comments": "off",
             eqeqeq: [
                 "error",
                 "always",
@@ -652,7 +646,9 @@ const config = tseslint.config(
                 "prefer-top-level",
             ],
             "import/default": "off", // Already covered by typescript.
-            "import/dynamic-import-chunkname": "error",
+            // Many projects won't care about such optimizations and an increasing number does not use webpack, so this
+            // should at most be a warning.
+            "import/dynamic-import-chunkname": "warn",
             "import/export": "off", // Already covered by typescript.
             "import/exports-last": "error",
             "import/extensions": "off", // Already covered by typescript.

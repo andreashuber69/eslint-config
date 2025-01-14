@@ -84,6 +84,17 @@ have to create a *tsconfig.json* file that includes them.
 
 ## Configuration
 
+The whole linting process is configured by the file *eslint.config.mjs* located in the root folder of your project. The
+sections below show examples that you can adapt. For a list of rules provided by this package as well as a rationale for
+their default configuration, please see
+[index.ts](https://github.com/andreashuber69/eslint-config/blob/master/src/index.ts). If you want to see the effect of
+your configuration on a given file in your project you can use the following command and then inspect the contents of
+*eslint-config.json*.
+
+```bash
+npx eslint --print-config src/index.ts >eslint-config.json
+```
+
 ### Simple Configuration
 
 This configuration can be used in the following circumstances:
@@ -93,8 +104,6 @@ This configuration can be used in the following circumstances:
 - The root folder of the project contains a *tsconfig.json* file.
 
 If one or both of these do not apply to your project, please see [Advanced Configuration](#advanced-configuration).
-
-Create the new file *eslint.config.mjs* in the root folder of your project, with the following contents:
 
 ```js
 import config from "@andreashuber69/eslint-config";
@@ -121,8 +130,7 @@ export default [
 
 ### Advanced Configuration
 
-If the [Simple Configuration](#simple-configuration) is not applicable to your project, create the new file
-*eslint.config.mjs* in the root folder of your project, with the following contents:
+This configuration can be used if the [Simple Configuration](#simple-configuration) is not applicable to your project.
 
 ```js
 import config from "@andreashuber69/eslint-config";
@@ -177,7 +185,7 @@ this abundance, I've failed to find a package that satisfies what I was looking 
   ([see TS eslint quick start](https://typescript-eslint.io/getting-started#quickstart)) with
   [React](https://react.dev/) support (see [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)) to
   the number of active rules in this configuration. At the time of writing the count is **only 101** for the recommended
-  set compared to **621 rules in this package**.
+  set compared to **620 rules in this package**.
   More specifically, ...
   - flag as many problems and as much inconsistent formatting as possible while keeping false positives low. Developers
     should be able to correct most errors and warnings by rewriting the code as opposed to sprinkling it with
