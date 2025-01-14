@@ -58,15 +58,9 @@ const config = tseslint.config(
         rules: {
             // Turned off in favor of @typescript-eslint/naming-convention.
             camelcase: "off",
-            "capitalized-comments": [
-                "error",
-                "always",
-                {
-                    ignoreConsecutiveComments: true,
-                    ignoreInlineComments: true,
-                    ignorePattern: "cSpell",
-                },
-            ],
+            // Lower-case comments are often used to for on-the-fly configuration of tools (e.g. cSpell,
+            // webpackChunkName). It is impractical to capture them all in an appropriate ignorePattern.
+            "capitalized-comments": "off",
             eqeqeq: [
                 "error",
                 "always",
