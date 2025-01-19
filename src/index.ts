@@ -103,6 +103,14 @@ const config = tseslint.config(
                 "ForInStatement",
             ],
             "no-ternary": "off",
+            // eslint-disable-next-line @stylistic/max-len
+            // As per https://typescript-eslint.io/troubleshooting/faqs/eslint#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors
+            // and https://eslint.org/docs/latest/rules/no-undef#handled_by_typescript this rule does not make sense for
+            // statically typed code because the TypeScript compiler does a much better job. For statically untyped
+            // code, this rule only makes sense if the appropriate globals are enabled in the configuration, which can
+            // only be done on a per-project basis, see
+            // https://eslint.org/docs/latest/use/configure/language-options#predefined-global-variables.
+            "no-undef": "off",
             // Does not make sense for js code >= ES5 with no-global-assign and no-shadow-restricted-names turned on.
             "no-undefined": "off",
             // We use void to avoid @typescript-eslint/no-confusing-void-expression.
