@@ -95,10 +95,14 @@ your configuration on a given file in your project you can use the following com
 npx eslint --print-config src/index.ts >eslint-config.json
 ```
 
-> NOTE: By default (and independent of the [`checkJs`](https://www.typescriptlang.org/tsconfig/#checkJs) setting in your
-> *tsconfig.json*) `@andreashuber69/eslint-config` will lint JavaScript files (.js, .cjs, .mjs, .jsx) with a reduced set
-> of rules, please see
-> [`disable-type-checked`](https://typescript-eslint.io/users/configs#disable-type-checked) documentation.
+> NOTE: By default `@andreashuber69/eslint-config` will lint JavaScript files (.js, .cjs, .mjs, .jsx) with a reduced set
+> of rules, please see [`disable-type-checked`](https://typescript-eslint.io/users/configs#disable-type-checked)
+> documentation. **If you have JavaScript files in any subfolder of your project, you need to do one of the following**:
+>
+> - Lint all JS: Add [`"checkJs": true`](https://www.typescriptlang.org/tsconfig/#checkJs) to your *tsconfig.json*.
+> - Ignore JS in subfolders: Add to the `ignores` list: `"*/**/*.js", "*/**/*.cjs", "*/**/*.mjs", "*/**/*.jsx"`
+>   (this still lints JavaScript files in the root folder, e.g. *eslint.config.js*).
+> - Ignore all JS: Add to the `ignores` list: `"**/*.js", "**/*.cjs", "**/*.mjs", "**/*.jsx"`.
 
 ### Simple Configuration Example
 
@@ -118,8 +122,8 @@ import config from "@andreashuber69/eslint-config";
 export default [
     ...config,
     {
-        // List the folders of your project that are excluded from
-        // linting. This is typically a superset of the folders
+        // List the files/folders of your project that are excluded
+        // from linting. This is typically a superset of the folders
         // listed in .gitignore (except for node_modules).
         ignores: ["coverage/", "dist/", "doc/"],
     },
@@ -146,8 +150,8 @@ import config from "@andreashuber69/eslint-config";
 export default [
     ...config,
     {
-        // List the folders of your project that are excluded from
-        // linting. This is typically a superset of the folders
+        // List the files/folders of your project that are excluded
+        // from linting. This is typically a superset of the folders
         // listed in .gitignore (except for node_modules).
         ignores: ["coverage/", "dist/", "doc/"],
     },
