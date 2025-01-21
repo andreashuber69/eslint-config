@@ -95,15 +95,21 @@ your configuration on a given file in your project you can use the following com
 npx eslint --print-config src/index.ts >eslint-config.json
 ```
 
-### Simple Configuration
+> NOTE: By default (and independent of the [`checkJs`](https://www.typescriptlang.org/tsconfig/#checkJs) setting in your
+> *tsconfig.json*) `@andreashuber69/eslint-config` will lint JavaScript files (.js, .cjs, .mjs, .jsx) with a reduced set
+> of rules, please see
+> [`disable-type-checked`](https://typescript-eslint.io/users/configs#disable-type-checked) documentation.
 
-This configuration can be used in the following circumstances:
+### Simple Configuration Example
+
+This configuration example can be used in the following circumstances:
 
 - A handful of code files in the root folder of the project (like *eslint.config.mjs*, see below) are **not** included
   by a *tsconfig.json* file.
 - The root folder of the project contains a *tsconfig.json* file.
 
-If one or both of these do not apply to your project, please see [Advanced Configuration](#advanced-configuration).
+If one or both of these do not apply to your project, please see
+[Advanced Configuration Example](#advanced-configuration-example).
 
 ```js
 import config from "@andreashuber69/eslint-config";
@@ -128,9 +134,10 @@ export default [
 ];
 ```
 
-### Advanced Configuration
+### Advanced Configuration Example
 
-This configuration can be used if the [Simple Configuration](#simple-configuration) is not applicable to your project.
+This configuration example can be used if the [Simple Configuration Example](#simple-configuration-example) is not
+applicable to your project.
 
 ```js
 import config from "@andreashuber69/eslint-config";
@@ -173,7 +180,7 @@ export default [
 
 Above, the values for [`allowDefaultProject`](https://typescript-eslint.io/packages/parser/#allowdefaultproject) and
 [`defaultProject`](https://typescript-eslint.io/packages/parser/#defaultproject) show what is assumed under
-[Simple Configuration](#simple-configuration). Modify their values to suit your needs.
+[Simple Configuration Example](#simple-configuration-example). Modify their values to suit your needs.
 
 ## Rationale
 

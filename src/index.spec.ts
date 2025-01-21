@@ -90,7 +90,7 @@ describe("All rules", () => {
     });
 });
 
-describe("index.js", () => {
+describe("index.ts", () => {
     // According to https://eslint.style/guide/config-presets#enable-all-available-rules,
     // plugin:@stylistic/all-extends deliberately does not include JSX and non-fixable rules, we therefore need to
     // test these differently.
@@ -127,7 +127,7 @@ describe("index.js", () => {
     describe("should list all non-fixable stylistic rules", () => {
         for (const id of jsxAndNonFixableStylisticRuleIds) {
             it(id, () => {
-                expect(Boolean(ourChanges[id]), `${id} is not in index.js.`);
+                expect(Boolean(ourChanges[id]), `${id} is not in index.ts.`);
                 expect(!allConfigsRules[id], `${id} is unexpectedly in the list of extended from rules.`);
             });
         }
@@ -139,7 +139,7 @@ describe("index.js", () => {
         for (const [id, ourEntry] of sort(ourAllConfigsChanges)) {
             if (!jsxAndNonFixableStylisticRuleIds.includes(id)) {
                 it(id, () => {
-                    // Since ../index.js extends from the all the rules returned by getAllConfigsRules, we need to
+                    // Since ../index.ts extends from the all the rules returned by getAllConfigsRules, we need to
                     // test that the rule ids in ourChanges are listed in allRulesInConfig and that we apply
                     // severity/options that are different.
                     const entry = allConfigsRules[id];
