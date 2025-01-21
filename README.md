@@ -84,7 +84,7 @@ have to create a *tsconfig.json* file that includes them.
 
 ## Configuration
 
-The whole linting process is configured by the file *eslint.config.mjs* located in the root folder of your project. The
+The whole linting process is configured by the file *eslint.config.ts* located in the root folder of your project. The
 sections below show examples that you can adapt. For a list of rules provided by this package as well as a rationale for
 their default configuration, please see
 [index.ts](https://github.com/andreashuber69/eslint-config/blob/master/src/index.ts). If you want to see the effect of
@@ -99,14 +99,14 @@ npx eslint --print-config src/index.ts >eslint-config.json
 
 This configuration example can be used in the following circumstances:
 
-- A handful of code files in the root folder of the project (like *eslint.config.mjs*, see below) are **not** included
+- A handful of code files in the root folder of the project (like *eslint.config.ts*, see below) are **not** included
   by a *tsconfig.json* file.
 - The root folder of the project contains a *tsconfig.json* file.
 
 If one or both of these do not apply to your project, please see
 [Advanced Configuration Example](#advanced-configuration-example).
 
-```js
+```ts
 import config from "@andreashuber69/eslint-config";
 
 // eslint-disable-next-line import/no-anonymous-default-export, import/no-default-export
@@ -134,7 +134,7 @@ export default [
 This configuration example can be used if the [Simple Configuration Example](#simple-configuration-example) is not
 applicable to your project.
 
-```js
+```ts
 import config from "@andreashuber69/eslint-config";
 
 // eslint-disable-next-line import/no-anonymous-default-export, import/no-default-export
@@ -179,8 +179,8 @@ Above, the values for [`allowDefaultProject`](https://typescript-eslint.io/packa
 
 ### JavaScript
 
-By default `@andreashuber69/eslint-config` will lint JavaScript files (.js, .cjs, .mjs, .jsx) with a reduced set of
-rules, please see [`disable-type-checked`](https://typescript-eslint.io/users/configs#disable-type-checked)
+By default `@andreashuber69/eslint-config` will lint JavaScript files (*.js*, *.cjs*, *.mjs*, *.jsx*) with a reduced set
+of rules, please see [`disable-type-checked`](https://typescript-eslint.io/users/configs#disable-type-checked)
 documentation. **If you have JavaScript files in your project, you need to do one of the following**:
 
 - Lint all JS: Add [`"checkJs": true`](https://www.typescriptlang.org/tsconfig/#checkJs) to your *tsconfig.json*.
