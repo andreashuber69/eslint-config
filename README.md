@@ -95,15 +95,6 @@ your configuration on a given file in your project you can use the following com
 npx eslint --print-config src/index.ts >eslint-config.json
 ```
 
-> NOTE: By default `@andreashuber69/eslint-config` will lint JavaScript files (.js, .cjs, .mjs, .jsx) with a reduced set
-> of rules, please see [`disable-type-checked`](https://typescript-eslint.io/users/configs#disable-type-checked)
-> documentation. **If you have JavaScript files in any subfolder of your project, you need to do one of the following**:
->
-> - Lint all JS: Add [`"checkJs": true`](https://www.typescriptlang.org/tsconfig/#checkJs) to your *tsconfig.json*.
-> - Ignore JS in subfolders: Add to the `ignores` list: `"*/**/*.js", "*/**/*.cjs", "*/**/*.mjs", "*/**/*.jsx"`
->   (this still lints JavaScript files in the root folder, e.g. *eslint.config.js*).
-> - Ignore all JS: Add to the `ignores` list: `"**/*.js", "**/*.cjs", "**/*.mjs", "**/*.jsx"`.
-
 ### Simple Configuration Example
 
 This configuration example can be used in the following circumstances:
@@ -186,6 +177,15 @@ Above, the values for [`allowDefaultProject`](https://typescript-eslint.io/packa
 [`defaultProject`](https://typescript-eslint.io/packages/parser/#defaultproject) show what is assumed under
 [Simple Configuration Example](#simple-configuration-example). Modify their values to suit your needs.
 
+### JavaScript
+
+By default `@andreashuber69/eslint-config` will lint JavaScript files (.js, .cjs, .mjs, .jsx) with a reduced set of
+rules, please see [`disable-type-checked`](https://typescript-eslint.io/users/configs#disable-type-checked)
+documentation. **If you have JavaScript files in your project, you need to do one of the following**:
+
+- Lint all JS: Add [`"checkJs": true`](https://www.typescriptlang.org/tsconfig/#checkJs) to your *tsconfig.json*.
+- Ignore all JS: Add to the `ignores` list: `"**/*.js", "**/*.cjs", "**/*.mjs", "**/*.jsx"`.
+
 ## Rationale
 
 A search for **eslint-config** and **typescript** on [npm](https://npmjs.com) lists well over 2500 packages. Despite
@@ -195,8 +195,8 @@ this abundance, I've failed to find a package that satisfies what I was looking 
   probably best to compare the number of active rules recommended for **TypeScript** projects
   ([see TS eslint quick start](https://typescript-eslint.io/getting-started#quickstart)) with
   [React](https://react.dev/) support (see [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)) to
-  the number of active rules in this configuration. At the time of writing the count is **only 101** for the recommended
-  set compared to **620 rules in this package**.
+  the number of active rules in this configuration. At the time of writing the count is **only 88** for the recommended
+  set compared to **606 rules in this package**.
   More specifically, ...
   - flag as many problems and as much inconsistent formatting as possible while keeping false positives low. Developers
     should be able to correct most errors and warnings by rewriting the code as opposed to sprinkling it with
