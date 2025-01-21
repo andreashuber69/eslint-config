@@ -868,7 +868,7 @@ const config = tseslint.config(
         },
     },
     {
-        files: allExtensions.filter((e) => e.includes("js")).map((e) => `*/**/*${e}`),
+        files: allExtensions.filter((e) => e.includes("js")).map((e) => `**/*${e}`),
         // eslint-disable-next-line import/no-named-as-default-member
         extends: [tseslint.configs.disableTypeChecked],
     },

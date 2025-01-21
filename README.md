@@ -95,15 +95,6 @@ your configuration on a given file in your project you can use the following com
 npx eslint --print-config src/index.ts >eslint-config.json
 ```
 
-> NOTE: By default `@andreashuber69/eslint-config` will lint JavaScript files (.js, .cjs, .mjs, .jsx) with a reduced set
-> of rules, please see [`disable-type-checked`](https://typescript-eslint.io/users/configs#disable-type-checked)
-> documentation. **If you have JavaScript files in any subfolder of your project, you need to do one of the following**:
->
-> - Lint all JS: Add [`"checkJs": true`](https://www.typescriptlang.org/tsconfig/#checkJs) to your *tsconfig.json*.
-> - Ignore JS in subfolders: Add to the `ignores` list: `"*/**/*.js", "*/**/*.cjs", "*/**/*.mjs", "*/**/*.jsx"`
->   (this still lints JavaScript files in the root folder, e.g. *eslint.config.js*).
-> - Ignore all JS: Add to the `ignores` list: `"**/*.js", "**/*.cjs", "**/*.mjs", "**/*.jsx"`.
-
 ### Simple Configuration Example
 
 This configuration example can be used in the following circumstances:
@@ -185,6 +176,15 @@ export default [
 Above, the values for [`allowDefaultProject`](https://typescript-eslint.io/packages/parser/#allowdefaultproject) and
 [`defaultProject`](https://typescript-eslint.io/packages/parser/#defaultproject) show what is assumed under
 [Simple Configuration Example](#simple-configuration-example). Modify their values to suit your needs.
+
+### JavaScript
+
+By default `@andreashuber69/eslint-config` will lint JavaScript files (.js, .cjs, .mjs, .jsx) with a reduced set of
+rules, please see [`disable-type-checked`](https://typescript-eslint.io/users/configs#disable-type-checked)
+documentation. **If you have JavaScript files in your project, you need to do one of the following**:
+
+- Lint all JS: Add [`"checkJs": true`](https://www.typescriptlang.org/tsconfig/#checkJs) to your *tsconfig.json*.
+- Ignore all JS: Add to the `ignores` list: `"**/*.js", "**/*.cjs", "**/*.mjs", "**/*.jsx"`.
 
 ## Rationale
 
