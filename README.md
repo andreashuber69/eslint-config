@@ -179,8 +179,8 @@ Above, the values for [`allowDefaultProject`](https://typescript-eslint.io/packa
 
 ### JavaScript
 
-By default `@andreashuber69/eslint-config` will lint JavaScript files (.js, .cjs, .mjs, .jsx) with a reduced set of
-rules, please see [`disable-type-checked`](https://typescript-eslint.io/users/configs#disable-type-checked)
+By default `@andreashuber69/eslint-config` will lint JavaScript files (*.js*, *.cjs*, *.mjs*, *.jsx*) with a reduced set
+of rules, please see [`disable-type-checked`](https://typescript-eslint.io/users/configs#disable-type-checked)
 documentation. **If you have JavaScript files in your project, you need to do one of the following**:
 
 - Lint all JS: Add [`"checkJs": true`](https://www.typescriptlang.org/tsconfig/#checkJs) to your *tsconfig.json*.
