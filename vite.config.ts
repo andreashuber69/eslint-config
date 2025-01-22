@@ -12,18 +12,8 @@ export default defineConfig({
             formats: ["es"],
         },
         outDir: "dist",
-        rollupOptions: {
-            input: {
-                index: "src/index.ts",
-            },
-        },
         sourcemap: true,
         ssr: true,
     },
-    plugins: [
-        dts({
-            rollupTypes: true,
-            tsconfigPath: "tsconfig.json",
-        }),
-    ],
+    plugins: [dts({ rollupTypes: true })],
 });
