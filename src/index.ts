@@ -57,8 +57,8 @@ const config = tseslint.config(
         rules: {
             // Turned off in favor of @typescript-eslint/naming-convention.
             camelcase: "off",
-            // Lower-case comments are often used to for on-the-fly configuration of tools (e.g. cSpell,
-            // webpackChunkName). It is impractical to capture them all in an appropriate ignorePattern.
+            // Lower-case comments are often used for on-the-fly configuration of tools (e.g. cSpell, webpackChunkName).
+            // It is impractical to capture them all in an appropriate ignorePattern.
             "capitalized-comments": "off",
             eqeqeq: [
                 "error",
@@ -180,7 +180,7 @@ const config = tseslint.config(
                     // In a similar fashion, within a given accessibility block, members required for simple use cases
                     // should be listed before members for more complex ones. Members that do not require reasoning
                     // about object state (static members and constructors) are listed first followed by instance
-                    // members. Moreover, a property (not matter whether implemented as a field or get/set methods)
+                    // members. Moreover, a property (no matter whether implemented as a field or get/set methods)
                     // tends to be used more often than (possibly state-altering) methods.
                     // Finally, the order of members should be relatively stable and typically not change when the
                     // implementation changes. For example, whether a property is implemented with a field or get/set
