@@ -54,12 +54,11 @@ const allConfigsRules = await getRuleSeverities(tseslint.config(
     tseslint.configs.all,
     new FlatCompat().extends("plugin:react/all"),
     stylistic.configs["disable-legacy"],
-    stylistic.configs["all-flat"],
-    unicorn.configs["flat/all"],
+    stylistic.configs.all,
+    unicorn.configs.all,
     {
         plugins: {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
-            "@stylistic": stylistic as FixupPluginDefinition,
+            "@stylistic": stylistic,
             // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
             import: fixupPluginRules(importPlugin as FixupPluginDefinition),
             jsdoc,

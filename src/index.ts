@@ -26,8 +26,8 @@ const config = tseslint.config(
     tseslint.configs.all,
     new FlatCompat().extends("plugin:react/all"),
     stylistic.configs["disable-legacy"],
-    stylistic.configs["all-flat"],
-    unicorn.configs["flat/all"],
+    stylistic.configs.all,
+    unicorn.configs.all,
     {
         linterOptions: {
             reportUnusedDisableDirectives: "error",
@@ -37,8 +37,7 @@ const config = tseslint.config(
             // appear here, see implementation for details:
             // eslint-disable-next-line @stylistic/max-len
             // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/typescript-eslint/src/configs/base.ts
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
-            "@stylistic": stylistic as FixupPluginDefinition,
+            "@stylistic": stylistic,
             // The unicorn.configs["flat/all"] above also adds the unicorn instance as a plugin, which is why it must
             // not appear here, see https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/index.js for
             // details.
