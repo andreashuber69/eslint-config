@@ -42,7 +42,7 @@ configuration, contingent on the following central assumptions:
 1. A *tsconfig.json* can only include code files located in the same folder or a direct or indirect subfolder.
 
 While both are probably correct for the majority of projects out there (especially the small ones), it is easy to
-break the second assumption. For example, instead of shell scripts some projects use *.ts* files run with something like
+break the first assumption. For example, instead of shell scripts some projects use *.ts* files run with something like
 [tsx](https://tsx.is/). **tsx** does not require a *tsconfig.json* for execution. If you want to lint such files, you'd
 have to create a *tsconfig.json* file that includes them.
 
