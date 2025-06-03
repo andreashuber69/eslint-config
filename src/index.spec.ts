@@ -103,7 +103,6 @@ describe("index.ts", () => {
         "@stylistic/jsx-equals-spacing",
         "@stylistic/jsx-first-prop-new-line",
         "@stylistic/jsx-function-call-newline",
-        "@stylistic/jsx-indent",
         "@stylistic/jsx-indent-props",
         "@stylistic/jsx-max-props-per-line",
         "@stylistic/jsx-newline",

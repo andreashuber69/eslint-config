@@ -454,7 +454,8 @@ const config = tseslint.config(
             "@stylistic/jsx-equals-spacing": "error",
             "@stylistic/jsx-first-prop-new-line": "error",
             "@stylistic/jsx-function-call-newline": "error",
-            "@stylistic/jsx-indent": ["error", 2], // 2 is the most common indent for HTML files
+            // Deprecated, https://github.com/eslint-stylistic/eslint-stylistic/pull/741
+            "@stylistic/jsx-indent": "off",
             "@stylistic/jsx-indent-props": ["error", 2],
             "@stylistic/jsx-max-props-per-line": "off", // Already limited by max line length
             "@stylistic/jsx-newline": ["error", { prevent: true }],
