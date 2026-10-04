@@ -7,6 +7,7 @@ import { fixupPluginRules } from "@eslint/compat";
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
 import stylistic from "@stylistic/eslint-plugin";
+import { defineConfig } from "eslint/config";
 import importPlugin from "eslint-plugin-import";
 import jsdoc from "eslint-plugin-jsdoc";
 import promise from "eslint-plugin-promise";
@@ -48,7 +49,7 @@ const sort = (rules: Record<string, unknown>) => {
     return Object.entries(rules).sort(strippedCompare);
 };
 
-const allConfigsRules = await getRuleSeverities(tseslint.config(
+const allConfigsRules = await getRuleSeverities(defineConfig(
     js.configs.all,
     // eslint-disable-next-line import/no-named-as-default-member
     tseslint.configs.all,
