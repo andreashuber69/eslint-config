@@ -5,6 +5,7 @@ import type { FixupPluginDefinition } from "@eslint/compat";
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
 import stylistic from "@stylistic/eslint-plugin";
+import { defineConfig } from "eslint/config";
 import importPlugin from "eslint-plugin-import";
 import jsdoc from "eslint-plugin-jsdoc";
 import promise from "eslint-plugin-promise";
@@ -14,7 +15,7 @@ import tseslint from "typescript-eslint";
 
 import { allExtensions, languageOptions } from "./languageOptions.ts";
 
-const config = tseslint.config(
+const config = defineConfig(
     // While the js.configs.all list really does turn on *all* eslint rules (except for the deprecated ones), the
     // tseslint.configs.all and unicorn.configs["flat/all"] lists turn off those eslint rules that are replaced with
     // typescript-aware or more functional variants and also turn off the eslint rules that are already flagged
