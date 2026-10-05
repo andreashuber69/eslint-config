@@ -7,6 +7,7 @@ import js from "@eslint/js";
 import stylistic from "@stylistic/eslint-plugin";
 import { defineConfig } from "eslint/config";
 import importPlugin from "eslint-plugin-import";
+// eslint-disable-next-line import/no-named-as-default
 import jsdoc from "eslint-plugin-jsdoc";
 import promise from "eslint-plugin-promise";
 import reactHooks from "eslint-plugin-react-hooks";
