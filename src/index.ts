@@ -383,6 +383,15 @@ const config = defineConfig(
             // Severely hinders the implementation of generic higher order components.
             "react/jsx-props-no-spreading": "off",
             "react/jsx-pascal-case": "off", // https://github.com/eslint-stylistic/eslint-stylistic/issues/299
+            "react/jsx-sort-props": [
+                "error",
+                {
+                    callbacksLast: true,
+                    noSortAlphabetically: true,
+                    reservedFirst: true,
+                    shorthandLast: true,
+                },
+            ],
             "react/no-adjacent-inline-elements": "off", // HTML fragments become overly long when this rule is enforced.
             "react/no-multi-comp": "off", // Has some merit, but should not be enforced unconditionally.
             // Optimization should only be done when a performance problem has been identified.
@@ -462,18 +471,8 @@ const config = defineConfig(
             "@stylistic/jsx-newline": ["error", { prevent: true }],
             "@stylistic/jsx-one-expression-per-line": "off", // Incompatible with reasonably compact HTML code
             "@stylistic/jsx-pascal-case": "error",
-            "@stylistic/jsx-props-no-multi-spaces": "error",
             "@stylistic/jsx-quotes": "error",
             "@stylistic/jsx-self-closing-comp": "error",
-            "@stylistic/jsx-sort-props": [
-                "error",
-                {
-                    callbacksLast: true,
-                    noSortAlphabetically: true,
-                    reservedFirst: true,
-                    shorthandLast: true,
-                },
-            ],
             "@stylistic/jsx-tag-spacing": "error",
             "@stylistic/jsx-wrap-multilines": "error",
             // Not in plugin:@stylistic/all-flat, see
@@ -524,6 +523,7 @@ const config = defineConfig(
             // Not in plugin:@stylistic/all-flat, see
             // https://eslint.style/guide/config-presets#enable-all-available-rules
             "@stylistic/no-mixed-spaces-and-tabs": "error",
+            "@stylistic/no-multi-spaces": "error",
             // Not in plugin:@stylistic/all-flat, see
             // https://eslint.style/guide/config-presets#enable-all-available-rules
             "@stylistic/no-tabs": "error",
