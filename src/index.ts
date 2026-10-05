@@ -320,7 +320,6 @@ const config = defineConfig(
                 },
             ],
             "@typescript-eslint/no-magic-numbers": "off", // Makes sense but appears to be too restrictive.
-            "@typescript-eslint/no-restricted-imports": "off", // Requires project-specific configuration.
             "@typescript-eslint/no-shadow": [
                 "error",
                 {
@@ -369,8 +368,6 @@ const config = defineConfig(
                 "always",
             ],
             "@typescript-eslint/strict-boolean-expressions": "off", // Takes away too much expressive power.
-            // Value is questionable, see https://typescript-eslint.io/rules/typedef/.
-            "@typescript-eslint/typedef": "off",
             // Already covered by the more sensible @typescript-eslint/prefer-destructuring and
             // unicorn/consistent-destructuring
             "react/destructuring-assignment": "off",
@@ -454,32 +451,14 @@ const config = defineConfig(
                 "error",
                 4,
             ],
-            // No JSX rules are in plugin:@stylistic/all-flat, see
-            // https://eslint.style/guide/config-presets#enable-all-available-rules
             "@stylistic/jsx-child-element-spacing": "off", // Uglifies JSX for very little gain
             "@stylistic/jsx-closing-bracket-location": ["error", "after-props"],
-            "@stylistic/jsx-closing-tag-location": "error",
-            "@stylistic/jsx-curly-brace-presence": "error",
-            "@stylistic/jsx-curly-newline": "error",
-            "@stylistic/jsx-curly-spacing": "error",
-            "@stylistic/jsx-equals-spacing": "error",
-            "@stylistic/jsx-first-prop-new-line": "error",
-            "@stylistic/jsx-function-call-newline": "error",
             // Deprecated, https://github.com/eslint-stylistic/eslint-stylistic/pull/741
             "@stylistic/jsx-indent": "off",
             "@stylistic/jsx-indent-props": ["error", 2],
             "@stylistic/jsx-max-props-per-line": "off", // Already limited by max line length
             "@stylistic/jsx-newline": ["error", { prevent: true }],
             "@stylistic/jsx-one-expression-per-line": "off", // Incompatible with reasonably compact HTML code
-            "@stylistic/jsx-pascal-case": "error",
-            "@stylistic/jsx-quotes": "error",
-            "@stylistic/jsx-self-closing-comp": "error",
-            "@stylistic/jsx-tag-spacing": "error",
-            "@stylistic/jsx-wrap-multilines": "error",
-            // Not in plugin:@stylistic/all-flat, see
-            // https://eslint.style/guide/config-presets#enable-all-available-rules
-            // We want to allow comments above and beside code.
-            "@stylistic/line-comment-position": "off",
             "@stylistic/lines-around-comment": [
                 "error",
                 {
@@ -631,9 +610,13 @@ const config = defineConfig(
             // Turned off in favor of import/no-anonymous-default-export, which is more configurable.
             "unicorn/no-anonymous-default-export": "off",
             "unicorn/no-array-reduce": "off", // Does not make much sense, reduce is unbeatable in some cases.
+            // Does not make sense for spreads and arrays returned from functions like e.g. Object.keys()
+            "unicorn/no-array-sort": "off",
             "unicorn/no-await-expression-member": "off", // Seems arbitrary.
             // This is not an issue with modern editors, where keywords have a different color.
             "unicorn/no-keyword-prefix": "off",
+            // Sometimes produces false positives
+            "unicorn/no-manually-wrapped-comments": "off",
             // The suggested alternative Array.from does not seem to be available for typed arrays.
             "unicorn/no-new-array": "off",
             // While generally a good idea, this rule creates a conflict with consistent-return for functions with an
@@ -659,6 +642,10 @@ const config = defineConfig(
             // Many projects won't care about such optimizations and an increasing number does not use webpack, so this
             // should at most be a warning.
             "import/dynamic-import-chunkname": "warn",
+            "import/enforce-node-protocol-usage": [
+                "error",
+                "always",
+            ],
             "import/export": "off", // Already covered by typescript.
             "import/exports-last": "error",
             "import/extensions": "off", // Already covered by typescript.
@@ -702,7 +689,8 @@ const config = defineConfig(
             "import/no-mutable-exports": "error",
             "import/no-named-as-default": "error",
             "import/no-named-as-default-member": "error",
-            "import/no-named-default": "error",
+            // Turned of in favor of unicorn/no-named-default
+            "import/no-named-default": "off",
             "import/no-named-export": "off", // Does not make sense.
             "import/no-namespace": "error",
             "import/no-nodejs-modules": "off",
@@ -751,6 +739,7 @@ const config = defineConfig(
             "jsdoc/check-values": "warn",
             "jsdoc/convert-to-jsdoc-comments": "warn",
             "jsdoc/empty-tags": "warn",
+            "jsdoc/escape-inline-tags": "warn",
             "jsdoc/implements-on-classes": "warn",
             "jsdoc/imports-as-dependencies": "warn",
             "jsdoc/informative-docs": "warn",
@@ -770,6 +759,11 @@ const config = defineConfig(
             "jsdoc/no-restricted-syntax": "off",
             "jsdoc/no-types": "warn",
             "jsdoc/no-undefined-types": "warn",
+            "jsdoc/no-unnecessary-type-assertion": "warn",
+            "jsdoc/normalize-see-links": "warn",
+            "jsdoc/prefer-import-tag": "warn",
+            "jsdoc/reject-any-type": "warn",
+            "jsdoc/reject-function-type": "warn",
             "jsdoc/require-asterisk-prefix": "warn",
             // This interferes with documentation that uses HTML tags e.g. <ul>, <li>, etc., because the rule does not
             // seem to recognize those tags and thus warns that the last tag of a paragraph should be followed by a
@@ -793,6 +787,8 @@ const config = defineConfig(
             // For what code elements docs are necessary must be the decision of the developer. Forcing docs leads to
             // lots of "standard" phrases without any real value.
             "jsdoc/require-jsdoc": "off",
+            "jsdoc/require-next-description": "warn",
+            "jsdoc/require-next-type": "warn",
             // In keeping with the general philosophy, it should not be necessary to document obvious parameters.
             "jsdoc/require-param": "off",
             "jsdoc/require-param-description": "warn",
@@ -805,20 +801,33 @@ const config = defineConfig(
             "jsdoc/require-property-description": "warn",
             "jsdoc/require-property-name": "warn",
             "jsdoc/require-property-type": "off",
+            "jsdoc/require-rejects": "warn",
             "jsdoc/require-returns": "off",
             "jsdoc/require-returns-check": "warn",
             "jsdoc/require-returns-description": "warn",
             // Return types in jsdoc would just duplicate the types already visible in the TypeScript code.
             "jsdoc/require-returns-type": "off",
+            "jsdoc/require-tags": "warn",
             // In keeping with the general philosophy, it should not be necessary to document obvious template
             // parameters.
             "jsdoc/require-template": "off",
+            "jsdoc/require-template-description": "warn",
             "jsdoc/require-throws": "off",
+            "jsdoc/require-throws-description": "warn",
+            "jsdoc/require-throws-type": "warn",
             "jsdoc/require-yields": "off",
             "jsdoc/require-yields-check": "warn",
+            "jsdoc/require-yields-description": "warn",
+            "jsdoc/require-yields-type": "warn",
             "jsdoc/sort-tags": "warn",
             "jsdoc/tag-lines": "warn",
+            "jsdoc/ts-ban-ts-comment": "warn",
+            "jsdoc/ts-method-signature-style": "warn",
+            "jsdoc/ts-no-empty-object-type": "warn",
+            "jsdoc/ts-no-unnecessary-template-expression": "warn",
+            "jsdoc/ts-prefer-function-type": "warn",
             "jsdoc/text-escaping": "off", // Requires project-specific configuration.
+            "jsdoc/type-formatting": "warn",
             "jsdoc/valid-types": "warn",
             "promise/always-return": "error",
             // Promises aren't that hard to create manually, so it seems dubious to require promisify or pify.
@@ -840,8 +849,35 @@ const config = defineConfig(
             "promise/prefer-catch": "error",
             "promise/spec-only": "error",
             "promise/valid-params": "error",
+            "react-hooks/capitalized-calls": "error",
+            "react-hooks/component-hook-factories": "error",
+            "react-hooks/config": "error",
+            "react-hooks/error-boundaries": "error",
             "react-hooks/exhaustive-deps": "error",
+            "react-hooks/exhaustive-effect-dependencies": "error",
+            "react-hooks/fbt": "error",
+            "react-hooks/gating": "error",
+            "react-hooks/globals": "error",
+            "react-hooks/hooks": "error",
+            "react-hooks/immutability": "error",
+            "react-hooks/incompatible-library": "error",
+            "react-hooks/invariant": "error",
+            "react-hooks/memo-dependencies": "error",
+            "react-hooks/memoized-effect-dependencies": "error",
+            "react-hooks/no-deriving-state-in-effects": "error",
+            "react-hooks/preserve-manual-memoization": "error",
+            "react-hooks/purity": "error",
+            "react-hooks/refs": "error",
+            "react-hooks/rule-suppression": "error",
             "react-hooks/rules-of-hooks": "error",
+            "react-hooks/set-state-in-effect": "error",
+            "react-hooks/set-state-in-render": "error",
+            "react-hooks/static-components": "error",
+            "react-hooks/syntax": "error",
+            "react-hooks/todo": "error",
+            "react-hooks/unsupported-syntax": "error",
+            "react-hooks/use-memo": "error",
+            "react-hooks/void-use-memo": "error",
         },
         settings: {
             // The following settings are taken from https://github.com/import-js/eslint-plugin-import#typescript and

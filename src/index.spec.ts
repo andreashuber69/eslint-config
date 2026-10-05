@@ -79,44 +79,32 @@ const isInAllConfigs = ([id]: [string, unknown]) =>
 
 const hasAllKeys = (original: Record<string, unknown>, tester: Record<string, unknown>, message: string) => {
     for (const [id, _] of sort(original)) {
-        it(id, () => expect(Boolean(tester[id]), `${id} ${message}`));
+        it(id, () => expect(Boolean(tester[id]), `${id} ${message}`).toBe(true));
     }
 };
 
 describe("All rules", () => {
     describe("Default severity should be 'off' or 'error', without options", () => {
         for (const [id, severity] of sort({ ...allConfigsRules, ...allOtherRules })) {
-            it(`"${id}": "${severity}"`, () => expect(severity === "off" || severity === "error"));
+            it(`"${id}": "${severity}"`, () => expect(severity === "off" || severity === "error").toBe(true));
         }
     });
 });
 
 describe("index.ts", () => {
     // According to https://eslint.style/guide/config-presets#enable-all-available-rules,
-    // plugin:@stylistic/all-extends deliberately does not include JSX and non-fixable rules, we therefore need to
-    // test these differently.
+    // plugin:@stylistic/all-extends deliberately does not non-fixable rules, we therefore need to test these
+    // differently.
+    // False positive
+    // eslint-disable-next-line unicorn/prefer-set-has
     const jsxAndNonFixableStylisticRuleIds = [
         "@stylistic/jsx-child-element-spacing",
         "@stylistic/jsx-closing-bracket-location",
-        "@stylistic/jsx-closing-tag-location",
-        "@stylistic/jsx-curly-brace-presence",
-        "@stylistic/jsx-curly-newline",
-        "@stylistic/jsx-curly-spacing",
-        "@stylistic/jsx-equals-spacing",
-        "@stylistic/jsx-first-prop-new-line",
-        "@stylistic/jsx-function-call-newline",
+        "@stylistic/jsx-indent",
         "@stylistic/jsx-indent-props",
         "@stylistic/jsx-max-props-per-line",
         "@stylistic/jsx-newline",
         "@stylistic/jsx-one-expression-per-line",
-        "@stylistic/jsx-pascal-case",
-        "@stylistic/jsx-props-no-multi-spaces",
-        "@stylistic/jsx-quotes",
-        "@stylistic/jsx-self-closing-comp",
-        "@stylistic/jsx-sort-props",
-        "@stylistic/jsx-tag-spacing",
-        "@stylistic/jsx-wrap-multilines",
-        "@stylistic/line-comment-position",
         "@stylistic/max-len",
         "@stylistic/max-statements-per-line",
         "@stylistic/no-mixed-operators",
@@ -127,8 +115,8 @@ describe("index.ts", () => {
     describe("should list all non-fixable stylistic rules", () => {
         for (const id of jsxAndNonFixableStylisticRuleIds) {
             it(id, () => {
-                expect(Boolean(ourChanges[id]), `${id} is not in index.ts.`);
-                expect(!allConfigsRules[id], `${id} is unexpectedly in the list of extended from rules.`);
+                expect(Boolean(ourChanges[id]), `${id} is not in index.ts.`).toBe(true);
+                expect(!allConfigsRules[id], `${id} is unexpectedly in the list of extended from rules.`).toBe(true);
             });
         }
     });
@@ -143,8 +131,8 @@ describe("index.ts", () => {
                     // test that the rule ids in ourChanges are listed in allRulesInConfig and that we apply
                     // severity/options that are different.
                     const entry = allConfigsRules[id];
-                    expect(Boolean(entry), `${id} is not in the list of extended from rules.`);
-                    expect(!isDeepStrictEqual(ourEntry, entry), `${id} does not change the default.`);
+                    expect(Boolean(entry), `${id} is not in the list of extended from rules.`).toBe(true);
+                    expect(isDeepStrictEqual(ourEntry, entry), `${id} does not change the default.`).toBe(false);
                 });
             }
         }
@@ -180,6 +168,9 @@ describe("Modified rules", () => {
             // Same name, but address completely different issues
             "@typescript-eslint/no-namespace",
             "import/no-namespace",
+            // Same name, but address completely different issues
+            "jsdoc/no-unnecessary-type-assertion",
+            "@typescript-eslint/no-unnecessary-type-assertion",
             // Besides some overlap flag different constructs that can be converted to includes()
             "@typescript-eslint/prefer-includes",
             "unicorn/prefer-includes",
@@ -198,7 +189,7 @@ describe("Modified rules", () => {
         for (const [id] of sort(rulesToTest)) {
             const stripped = strip(id);
             const existing = lookup.get(stripped);
-            it(id, () => expect(existing === undefined, `Variant ${existing} is already active.`));
+            it(id, () => expect(existing === undefined, `Variant ${existing} is already active.`).toBe(true));
             lookup.set(stripped, id);
         }
     });
