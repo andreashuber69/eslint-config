@@ -68,6 +68,7 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-unicorn": "^59.0.1",
+    "jiti": "^2.7.0",
     "typescript-eslint": "^8.71.0"
   },
   "devDependencies": {
@@ -76,7 +77,6 @@
     "@vitest/coverage-istanbul": "^3.2.7",
     "coveralls": "^3.1.1",
     "cspell": "^9.8.0",
-    "jiti": "^2.7.0",
     "markdownlint-cli": "^0.45.0",
     "typescript": "^5.8.3",
     "vite": "^6.4.3",
