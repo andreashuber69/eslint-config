@@ -632,6 +632,8 @@ const config = defineConfig(
                 "error",
                 "avoid",
             ],
+            // Makes most real-world code more complicated
+            "unicorn/try-complexity": "off",
             // Since the introduction of @typescript-eslint/no-import-type-side-effects, it makes much more sense to
             // import types with a top level type specifier and everything else in a second import.
             "import/consistent-type-specifier-style": [
@@ -789,7 +791,7 @@ const config = defineConfig(
             "jsdoc/require-jsdoc": "off",
             "jsdoc/require-next-description": "warn",
             "jsdoc/require-next-type": "warn",
-            // In keeping with the general philosophy, it should not be necessary to document obvious parameters.
+            // In keeping with the general philosophy, it should not be necessary to document obvious elements.
             "jsdoc/require-param": "off",
             "jsdoc/require-param-description": "warn",
             // This is turned on so that documentation names are checked against code names. Unfortunately, it seems
@@ -797,24 +799,30 @@ const config = defineConfig(
             "jsdoc/require-param-name": "warn",
             // Parameter types in jsdoc would just duplicate the types already visible in the TypeScript code.
             "jsdoc/require-param-type": "off",
+            // In keeping with the general philosophy, it should not be necessary to document obvious elements.
             "jsdoc/require-property": "off",
             "jsdoc/require-property-description": "warn",
             "jsdoc/require-property-name": "warn",
+            // Property types in jsdoc would just duplicate the types already visible in the TypeScript code.
             "jsdoc/require-property-type": "off",
-            "jsdoc/require-rejects": "warn",
+            // In keeping with the general philosophy, it should not be necessary to document obvious elements.
+            "jsdoc/require-rejects": "off",
+            // In keeping with the general philosophy, it should not be necessary to document obvious elements.
             "jsdoc/require-returns": "off",
             "jsdoc/require-returns-check": "warn",
             "jsdoc/require-returns-description": "warn",
             // Return types in jsdoc would just duplicate the types already visible in the TypeScript code.
             "jsdoc/require-returns-type": "off",
-            "jsdoc/require-tags": "warn",
-            // In keeping with the general philosophy, it should not be necessary to document obvious template
-            // parameters.
+            // Parameter types in jsdoc would just duplicate the types already visible in the TypeScript code.
+            "jsdoc/require-tags": "off",
+            // Parameter types in jsdoc would just duplicate the types already visible in the TypeScript code.
             "jsdoc/require-template": "off",
             "jsdoc/require-template-description": "warn",
+            // Parameter types in jsdoc would just duplicate the types already visible in the TypeScript code.
             "jsdoc/require-throws": "off",
             "jsdoc/require-throws-description": "warn",
             "jsdoc/require-throws-type": "warn",
+            // Parameter types in jsdoc would just duplicate the types already visible in the TypeScript code.
             "jsdoc/require-yields": "off",
             "jsdoc/require-yields-check": "warn",
             "jsdoc/require-yields-description": "warn",
