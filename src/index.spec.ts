@@ -96,6 +96,7 @@ describe("index.ts", () => {
     // plugin:@stylistic/all-extends deliberately does not non-fixable rules, we therefore need to test these
     // differently.
     // False positive
+    // eslint-disable-next-line unicorn/prefer-set-has
     const jsxAndNonFixableStylisticRuleIds = [
         "@stylistic/jsx-child-element-spacing",
         "@stylistic/jsx-closing-bracket-location",
