@@ -610,13 +610,9 @@ const config = defineConfig(
             // Turned off in favor of import/no-anonymous-default-export, which is more configurable.
             "unicorn/no-anonymous-default-export": "off",
             "unicorn/no-array-reduce": "off", // Does not make much sense, reduce is unbeatable in some cases.
-            // Does not make sense for spreads and arrays returned from functions like e.g. Object.keys()
-            "unicorn/no-array-sort": "off",
             "unicorn/no-await-expression-member": "off", // Seems arbitrary.
             // This is not an issue with modern editors, where keywords have a different color.
             "unicorn/no-keyword-prefix": "off",
-            // Sometimes produces false positives
-            "unicorn/no-manually-wrapped-comments": "off",
             // The suggested alternative Array.from does not seem to be available for typed arrays.
             "unicorn/no-new-array": "off",
             // While generally a good idea, this rule creates a conflict with consistent-return for functions with an
